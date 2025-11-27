@@ -1,0 +1,21 @@
+.usda {
+  flex: 1;
+  display: flex;
+
+  .search {
+    background-color: #0482;
+    background-color: #4000801a;
+    input:focus {
+      outline: 1px solid #048;
+      outline: 1px solid #408;
+    }
+  }
+
+  .results {
+    // background-color: lightblue;
+    height: 100%;
+    flex: 1;
+    height: calc(100% - 8rem);
+    overflow: scroll;
+  }
+}

@@ -1,0 +1,19 @@
+.fineli {
+  flex: 1;
+  display: flex;
+
+  .search {
+    background-color: #4802;
+    input:focus {
+      outline: 1px solid #480;
+    }
+  }
+
+  .results {
+    // background-color: lightblue;
+    height: 100%;
+    flex: 1;
+    height: calc(100% - 8rem);
+    overflow: scroll;
+  }
+}
