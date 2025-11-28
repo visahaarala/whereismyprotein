@@ -1,20 +1,24 @@
 import { useState } from 'react';
 import styles from './USDA.module.scss';
+import SettingsIcon from '../svg/SettingsIcon';
 
 const USDA = ({ show }: { show: boolean }) => {
   const [search, setSearch] = useState('');
 
   return (
-    <div className={styles.usda} style={{ display: show ? 'block' : 'none' }}>
-      <div className={`search ${styles.search}`}>
+    <div className={styles.usda} style={{ display: show ? 'flex' : 'none' }}>
+      <div className={styles.search}>
         <input
           type='text'
           placeholder='Search...'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        <div className={styles.settingsIcon}>
+          <SettingsIcon />
+        </div>
       </div>
-      <div className={`results ${styles.results}`}>
+      <div className={styles.results}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
           quia recusandae itaque ullam rerum porro, velit pariatur voluptatibus
@@ -40,6 +44,7 @@ const USDA = ({ show }: { show: boolean }) => {
           necessitatibus rem, odio doloremque, libero asperiores.
         </p>
       </div>
+      <div className={styles.pages}>pages</div>
     </div>
   );
 };

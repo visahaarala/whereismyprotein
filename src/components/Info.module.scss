@@ -1,6 +1,11 @@
-.info {
-  flex: 1;
-  // padding: 1.5rem 0.6rem 0;
+@import '../scss/_mixins.scss';
 
-  overflow: scroll;
+.info {
+  height: 100%;
+  // display: flex; set in inline style
+  flex-direction: column;
+
+  padding: 1rem 0; // extra padding before results
+
+  @include results;
 }

@@ -1,5 +1,9 @@
 $border: 1px solid #888;
 
+:root {
+  --header-height: calc(6rem + 2vw);
+}
+
 *,
 *::before,
 *::after {
@@ -35,9 +39,21 @@ body {
 }
 
 header {
+  height: var(--header-height);
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  h1 {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-top: calc(0.3rem + 1vw);
+    font-size: 1.3rem;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+  }
 
   nav {
     display: flex;
@@ -45,6 +61,7 @@ header {
     justify-content: space-evenly;
     border-top: $border;
     box-shadow: 0 0.1rem 0.1rem #555;
+    z-index: 1; // to show box-shadow
 
     & > div {
       text-align: center;
@@ -53,22 +70,18 @@ header {
       }
 
       flex: 1;
-      padding: 0.4rem;
+      padding: 0.5rem;
       background-color: #ddd;
       text-transform: uppercase;
       font-weight: 400;
       color: #222;
-      // text-transform: capitalize;
-      // transform: scaleY(80%);
       cursor: pointer;
-      // font-size: 1.1rem;
     }
   }
 }
 
 main {
-  flex: 1;
-  display: flex;
+  height: calc(100% - var(--header-height));
 }
 
 nav,
@@ -79,46 +92,7 @@ main {
   }
 }
 
-.search {
-  padding: 1.2rem 1rem 0.6rem;
-  border-bottom: 1px solid #888;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-
-  input {
-    flex: 1;
-    font-size: 1rem;
-    padding: 0.2rem 0.4rem;
-    border-radius: 0.1rem;
-    font-family: inherit;
-    border: 1px solid #888;
-
-    &::placeholder {
-      font-weight: 200;
-    }
-  }
-
-  .settingsIcon {
-    height: 1.5rem;
-    width: 1.5rem;
-    background-color: gray;
-  }
-}
-
-.results {
-  padding: 1rem 0.5rem 0;
-}
-
-h1 {
-  font-size: 1.2rem;
-  letter-spacing: 0.1rem;
-  font-weight: 600;
-  padding-top: calc(0.8rem + 2vw);
-  padding-bottom: calc(0.6rem + 1.2vw);
-}
-
-h2 {
+h3 {
   font-size: 1rem;
   letter-spacing: 0.1rem;
   border-bottom: 1px solid #333;

@@ -1,19 +1,14 @@
+@import '../scss/_mixins.scss';
+
 .fineli {
-  flex: 1;
-  display: flex;
-
-  .search {
-    background-color: #4802;
-    input:focus {
-      outline: 1px solid #480;
-    }
+  height: 100%;
+  background-color: #4802;
+  // display: flex; set in inline style
+  flex-direction: column;
+  input:focus {
+    outline: 1px solid #480;
   }
 
-  .results {
-    // background-color: lightblue;
-    height: 100%;
-    flex: 1;
-    height: calc(100% - 8rem);
-    overflow: scroll;
-  }
+  @include search;
+  @include results;
 }
