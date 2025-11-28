@@ -1,0 +1,176 @@
+THSCODE;DESCRIPT;LANG
+FRUDITOT;Hedelmä- ja marjaruoat;FI
+FRUFRESH;Hedelmät, tuoreet;FI
+FRUBSAL;Hedelmä- ja marjasalaatit;FI
+BERFRESH;Marjat;FI
+FRUBSOUP;Marjakiisselit, -keitot;FI
+FRUBDISH;Marja- tai hedelmäruoka ilman piirakoita;FI
+FRUBJUIC;Täysmehut;FI
+FRUBPAST;POISTETTU_Marjapaistokset;FI
+LEGUTOT;Palkokasvit, palkokasviruoat;FI
+LEGUMES;Palkokasvit;FI
+LEGUPROD;Palkokasvivalmiste;FI
+LEGUDISH;Palkokasviruoat;FI
+LEGUSOUP;Palkokasvikeitot;FI
+LEGUSAUC;Palkokasvikastikkeet;FI
+VEGDITOT;Kasvikset, kasvisruoat;FI
+VEGFRESH;Kasvikset, tuoreet;FI
+VEGPOT;Kypsennetyt kasvikset;FI
+VEGDISH;Kasvispääruoat;FI
+VEGSOUP;Kasviskeitot;FI
+VEGSAUC;Kasviskastikkeet;FI
+MUSHRDI;Sieniruoat;FI
+VEGCANN;Kasvissäilykkeet;FI
+VEGJUICE;Kasvismehut;FI
+VEGCASS;POISTETTU_Kasvislaatikot;FI
+SALADTOT;Salaatit;FI
+SALADVEG;Kasvissalaatit;FI
+SALADMIX;Yhdistelmäsalaatit;FI
+SALADMAY;Majoneesisalaatit;FI
+POTATOT;Perunat;FI
+POTACOOK;Perunat, keitetyt;FI
+POTADISH;Perunaruoat;FI
+POTAFRIE;Paistetut perunat, ranskanperunat;FI
+POTAFAT;POISTETTU_Paistetut perunat, kermaperunat;FI
+CEBAKTOT;Vilja ja leivontatuotteet;FI
+BRMIX;Leipä, seka- tai jyväleipä;FI
+BRWHITE;Leipä, vehnä-;FI
+BRRYE;Leipä, ruis-;FI
+BUN;Kahvileipä;FI
+BAKSWEET;Leivonnainen makea;FI
+BAKSALT;Leivonnainen suolainen;FI
+PANCAKE;Ohukaiset ;FI
+SANDWICH;Voileivät ja hampurilaiset;FI
+BISCUSWE;Makeat keksit ja pikkuleivät;FI
+BISCUSAV;Voileipäkeksit;FI
+RICEADD;Riisilisäke;FI
+PASTAADD;Pastalisäke;FI
+PORR;Puuro;FI
+CERBRKF;Aamiaisviljavalmisteet;FI
+CERBAR;Viljapatukat;FI
+PIZZA;Pizza;FI
+FLOUR;Jauhot;FI
+BISCUIT;POISTETTU_Keksit, pikkuleivät;FI
+CERPR;POISTETTU_Paistokset yms. sekalaiset;FI
+MILKDTOT;Maidot ja maitoruoat;FI
+MILKFF;Maitojuoma rasvaton;FI
+MILKLF;Maitojuomat <2%;FI
+MILKHF;Maitojuomat >2%;FI
+SMILK;Piimä;FI
+CREAM;Kerma;FI
+YOGHURT;Jogurtit;FI
+MILKCURL;Viili;FI
+CURD;Rahka;FI
+SOUCREAM;Hapanmaitotuotteet, muut;FI
+CHEESCUR;Juustot, kypsytetyt juustot;FI
+CHEESUNC;Juustot, tuorejuustot;FI
+CHEESPRO;Juustot, sulatejuustot;FI
+ICECREAM;Jäätelö;FI
+MILKPUDD;Maitojälkiruoat;FI
+MILKSAUC;Maitokastikkeet;FI
+CHEESHAR;POISTETTU_Juustot, kovat;FI
+CHEESOFT;POISTETTU_Juustot, sulate- ja tuore-;FI
+VEGCHEES;POISTETTU_Juusto, kasvirasva-;FI
+FATTOT;Rasva ja rasvavalmisteet;FI
+BUTTER;Voi, maitorasva;FI
+FATANIM;Eläinrasva;FI
+BUTTEHIG;Rasvaseokset>= 55 %;FI
+BUTTELOW;Rasvaseokset < 55 %;FI
+VEGFATLO;Margariini ja  rasvalevite <55%;FI
+VEGFATHI;Margariini ja rasvalevitteet >= 55%;FI
+FATCOOK;Ruoanvalmistus- ja teollisuusrasva;FI
+SALADDRE;Salaatinkastikkeet ja majoneesit;FI
+OIL;Öljy;FI
+BRFBUTT;POISTETTU_Leipärasva voi tai maitorasvalevite >60 %;FI
+BRFMARG;POISTETTU_Leipärasva margariini tai rasvalevite >55 %;FI
+BRFLOWF;POISTETTU_Leipärasva margariini, rasvalevite ja  rasvaseos <55%;FI
+DRESSING;POISTETTU_Salaatinkastikkeet ja öljyt;FI
+FATPROD;POISTETTU_Muut rasvat;FI
+FATSAUCE;POISTETTU_Rasvakastikkeet;FI
+EGGDISH;Kananmunat;FI
+EGGS;Kananmuna;FI
+EGGMIX;Kananmunaruoat;FI
+FISHDTOT;Kalaruoat;FI
+FISH;Kalat;FI
+FISHPROD;Kalavalmiste;FI
+FISHSOUP;Kalakeitot;FI
+FISHDISH;Kalaruoat;FI
+FISHSAUC;Kalakastikkeet;FI
+SEAFOOD;Äyriäiset ja nilviäiset;FI
+SEAFDISH;Äyriäis- tai nilviäisruoat;FI
+SEAFSOUP;Äyriäis- tai nilviäiskeitto;FI
+SEAFSAUC;Äyriäis- tai nilviäiskastike;FI
+INSECT;Syötävät hyönteiset;FI
+FISHCASS;POISTETTU_Kalalaatikot;FI
+FISHDOTH;POISTETTU_Muut kalaruoat;FI
+MEATDTOT;Liharuoat;FI
+MSTEAK;Pihvit, kyljykset;FI
+MEATSOUP;Lihakeitot;FI
+MEATDISH;Liharuoat;FI
+POULTRY;Kanat ja muut linnut;FI
+POULTDIS;Linturuoat;FI
+POULTSOU;Lintukeitot;FI
+POULSAUC;Lintukastikkeet;FI
+MEATPROD;Lihavalmisteet;FI
+SAUSCUTS;Makkaraleikkeleet;FI
+MEATCUTS;Lihaleikkeleet;FI
+SAUSAGE;Makkarat;FI
+OFFALDI;Sisäelinruoat;FI
+MINCMED;POISTETTU_Jauheliharuoat;FI
+MEATPOT;POISTETTU_Lihapadat;FI
+MEATCASS;POISTETTU_Lihalaatikot;FI
+POULTDI;POISTETTU_Kanaruoat;FI
+SAUSDISH;POISTETTU_Makkararuoat;FI
+BEVTOT;Juomat;FI
+COFFEE;Kahvi;FI
+TEA;Tee;FI
+DRWATER;Vedet;FI
+DRJUICE;Mehujuomat;FI
+DRINKSO;Virvoitusjuomat, sokeroidut;FI
+DRINKART;Keinotekoisesti makeutetut juomat;FI
+DRSPORT;Urheilujuomat;FI
+DRINKOTH;Muut juomat;FI
+DRINKCO;POISTETTU_Kofeiinipitoiset virvoitusjuomat;FI
+ALCTOT;Alkoholijuomat;FI
+BEER;Oluet;FI
+CIDER;Siiderit;FI
+WINE;Viinit;FI
+SPIRIT;Väkevät viinat;FI
+ALCOTH;Alkoholijuomat, muut;FI
+SUGARTOT;Sokeri, makeiset;FI
+SUGADD;Sokerit, siirapit;FI
+SWEET;Makeiset;FI
+CHOCOL;Suklaa;FI
+JAM;Hillot, marmeladit;FI
+MISCTOT;Sekalaiset;FI
+SPICES;Mausteet;FI
+SPISAUCE;Maustekastikkeet;FI
+SAVSAUCE;Kastikkeet ja liemet ;FI
+DESSAUCE;Jälkiruokakastikkeet;FI
+INGRMISC;Sekalaiset ruoka-aineet;FI
+SNACK;POISTETTU_Naposteltavat;FI
+SNACKTOT;Naposteltavat;FI
+SNACKSAV;Suolaiset naposteltavat;FI
+SNACKVEG;Pähkinät, siemenet ja kuivatut hedelmät;FI
+BABYFTOT;Lastenruoat;FI
+BABMEATD;Baby lasten liharuokavalmiste;FI
+BABFISHD;Baby lasten kalaruokavalmiste;FI
+BABMILPO;Baby lasten maitopuuro;FI
+BABWATPO;Baby lasten puuro veteen;FI
+BABFRUB;Baby hedelmä- ja marjavalmiste;FI
+BABVEGE;Baby lasten kasvisvalmiste;FI
+BABMIFRU;Baby lasten hedelmämaitovalmiste;FI
+BABOTHER;Lastenruoat tarkentamattomat;FI
+MMILK;Äidinmaito ja äidinmaitokorvikkeet;FI
+INFMILK;Tavanomaiset äidinmaidonkorvikkeet ja äidinmaito;FI
+CASMILK;Kaseiinihydrolysaatit, äidinmaidonkorvikkeet;FI
+PREMILK;Keskosten äidinmaidonkorvikkeet;FI
+SOYMILK;Soijapohjaiset äidinmaidonkorvikkeet;FI
+WHEYMILK;Heraproteiinihydrolysaatit, äidinmaidonkorvikkeet;FI
+AMINMILK;Aminohappovalmisteet, äidinmaidonkorvikkeet;FI
+SPECTOT;Ravintovalmisteet;FI
+SPECSUPP;Ravintoainevalmisteet;FI
+MEALREP;Ateriankorvikkeet;FI
+SPORTFOO;Urheiluvalmisteet muut kuin juomat;FI
+SPECFOOD;Kliiniset ravintovalmisteet;FI
+MEATSAUC;Lihakastikkeet;FI
