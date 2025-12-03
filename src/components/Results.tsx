@@ -13,7 +13,7 @@ const Results = () => {
       {foodsOnPage.map((food) => (
         <p key={food.id}>
           {capitalize(food[lang])}
-          {food.scientific ? <span>{capitalize(food.scientific)}</span> : <></>}
+          {food.scientific ? <span>({capitalize(food.scientific)})</span> : <></>}
         </p>
       ))}
     </div>
