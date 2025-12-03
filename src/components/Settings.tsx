@@ -11,8 +11,6 @@ const Settings = () => {
   const [onlyScientific, setOnlyScientific] = ctx.onlyScientificState;
   const [settingsResults, setSettingsResults] = ctx.settingsResultsState;
 
-  console.log(getFoods().length);
-
   useEffect(() => {
     setSettingsResults(
       getFoods()
