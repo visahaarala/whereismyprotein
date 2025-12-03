@@ -28,7 +28,7 @@ const Info = ({ show }: { show: boolean }) => {
       <p>
         Browse the fiber, the essential amino acid and the total protein content
         in different foods. Results are shown as a percentage of recommended
-        daily intake (RDI), assuming that the daily energy needs are met with
+        daily intake (RDI), assuming that the daily energy needs would be met with
         that particular food.
       </p>
       <h4>Calculations</h4>

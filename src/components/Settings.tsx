@@ -51,6 +51,7 @@ const Settings = () => {
             onChange={() => setOnlyScientific(!onlyScientific)}
           />
         </div>
+        {/* for THOUGHTS version, add some presets for health & weight loss */}
         <div className={styles.numResults}>
           {settingsResults.length} results
         </div>
