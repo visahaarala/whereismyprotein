@@ -24,6 +24,10 @@ export const FineliContext = createContext<{
   ];
   onlyRawState: [boolean, Dispatch<SetStateAction<boolean>>];
   onlyScientificState: [boolean, Dispatch<SetStateAction<boolean>>];
+  selectedFoodState: [
+    FineliFoodType | undefined,
+    Dispatch<SetStateAction<FineliFoodType | undefined>>
+  ];
 }>({
   searchState: ['', () => {}],
   showSettingsState: [false, () => {}],
@@ -35,4 +39,5 @@ export const FineliContext = createContext<{
   foodsOnPageState: [[], () => {}],
   onlyRawState: [false, () => {}],
   onlyScientificState: [false, () => {}],
+  selectedFoodState: [undefined, () => {}],
 });

@@ -19,6 +19,7 @@ const FineliContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
         foodsOnPageState: useState<FineliFoodType[]>(getFoods()),
         onlyRawState: useState(false),
         onlyScientificState: useState(false),
+        selectedFoodState: useState(),
       }}
     >
       {children}

@@ -10,6 +10,8 @@ const Settings = () => {
   const [onlyRaw, setOnlyRaw] = ctx.onlyRawState;
   const [onlyScientific, setOnlyScientific] = ctx.onlyScientificState;
   const [settingsResults, setSettingsResults] = ctx.settingsResultsState;
+  const setSelectedFood = ctx.selectedFoodState[1];
+  const setPageIndex = ctx.pageIndexState[1];
 
   useEffect(() => {
     setSettingsResults(
@@ -17,7 +19,15 @@ const Settings = () => {
         .filter((food) => !onlyRaw || food.raw)
         .filter((food) => !onlyScientific || food.scientific)
     );
-  }, [onlyRaw, onlyScientific, setSettingsResults]);
+    setSelectedFood(undefined);
+    setPageIndex(0);
+  }, [
+    onlyRaw,
+    onlyScientific,
+    setSettingsResults,
+    setSelectedFood,
+    setPageIndex,
+  ]);
 
   return (
     <div className={styles.settings}>
@@ -50,6 +60,7 @@ const Settings = () => {
           />
         </div>
         {/* for THOUGHTS version, add some presets for health & weight loss */}
+        {/* sliders for energy density, fat, protein, etc... */}
         <div className={styles.numResults}>
           {settingsResults.length} results
         </div>

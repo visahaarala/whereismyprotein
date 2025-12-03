@@ -12,13 +12,17 @@ const Pages = () => {
   const numPages = Math.ceil(numResults / RESULTS_PER_PAGE);
   const searchResults = ctx.searchResultsState[0];
   const setFoodsOnPage = ctx.foodsOnPageState[1];
+  const [selectedFood] = ctx.selectedFoodState;
 
   useEffect(() => {
     setFoodsOnPage(searchResults.slice(pageIndex * 100, (pageIndex + 1) * 100));
   }, [searchResults, pageIndex, setFoodsOnPage]);
 
   return (
-    <div className={styles.pages}>
+    <div
+      className={styles.pages}
+      style={selectedFood ? { display: 'none' } : {}}
+    >
       <div
         className={`${styles.leftIcon}
          ${pageIndex === 0 ? styles.disabled : ''}

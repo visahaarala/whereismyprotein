@@ -7,13 +7,21 @@ const Results = () => {
   const ctx = useContext(FineliContext);
   const [foodsOnPage] = ctx.foodsOnPageState;
   const [lang] = ctx.languageState;
+  const [selectedFood, setSelectedFood] = ctx.selectedFoodState;
 
   return (
-    <div className={styles.results}>
+    <div
+      className={styles.results}
+      style={selectedFood ? { display: 'none' } : {}}
+    >
       {foodsOnPage.map((food) => (
-        <p key={food.id}>
+        <p key={food.id} onClick={() => setSelectedFood(food)}>
           {capitalize(food[lang])}
-          {food.scientific ? <span>({capitalize(food.scientific)})</span> : <></>}
+          {food.scientific ? (
+            <span>({capitalize(food.scientific)})</span>
+          ) : (
+            <></>
+          )}
         </p>
       ))}
     </div>
