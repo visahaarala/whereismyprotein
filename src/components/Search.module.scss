@@ -4,29 +4,6 @@
   @include top;
 
   & > div {
-    select,
-    input {
-      flex: 1;
-      font-family: inherit;
-      border-radius: 0.1rem;
-      border: 1px solid #888;
-      color: inherit;
-    }
-
-    select {
-      font-size: 0.95rem;
-      padding: 0.2rem 0.2rem;
-    }
-
-    input {
-      font-size: 1rem;
-      padding: 0.2rem 0.4rem;
-
-      &::placeholder {
-        font-weight: 200;
-      }
-    }
-
     .language {
       display: flex;
       padding: 0.3rem 0; // for greater touch area

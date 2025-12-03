@@ -15,7 +15,7 @@ const Pages = () => {
 
   useEffect(() => {
     setFoodsOnPage(searchResults.slice(pageIndex * 100, (pageIndex + 1) * 100));
-  }, [searchResults, pageIndex]);
+  }, [searchResults, pageIndex, setFoodsOnPage]);
 
   return (
     <div className={styles.pages}>

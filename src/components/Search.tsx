@@ -71,6 +71,23 @@ const Search = () => {
           ))}
         </select>
         <div
+          className={styles.settingsIcon}
+          onClick={() => setShowSettings(true)}
+        >
+          <SettingsIcon />
+        </div>
+      </div>
+      <div>
+        <input
+          type='text'
+          placeholder={lang === 'fi' ? 'Hae' : 'Search'}
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setPageIndex(0);
+          }}
+        />
+        <div
           className={styles.language}
           onClick={() => setLang(lang === 'en' ? 'fi' : 'en')}
         >
@@ -81,20 +98,6 @@ const Search = () => {
           <span style={lang === 'fi' ? { textDecoration: 'underline' } : {}}>
             fi
           </span>
-        </div>
-      </div>
-      <div>
-        <input
-          type='text'
-          placeholder={lang === 'fi' ? 'Hae' : 'Search'}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <div
-          className={styles.settingsIcon}
-          onClick={() => setShowSettings(true)}
-        >
-          <SettingsIcon />
         </div>
       </div>
     </div>

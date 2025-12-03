@@ -11,7 +11,7 @@ const Results = () => {
   return (
     <div className={styles.results}>
       {foodsOnPage.map((food) => (
-        <p>
+        <p key={food.id}>
           {capitalize(food[lang])}
           {food.scientific ? <span>{capitalize(food.scientific)}</span> : <></>}
         </p>
