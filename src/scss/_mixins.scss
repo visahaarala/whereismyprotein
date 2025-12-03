@@ -1,51 +1,14 @@
-@mixin search {
-  .search {
-    height: 3.8rem; // to get same height for search & settings
-    padding: 0.4rem 1rem 0;
-    border-bottom: 1px solid #888;
+@mixin top {
+  padding: 1.5rem 1rem 0.8rem;
+  border-bottom: 1px solid #888;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  & > div {
+    flex: 1;
     display: flex;
     align-items: center;
     gap: 1.5rem;
-
-    input {
-      flex: 1;
-      font-size: 1rem;
-      padding: 0.2rem 0.4rem;
-      border-radius: 0.1rem;
-      font-family: inherit;
-      border: 1px solid #888;
-
-      &::placeholder {
-        font-weight: 200;
-      }
-    }
-
-    .language {
-      display: flex;
-      padding: 0.3rem 0; // for greater touch area
-      cursor: pointer;
-      user-select: none;
-      div {
-        width: 0.8rem;
-        position: relative;
-        &::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translateX(-50%) translateY(-50%) rotate(-70deg);
-          height: 0.1rem;
-          width: 1rem;
-          background-color: currentcolor;
-        }
-      }
-    }
-
-    h2 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      flex: 1;
-    }
 
     .settingsIcon {
       width: 1.5rem;
@@ -56,12 +19,38 @@
   }
 }
 
-@mixin results {
-  .results {
-    flex: 1;
-    // padding: 1rem 0.5rem 1rem;
-    padding: 0.5rem;
-    background-color: white;
-    overflow: scroll;
-  }
+@mixin content {
+  flex: 1;
+  padding: 0.8rem 0.5rem;
+  background-color: white;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
 }
+
+// @mixin results {
+//   .results {
+//     .property {
+//       margin-bottom: 0.8rem;
+//       display: flex;
+//       span {
+//         flex: 1;
+//       }
+//     }
+
+//     .numResults {
+//       border-top: 1px solid #888;
+//       padding-top: 0.8rem;
+//     }
+
+//     p {
+//       align-self: start;
+//       cursor: pointer;
+//       span {
+//         font-size: 0.9em;
+//         margin-left: 0.5rem;
+//         color: #666;
+//       }
+//     }
+//   }
+// }

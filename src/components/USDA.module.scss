@@ -1,17 +1,17 @@
-@import '../scss/_mixins.scss';
+// @import '../scss/_mixins.scss';
 
-.usda {
-  height: 100%;
-  background-color: #0482;
-  // display: flex; set in inline style
-  flex-direction: column;
+// .usda {
+//   height: 100%;
+//   background-color: #0482;
+//   // display: flex; set in inline style
+//   flex-direction: column;
 
-  .search {
-    input:focus {
-      outline: 1px solid #048;
-    }
-  }
+//   .search {
+//     input:focus {
+//       outline: 1px solid #048;
+//     }
+//   }
 
-  @include search;
-  @include results;
-}
+//   @include search;
+//   @include results;
+// }

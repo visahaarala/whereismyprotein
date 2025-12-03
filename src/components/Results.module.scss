@@ -1,0 +1,15 @@
+@import '../scss/mixins';
+
+.results {
+  @include content;
+
+  p {
+    align-self: start;
+    cursor: pointer;
+    span {
+      font-size: 0.9em;
+      margin-left: 0.5rem;
+      color: #666;
+    }
+  }
+}

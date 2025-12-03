@@ -1,7 +1,8 @@
-$border: 1px solid #888;
+// $border: 1px solid #888;
 
 :root {
   --header-height: calc(6rem + 2vw);
+  --border: 1px solid #888;
 }
 
 *,
@@ -45,28 +46,18 @@ header {
   flex-direction: column;
   align-items: center;
 
-  h1 {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    padding-top: calc(0.3rem + 1vw);
-    font-size: 1.3rem;
-    letter-spacing: 0.1rem;
-    font-weight: 600;
-  }
-
   nav {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    border-top: $border;
+    border-top: var(--border);
     box-shadow: 0 0.1rem 0.1rem #555;
     z-index: 1; // to show box-shadow
 
     & > div {
       text-align: center;
       &:not(:last-child) {
-        border-right: $border;
+        border-right: var(--border);
       }
 
       flex: 1;
@@ -74,7 +65,6 @@ header {
       background-color: #ddd;
       text-transform: uppercase;
       font-weight: 400;
-      color: #222;
       cursor: pointer;
     }
   }
@@ -87,12 +77,31 @@ main {
 nav,
 main {
   @media (min-width: 35em) {
-    border-right: $border;
-    border-left: $border;
+    border-right: var(--border);
+    border-left: var(--border);
   }
 }
 
+h1 {
+  // Where is my protein -- title
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-top: calc(0.3rem + 1vw);
+  font-size: 1.3rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+}
+
+h2 {
+  // Settings -- subtitle
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex: 1;
+}
+
 h3 {
+  // Info -- smaller title
   font-size: 1rem;
   letter-spacing: 0.1rem;
   border-bottom: 1px solid #333;
@@ -100,4 +109,17 @@ h3 {
   &:not(:first-child) {
     margin-top: 1.5rem;
   }
+}
+
+h4 {
+  // Info -- smaller subtitle
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.1rem;
+}
+
+p + p {
+  margin-top: 0.4rem;
 }

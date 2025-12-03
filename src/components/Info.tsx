@@ -1,39 +1,86 @@
 import styles from './Info.module.scss';
 
 const Info = ({ show }: { show: boolean }) => {
+  const showThoughts = window.location.href.includes('/thoughts');
+
   return (
     <div className={styles.info} style={{ display: show ? 'flex' : 'none' }}>
-      <div className={styles.results}>
-        <h3>What is this..?</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A, magnam
-          incidunt soluta rem reprehenderit et similique adipisci eum corporis
-          libero velit quasi laborum eveniet quae voluptatem quisquam pariatur
-          explicabo odio ipsum id. Omnis maxime laboriosam voluptatum aliquam
-          cupiditate, exercitationem pariatur eum distinctio saepe corporis aut.
-          Animi id non mollitia, sit itaque facere pariatur voluptas
-          necessitatibus tenetur, provident ad earum consequuntur odio commodi
-          labore, reiciendis ullam.
-        </p>
-        <h3>Fineli</h3>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis est
-          cum ad totam ducimus cupiditate. Voluptatum quisquam pariatur modi
-          dolor. Repudiandae at quibusdam dicta inventore, atque quod earum
-          recusandae id!
-        </p>
-        <h3>USDA</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
-          dolorem laborum ea facere nihil in at culpa nam aut nisi hic optio et,
-          debitis quae porro incidunt! Iusto rerum deserunt autem, fuga dolor
-          ipsa excepturi et molestiae ullam sit suscipit repellendus, at, illum
-          corporis velit vel sed porro consequuntur quo harum facilis? Eos
-          accusamus dolore porro ipsam hic! Ratione, libero quos! Laborum
-          dolorem nesciunt, sapiente odio numquam provident deleniti minima est
-          illo corporis sequi cupiditate qui dolore optio vel eaque?
-        </p>
-      </div>
+      <h3>Fineli</h3>
+      <p>
+        Browse the energy balance of macronutrients (including fiber) in
+        different foods. Carbohydrates are split into sugars and starches.
+      </p>
+      <h4>Calculations</h4>
+      <p>
+        Energy balance is calculated such that fats are 9kcal/g, carbs and
+        protein 4kcal/g and fiber 2kcal/g.
+      </p>
+      <h4>Source of data</h4>
+      <p>
+        Peruspaketti 1 (Basic package 1)
+        <br />
+        <a href='https://fineli.fi/fineli/fi/avoin-data'>
+          https://fineli.fi/fineli/fi/avoin-data
+        </a>
+      </p>
+
+      <h3>USDA</h3>
+      <p>
+        Browse the fiber, the essential amino acid and the total protein content
+        in different foods. Results are shown as a percentage of recommended
+        daily intake (RDI), assuming that the daily energy needs are met with
+        that particular food.
+      </p>
+      <h4>Calculations</h4>
+      <p>Reference 70kg 2000kcal person. WHY???</p>
+      <p>...</p>
+      <h4>Source of data</h4>
+      <p>RDI recommendations: wikipedia etc</p>
+      <p>USDA database</p>
+
+      {showThoughts ? (
+        <>
+          <h3>Personal thoughts</h3>
+          <p>
+            With this tool it's easier to understand why starch foods like whole
+            grains, beans and starchy tubers are fantastic sources of energy;
+            not too much fat, not too much sugar, moderate protein and plenty of
+            fiber. Plus they're relatively cheap.
+          </p>
+          <p>
+            It's also easy to see that animal foods are completely devoid of
+            fiber. Fiber is the stuff that feeds the good bacteria in our gut,
+            and the good bacteria turns fiber into short-chain fatty acids that
+            are like the absolute superfood for our long term health. To utilize
+            this benefit, it's important that the food we eat for energy
+            contains fiber. A leafy green here and there won't cover the fiber
+            deficiency if the energy source is animal.
+          </p>
+          <p>
+            Blood sugar spikes spoil my energy and creativity. Many people go
+            about snacking throughout the day to keep their blood sugars from
+            falling. For me the best way to keep my energy stable is to eat
+            mainly whole intact starch foods, thylakoids (leafy greens) plus
+            some nuts and seeds. Veggies I like to have plenty during lunch.
+            Fruits and berries work best as a dessert or in porridge - in small
+            amounts. I like to keep my sugar intake minimal while getting the
+            health benefits from fruits and berries.
+          </p>
+          <p>
+            Excess protein - especially animal protein - makes your body age
+            faster. Staying healthy and able equals keeping your body young.
+            Thus, although protein is essential, it's healthiest in moderation
+            and from plant sources.
+          </p>
+          <p>
+            As an almost vegan, eating almost exclusively whole intact plant
+            foods, it's important for me to take care of my B12 and omega3 (EPA,
+            DHA) intake.
+          </p>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

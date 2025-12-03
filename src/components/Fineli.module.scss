@@ -1,14 +1,29 @@
-@import '../scss/_mixins.scss';
+// @import '../scss/_mixins.scss';
 
 .fineli {
   height: 100%;
   background-color: #4802;
-  // display: flex; set in inline style
-  flex-direction: column;
-  input:focus {
+
+  & > div {
+    flex: 1;
+    flex-direction: column;
+  }
+
+  input:focus,
+  select:focus {
     outline: 1px solid #480;
   }
 
-  @include search;
-  @include results;
+  // select {
+  //   background-color: white;
+  //   color: inherit;
+  // }
+
+  // @include search;
+  // @include results;
+
+  // .details {
+  //   flex: 1;
+  //   background-color: cyan;
+  // }
 }

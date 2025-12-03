@@ -3,6 +3,7 @@ import './App.scss';
 import Fineli from './components/Fineli';
 import USDA from './components/USDA';
 import Info from './components/Info';
+import FineliContextProvider from './context/FineliContextProvider';
 
 const App = () => {
   const [view, setView] = useState<'fineli' | 'usda' | 'info'>('info');
@@ -33,7 +34,9 @@ const App = () => {
         </nav>
       </header>
       <main>
-        <Fineli show={view === 'fineli'} />
+        <FineliContextProvider>
+          <Fineli show={view === 'fineli'} />
+        </FineliContextProvider>
         <USDA show={view === 'usda'} />
         <Info show={view === 'info'} />
       </main>

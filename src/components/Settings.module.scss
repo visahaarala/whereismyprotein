@@ -1,0 +1,29 @@
+@import '../scss/mixins';
+
+.settings {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .top {
+    @include top;
+  }
+
+  .content {
+    @include content;
+
+    .property {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      span {
+        flex: 1;
+      }
+    }
+
+    .numResults {
+      border-top: var(--border);
+      padding-top: 0.8rem;
+    }
+  }
+}

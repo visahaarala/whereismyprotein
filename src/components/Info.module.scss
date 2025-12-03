@@ -2,10 +2,9 @@
 
 .info {
   height: 100%;
-  // display: flex; set in inline style
   flex-direction: column;
 
-  padding: 1rem 0; // extra padding before results
+  @include content;
 
-  @include results;
+  padding-top: 2rem;
 }
