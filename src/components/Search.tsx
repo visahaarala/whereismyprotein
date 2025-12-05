@@ -14,45 +14,57 @@ const Search = () => {
   const setPageIndex = ctx.pageIndexState[1];
   const setSearchResults = ctx.searchResultsState[1];
   const settingsResults = ctx.settingsResultsState[0];
+  const setSelectedFood = ctx.selectedFoodState[1];
 
   useEffect(() => {
-    setSearchResults(
-      settingsResults
-        .filter((food) => {
-          return category ? category === food.category : true;
-        })
-        .filter((food) => {
-          const words = search.split(' ');
-          for (const word of words) {
-            if (word.charAt(0) === '-') {
-              if (
-                word.length > 1 &&
-                (food[lang]
-                  .toLowerCase()
-                  .includes(word.slice(1).toLowerCase()) ||
-                  food.scientific
-                    ?.toLowerCase()
-                    .includes(word.slice(1).toLowerCase()))
-              ) {
-                return false;
-              }
-            } else {
-              if (
-                !food[lang].toLowerCase().includes(word.toLowerCase()) &&
-                !food.scientific?.toLowerCase().includes(word.toLowerCase())
-              ) {
-                return false;
-              }
+    const newResults = settingsResults
+      .filter((food) => {
+        // CATEGORY
+        return category ? category === food.category : true;
+      })
+      .filter((food) => {
+        // SEARCH STRING
+        const words = search.split(' ');
+        for (const word of words) {
+          if (word.charAt(0) === '-') {
+            if (
+              word.length > 1 &&
+              (food[lang].toLowerCase().includes(word.slice(1).toLowerCase()) ||
+                food.scientific
+                  ?.toLowerCase()
+                  .includes(word.slice(1).toLowerCase()))
+            ) {
+              return false;
+            }
+          } else {
+            if (
+              !food[lang].toLowerCase().includes(word.toLowerCase()) &&
+              !food.scientific?.toLowerCase().includes(word.toLowerCase())
+            ) {
+              return false;
             }
           }
-          return true;
-        })
-        .sort((a, b) => a[lang].localeCompare(b[lang]))
-    );
-  }, [category, search, settingsResults, lang, setSearchResults]);
+        }
+        return true;
+      })
+      .sort((a, b) => a[lang].localeCompare(b[lang]));
+    setSearchResults(newResults);
+    if (newResults.length === 1) {
+      setSelectedFood(newResults[0]);
+    } else {
+      setSelectedFood(undefined);
+    }
+  }, [
+    category,
+    search,
+    settingsResults,
+    lang,
+    setSearchResults,
+    setSelectedFood,
+  ]);
 
   return (
-    <div className={styles.search}>
+    <div className={styles.search} onFocus={() => console.log('dada')}>
       <div>
         <select
           name='category'

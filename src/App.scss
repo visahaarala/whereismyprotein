@@ -2,7 +2,11 @@
 
 :root {
   --header-height: calc(6rem + 2vw);
-  --border: 1px solid #888;
+
+  --background-color-fineli: #4802;
+  --outline-color-fineli: #480;
+  --border-color: #888;
+  --border: 1px solid var(--border-color);
 }
 
 *,
@@ -118,6 +122,14 @@ h4 {
   letter-spacing: 0.02rem;
   margin-top: 0.8rem;
   margin-bottom: 0.1rem;
+}
+
+h5 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 0;
+  margin-top: 0.8rem;
+  margin-bottom: 0.2rem;
 }
 
 p + p {

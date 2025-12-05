@@ -12,18 +12,24 @@
   .content {
     @include content;
 
-    .property {
+    & > div {
       margin-bottom: 0.8rem;
+    }
+
+    .line {
+      height: 1px;
+      background-color: var(--border-color);
+      width: 100%;
+      align-self: center;
+    }
+
+    .property {
+      // margin-bottom: 0.8rem;
       display: flex;
       align-items: center;
       span {
         flex: 1;
       }
-    }
-
-    .numResults {
-      border-top: var(--border);
-      padding-top: 0.8rem;
     }
   }
 }

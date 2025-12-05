@@ -3,6 +3,7 @@ import CloseIcon from '../svg/CloseIcon';
 import styles from './Settings.module.scss';
 import { FineliContext } from '../context/FineliContext';
 import getFoods from '../data/fineli/getFoods';
+import Slider from './Slider';
 
 const Settings = () => {
   const ctx = useContext(FineliContext);
@@ -61,9 +62,12 @@ const Settings = () => {
         </div>
         {/* for THOUGHTS version, add some presets for health & weight loss */}
         {/* sliders for energy density, fat, protein, etc... */}
-        <div className={styles.numResults}>
-          {settingsResults.length} results
-        </div>
+        <div className={styles.line} />
+        <Slider />
+        <Slider />
+        <Slider />
+        <div className={styles.line} />
+        <div>{settingsResults.length} results</div>
       </div>
     </div>
   );
