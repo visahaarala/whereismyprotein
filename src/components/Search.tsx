@@ -97,7 +97,7 @@ const Search = () => {
           ))}
         </select>
         <div
-          className={styles.settingsIcon}
+          className={'settingsIcon'}
           onClick={() => setShowSettings(true)}
         >
           <SettingsIcon />

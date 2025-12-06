@@ -1,3 +1,4 @@
+import SettingsIcon from '../svg/SettingsIcon';
 import styles from './Info.module.scss';
 
 const Info = ({ show }: { show: boolean }) => {
@@ -5,8 +6,38 @@ const Info = ({ show }: { show: boolean }) => {
 
   return (
     <div className={styles.info} style={{ display: show ? 'flex' : 'none' }}>
-      <h3>how to</h3>
-      <p>search (with -)</p>
+      <h2>A tool for plant based eating</h2>
+      <p>
+        For vegans, there's always the question of where do you get your
+        protein. The purpose of this tool is to answer that question as well as
+        give an idea of the balance of other macronutrients.
+      </p>
+
+      <h3>Search</h3>
+      <p>
+        Search with words or parts of a words. Use '-' in front to exclude a
+        word.
+      </p>
+      <h4>Categories</h4>
+      <p>
+        Choose category from the dropdown menu. With no category chosen, all
+        foods are displayed.
+      </p>
+      <h4>Language</h4>
+      <p>
+        The en/fi toggle in Fineli is for food names and categories only.
+        Everything else is in english.
+      </p>
+
+      <h3>Settings</h3>
+      <p>
+        Click on the setting icon{' '}
+        <span className='settingsIcon--mini'>
+          <SettingsIcon />
+        </span>{' '}
+        on the top right corner to display settings.
+      </p>
+
       <h3>Fineli</h3>
       <p>
         Browse the energy balance of macronutrients (including fiber) in

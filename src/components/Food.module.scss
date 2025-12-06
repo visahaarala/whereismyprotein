@@ -2,11 +2,26 @@
 
 .food {
   @include content;
-  overflow: scroll;
-
 
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  overflow: scroll;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    .title {
+      display: flex;
+      align-items: center;
+      .close {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+
+  & > a {
+    margin-top: 2rem;
+  }
 }

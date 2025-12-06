@@ -37,7 +37,7 @@ const Settings = () => {
         <div>
           <h2>Settings</h2>
           <div
-            className={styles.settingsIcon}
+            className={'settingsIcon'}
             onClick={() => setShowSettings(false)}
           >
             <CloseIcon />
