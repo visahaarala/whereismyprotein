@@ -31,7 +31,7 @@ const Info = ({ show }: { show: boolean }) => {
 
       <h3>Settings</h3>
       <p>
-        Click on the setting icon{' '}
+        Click on the settings icon{' '}
         <span className='settingsIcon--mini'>
           <SettingsIcon />
         </span>{' '}

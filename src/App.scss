@@ -155,9 +155,11 @@ p + p {
 }
 
 .settingsIcon {
+  align-self: start;
   width: 1.5rem;
   height: 1.5rem;
   cursor: pointer;
+  margin-left: 1rem;
 
   &--mini {
     display: inline-block;
