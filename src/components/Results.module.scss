@@ -12,4 +12,19 @@
       color: #666;
     }
   }
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 1rem;
+    border: 0.1rem solid white;
+  }
+
+  &::-webkit-scrollbar-corner {
+    display: none;
+  }
 }

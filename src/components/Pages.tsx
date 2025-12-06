@@ -16,6 +16,7 @@ const Pages = () => {
 
   useEffect(() => {
     setFoodsOnPage(searchResults.slice(pageIndex * 100, (pageIndex + 1) * 100));
+    document.getElementById('FineliResults')!.scrollTop = 0;
   }, [searchResults, pageIndex, setFoodsOnPage]);
 
   return (

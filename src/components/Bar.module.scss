@@ -8,7 +8,8 @@
   position: relative;
 
   &--thin {
-    min-height: 0.5rem;
+    min-height: 0.6rem;
+    height: 0.6rem;
   }
 
   .fill {
@@ -21,10 +22,10 @@
 
   p {
     position: relative;
-    font-weight: 600;
+    // font-weight: 600;
     margin-left: 0.3rem;
     z-index: 1;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: black;
     text-shadow: white 0 0 3px;
     // color: white;

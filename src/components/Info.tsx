@@ -5,6 +5,8 @@ const Info = ({ show }: { show: boolean }) => {
 
   return (
     <div className={styles.info} style={{ display: show ? 'flex' : 'none' }}>
+      <h3>how to</h3>
+      <p>search (with -)</p>
       <h3>Fineli</h3>
       <p>
         Browse the energy balance of macronutrients (including fiber) in

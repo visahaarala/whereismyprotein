@@ -4,6 +4,7 @@ import { useContext, useEffect } from 'react';
 import { FineliContext } from '../context/FineliContext';
 import SettingsIcon from '../svg/SettingsIcon';
 import { categories } from '../data/fineli/categories';
+import type { FineliFoodType } from '../@types/types';
 
 const Search = () => {
   const ctx = useContext(FineliContext);
@@ -16,15 +17,17 @@ const Search = () => {
   const settingsResults = ctx.settingsResultsState[0];
   const setSelectedFood = ctx.selectedFoodState[1];
 
-  useEffect(() => {
-    const newResults = settingsResults
+  const getNewResults = (customSearch?: string): FineliFoodType[] => {
+    return settingsResults
       .filter((food) => {
         // CATEGORY
         return category ? category === food.category : true;
       })
       .filter((food) => {
         // SEARCH STRING
-        const words = search.split(' ');
+        const words = customSearch
+          ? customSearch.split(' ')
+          : search.split(' ');
         for (const word of words) {
           if (word.charAt(0) === '-') {
             if (
@@ -48,20 +51,27 @@ const Search = () => {
         return true;
       })
       .sort((a, b) => a[lang].localeCompare(b[lang]));
+  };
+
+  useEffect(() => {
+    const newResults = getNewResults();
     setSearchResults(newResults);
     if (newResults.length === 1) {
       setSelectedFood(newResults[0]);
     } else {
       setSelectedFood(undefined);
     }
-  }, [
-    category,
-    search,
-    settingsResults,
-    lang,
-    setSearchResults,
-    setSelectedFood,
-  ]);
+  }, [search, settingsResults]);
+
+  useEffect(() => {
+    setSearch('');
+    setSearchResults(getNewResults(''));
+  }, [category]);
+
+  useEffect(() => {
+    // Language change doesn't change selectedFood
+    setSearchResults(getNewResults());
+  }, [lang]);
 
   return (
     <div className={styles.search} onFocus={() => console.log('dada')}>

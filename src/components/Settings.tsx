@@ -4,12 +4,13 @@ import styles from './Settings.module.scss';
 import { FineliContext } from '../context/FineliContext';
 import getFoods from '../data/fineli/getFoods';
 import Slider from './Slider';
+import Toggle from './Toggle';
 
 const Settings = () => {
   const ctx = useContext(FineliContext);
   const setShowSettings = ctx.showSettingsState[1];
-  const [onlyRaw, setOnlyRaw] = ctx.onlyRawState;
-  const [onlyScientific, setOnlyScientific] = ctx.onlyScientificState;
+  const [onlyRaw] = ctx.onlyRawState;
+  const [onlyScientific] = ctx.onlyScientificState;
   const [settingsResults, setSettingsResults] = ctx.settingsResultsState;
   const setSelectedFood = ctx.selectedFoodState[1];
   const setPageIndex = ctx.pageIndexState[1];
@@ -46,19 +47,11 @@ const Settings = () => {
       <div className={styles.content}>
         <div className={styles.property}>
           <span>Unprocessed or raw</span>
-          <input
-            type='checkBox'
-            checked={onlyRaw}
-            onChange={() => setOnlyRaw(!onlyRaw)}
-          />
+          <Toggle state={ctx.onlyRawState} />
         </div>
         <div className={styles.property}>
           <span>Has a scientific name</span>
-          <input
-            type='checkBox'
-            checked={onlyScientific}
-            onChange={() => setOnlyScientific(!onlyScientific)}
-          />
+          <Toggle state={ctx.onlyScientificState} />
         </div>
         {/* for THOUGHTS version, add some presets for health & weight loss */}
         {/* sliders for energy density, fat, protein, etc... */}

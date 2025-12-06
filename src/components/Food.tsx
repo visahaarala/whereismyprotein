@@ -59,17 +59,26 @@ const Food = () => {
     >
       {food ? (
         <>
-          <h3>{capitalize(food[lang])}</h3>
+          <h2>
+            {capitalize(food[lang])}
+            {food.scientific ? (
+              <span>({capitalize(food.scientific)})</span>
+            ) : (
+              <></>
+            )}
+          </h2>
           <h5>
-            Energy density: {Math.round(energy / 37)}% (
-            {Math.round(energy / 4.184)}
-            kcal/100g)
+            Energy density: {Math.round(energy / 37)}%
+            <span>
+              ({Math.round(energy / 4.184)}
+              kcal/100g)
+            </span>
           </h5>
           <Bar
             percentage={energy / 37}
             fillStyle={{ backgroundColor: '#2c3539' }}
           />
-          <div className='hr' />
+          <h3>energy distribution</h3>
           <h5>Fiber: {pctgs.fiber}%</h5>
           <Bar
             percentage={pctgs.fiber}

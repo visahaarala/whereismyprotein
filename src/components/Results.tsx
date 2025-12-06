@@ -13,6 +13,7 @@ const Results = () => {
     <div
       className={styles.results}
       style={selectedFood ? { display: 'none' } : {}}
+      id='FineliResults'
     >
       {foodsOnPage.map((food) => (
         <p key={food.id} onClick={() => setSelectedFood(food)}>
