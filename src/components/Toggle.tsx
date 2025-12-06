@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react';
-import styles from './toggle.module.scss';
+import styles from './Toggle.module.scss';
 
 const Toggle = ({
   state,

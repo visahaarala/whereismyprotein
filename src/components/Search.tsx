@@ -61,16 +61,20 @@ const Search = () => {
     } else {
       setSelectedFood(undefined);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, settingsResults]);
 
   useEffect(() => {
     setSearch('');
     setSearchResults(getNewResults(''));
+    setSelectedFood(undefined);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category]);
 
   useEffect(() => {
     // Language change doesn't change selectedFood
     setSearchResults(getNewResults());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang]);
 
   return (
