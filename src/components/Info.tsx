@@ -1,4 +1,3 @@
-import SettingsIcon from '../svg/SettingsIcon';
 import styles from './Info.module.scss';
 
 const Info = ({ show }: { show: boolean }) => {
@@ -6,7 +5,7 @@ const Info = ({ show }: { show: boolean }) => {
 
   return (
     <div className={styles.info} style={{ display: show ? 'flex' : 'none' }}>
-      <h2>A tool for plant based eating</h2>
+      <h1>Where is my protein?</h1>
       <p>
         For vegans, there's always the question of where do you get your
         protein. The purpose of this tool is to answer that question as well as
@@ -14,9 +13,9 @@ const Info = ({ show }: { show: boolean }) => {
       </p>
 
       <h3>Search</h3>
+      <p>Raw: Unprocessed or raw. Scientific: Has a scientific name.</p>
       <p>
-        Search with words or parts of a words. Use '-' in front to exclude a
-        word.
+        Search with words or parts of words. Use '-' in front to exclude a word.
       </p>
       <h4>Categories</h4>
       <p>
@@ -29,14 +28,8 @@ const Info = ({ show }: { show: boolean }) => {
         Everything else is in english.
       </p>
 
-      <h3>Settings</h3>
-      <p>
-        Click on the settings icon{' '}
-        <span className='settingsIcon--mini'>
-          <SettingsIcon />
-        </span>{' '}
-        on the top right corner to display settings.
-      </p>
+      <h4>limits</h4>
+      <p>there's a 10% margin for both min & max values....</p>
 
       <h3>Fineli</h3>
       <p>
@@ -46,9 +39,9 @@ const Info = ({ show }: { show: boolean }) => {
       </p>
       <h4>Calculations</h4>
       <p>
-        Energy balance is calculated such that fats are 9kcal/g, carbs and
-        protein 4kcal/g and fiber 2kcal/g. Sugar alcohols (2.4kcal/g) and
-        organic acids (3kcal/g) are mentioned if present.
+        Energy balance is calculated such that fats are 9kcal/g, starch 4kcal/g,
+        sugar 4kcal/g, protein 4kcal/g, fiber 2kcal/g, sugar alcohols 2.4kcal/g
+        and organic acids 3kcal/g.
       </p>
       <h4>Source of data</h4>
       <p>
@@ -60,6 +53,7 @@ const Info = ({ show }: { show: boolean }) => {
       </p>
 
       <h3>USDA</h3>
+      <p>The PROTEIN investigator!</p>
       <p>
         Browse the fiber, the essential amino acid and the total protein content
         in different foods. Results are shown as a percentage of recommended
@@ -95,6 +89,12 @@ const Info = ({ show }: { show: boolean }) => {
             this benefit, it's important that the food we eat for energy
             contains fiber. A leafy green here and there won't cover the fiber
             deficiency if our main energy source has very little fiber.
+          </p>
+          <p>
+            If eating whole unrefined plant foods, the fats that I get will be
+            of good quality. So fats, no stress. However, I might be eating too
+            much fruits, thus getting crazy amounts of sugar and very little
+            protein. That's why carbs are separated..
           </p>
           <p>
             Blood sugar spikes spoil my energy and creativity. Many people go

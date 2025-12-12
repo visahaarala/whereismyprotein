@@ -1,27 +1,11 @@
-import { useState, type FC, type ReactNode } from 'react';
-import { FineliContext } from './FineliContext';
-import type { LanguageType, FineliFoodType } from '../@types/types';
-import getFoods from '../data/fineli/getFoods';
+import { useReducer, type FC, type ReactNode } from "react";
+import { FineliContext } from "./FineliContext";
+import { initialState, reducer } from "./FineliContext";
 
 const FineliContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const initialLanguage = navigator.language.includes('fi') ? 'fi' : 'en';
-
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <FineliContext.Provider
-      value={{
-        searchState: useState(''),
-        showSettingsState: useState(false),
-        pageIndexState: useState(0),
-        settingsResultsState: useState<FineliFoodType[]>(getFoods()),
-        searchResultsState: useState<FineliFoodType[]>(getFoods()),
-        languageState: useState<LanguageType>(initialLanguage),
-        categoryState: useState<string | undefined>(undefined),
-        foodsOnPageState: useState<FineliFoodType[]>(getFoods()),
-        onlyRawState: useState(false),
-        onlyScientificState: useState(false),
-        selectedFoodState: useState(),
-      }}
-    >
+    <FineliContext.Provider value={{ state, dispatch }}>
       {children}
     </FineliContext.Provider>
   );

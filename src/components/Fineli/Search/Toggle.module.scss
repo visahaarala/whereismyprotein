@@ -22,7 +22,7 @@
   }
 
   &--isOn {
-    background-color: #53ca53;
+    background-color: var(--background-color-isOn);
     .ball {
       left: 0.95rem;
     }

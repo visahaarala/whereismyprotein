@@ -1,26 +1,21 @@
-import { useContext } from 'react';
 import styles from './Fineli.module.scss';
-import { FineliContext } from '../context/FineliContext';
-import Search from './Search';
-import Results from './Results';
-import Pages from './Pages';
-import Settings from './Settings';
-import Food from './Food';
+
+import Pages from './Fineli/Results/Pages';
+import Food from './Fineli/Food/Food';
+import Search from './Fineli/Search/Search';
+import Results from './Fineli/Results/Results';
 
 const Fineli = ({ show }: { show: boolean }) => {
-  const showSettings = useContext(FineliContext).showSettingsState[0];
+  // results 
+  // if food chosen, show food
+  // else show search, results & pages
 
   return (
     <div className={styles.fineli} style={show ? {} : { display: 'none' }}>
-      <div style={showSettings ? { display: 'none' } : {}}>
-        <Search />
-        <Results />
-        <Pages />
-        <Food />
-      </div>
-      <div style={showSettings ? {} : { display: 'none' }}>
-        <Settings />
-      </div>
+      <Search />
+      <Results />
+      <Pages />
+      <Food />
     </div>
   );
 };

@@ -1,0 +1,63 @@
+.limits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+
+  .distributionTitle {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 2rem;
+
+    span {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    button {
+      appearance: none;
+      cursor: pointer;
+      color: inherit;
+      font-size: 0.8rem;
+      background-color: #eee;
+      border: var(--border);
+      border-radius: 0.2rem;
+      // align-self: center;
+      padding: 0rem 1rem;
+      // margin-bottom: 0.3rem;
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+}
+// & > div {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 0.5rem;
+
+//   .header {
+//     display: flex;
+//     align-items: end;
+//     gap: 1rem;
+
+//     span {
+//       margin-right: auto;
+//     }
+
+//     }
+
+//     div {
+//       font-size: 0.9rem;
+//       cursor: pointer;
+//       width: 2.5rem;
+//       text-align: end;
+
+//       &:hover {
+//         text-decoration: underline;
+//       }
+//     }
+//   }
+// }

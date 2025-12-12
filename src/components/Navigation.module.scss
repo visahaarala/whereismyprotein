@@ -1,0 +1,23 @@
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 0.1rem 0.1rem #555;
+  z-index: 1; // to show box-shadow
+
+  & > div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:not(:last-child) {
+      border-right: var(--border);
+    }
+    flex: 1;
+    background-color: #ddd;
+    text-transform: uppercase;
+    font-weight: 400;
+    cursor: pointer;
+  }
+}

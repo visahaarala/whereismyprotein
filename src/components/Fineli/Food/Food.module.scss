@@ -1,4 +1,4 @@
-@import '../scss/mixins';
+@import '../../../scss/mixins';
 
 .food {
   @include content;
@@ -14,9 +14,9 @@
     .title {
       display: flex;
       align-items: center;
-      .close {
-        width: 1rem;
-        height: 1rem;
+
+      .settingsIcon {
+        align-self: start;
       }
     }
   }
