@@ -1,10 +1,10 @@
-import { distributionKeys } from '../../../util/variables';
 import styles from './Limits.module.scss';
 import RangeSlider from './RangeSlider';
 
 export const PERCENTAGE_MARGIN = 10;
 
 const Limits = () => {
+
   return (
     <div className={styles.limits}>
       <RangeSlider
@@ -12,18 +12,33 @@ const Limits = () => {
         margin={PERCENTAGE_MARGIN}
         dispatchType='SET_LIMITS'
       />
-      <div className={styles.distributionTitle}>
-        <span>Energy distribution</span>
-        <button>reset</button>
-      </div>
-      {distributionKeys.map((key) => (
-        <RangeSlider
-          key={key}
-          name={key}
-          margin={PERCENTAGE_MARGIN}
-          dispatchType='SET_LIMITS'
-        />
-      ))}
+
+      <p>Energy distribution</p>
+
+      <RangeSlider
+        name='fiber'
+        margin={PERCENTAGE_MARGIN}
+        dispatchType='SET_LIMITS'
+        type='min'
+      />
+      <RangeSlider
+        name='protein'
+        margin={PERCENTAGE_MARGIN}
+        dispatchType='SET_LIMITS'
+        type='min'
+      />
+      <RangeSlider
+        name='sugar'
+        margin={PERCENTAGE_MARGIN}
+        dispatchType='SET_LIMITS'
+        type='max'
+      />
+      <RangeSlider
+        name='fat'
+        margin={PERCENTAGE_MARGIN}
+        dispatchType='SET_LIMITS'
+        type='max'
+      />
     </div>
   );
 };

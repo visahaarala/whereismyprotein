@@ -1,12 +1,13 @@
 import styles from './Food.module.scss';
 
-import capitalize from '../../../functions/capitalize';
+import capitalize from '../../../util/capitalize';
 import Bar from './Bar';
 import CloseIcon from '../../../svg/CloseIcon';
 import { useContext } from 'react';
 import { FineliContext } from '../../../context/FineliContext';
-import energyDensity from '../../../functions/getEnergyDensity';
-import getEnergyDistribution from '../../../functions/getEnergyDistribution';
+import energyDensity from '../../../util/getEnergyDensity';
+import getEnergyDistribution from '../../../util/getEnergyDistribution';
+import Toggle from '../Search/Toggle';
 
 const Food = () => {
   const { state, dispatch } = useContext(FineliContext);
@@ -36,8 +37,12 @@ const Food = () => {
         })
       }
     >
+      <div className={styles.lang} onClick={(e) => e.stopPropagation()}>
+        <Toggle type={'TOGGLE_LANGUAGE'} isOn={state.language === 'fi'} />
+        <span>Finnish</span>
+      </div>
       {state.selectedFood ? (
-        <div>
+        <div className={styles.selectedFood}>
           <div className={styles.title}>
             <h2>
               {capitalize(selectedFood[state.language])}

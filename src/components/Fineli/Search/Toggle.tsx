@@ -1,18 +1,10 @@
-// import type { Dispatch, SetStateAction } from 'react';
 import { useContext } from 'react';
-import type { ProgramState, ReducerActionType } from '../../../@types';
+import type { ReducerActionType } from '../../../@types';
 import styles from './Toggle.module.scss';
 import { FineliContext } from '../../../context/FineliContext';
 
-const Toggle = ({
-  type,
-  stateKey,
-}: {
-  type: ReducerActionType;
-  stateKey: keyof ProgramState;
-}) => {
-  const { state, dispatch } = useContext(FineliContext);
-  const isOn = state[stateKey];
+const Toggle = ({ type, isOn }: { type: ReducerActionType; isOn: boolean }) => {
+  const { dispatch } = useContext(FineliContext);
 
   return (
     <div

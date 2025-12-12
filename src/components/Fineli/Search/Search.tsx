@@ -16,13 +16,18 @@ const Search = () => {
     >
       <div className={styles.property}>
         <div>
+          <Toggle type={'TOGGLE_IS_RAW'} isOn={state.isRaw} />
           <span>Raw</span>
-          <Toggle type={'TOGGLE_IS_RAW'} stateKey={'isRaw'} />
         </div>
         <div />
         <div>
+          <Toggle type={'TOGGLE_HAS_SCIENTIFIC'} isOn={state.hasScientific} />
           <span>Scientific</span>
-          <Toggle type={'TOGGLE_HAS_SCIENTIFIC'} stateKey={'hasScientific'} />
+        </div>
+        <div />
+        <div>
+          <Toggle type={'TOGGLE_LANGUAGE'} isOn={state.language === 'fi'} />
+          <span>Finnish</span>
         </div>
       </div>
       <div className={styles.modes}>
@@ -49,27 +54,6 @@ const Search = () => {
             }
           >
             limit
-          </span>
-        </div>
-        <div className={styles.modes__line} />
-        <div
-          className={styles.modes__select}
-          onClick={() => dispatch({ type: 'TOGGLE_LANGUAGE' })}
-        >
-          <span
-            style={
-              state.language === 'en' ? { textDecoration: 'underline' } : {}
-            }
-          >
-            english
-          </span>
-          <div />
-          <span
-            style={
-              state.language === 'fi' ? { textDecoration: 'underline' } : {}
-            }
-          >
-            finnish
           </span>
         </div>
         <div className={styles.modes__line} />

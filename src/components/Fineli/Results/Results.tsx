@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef } from 'react';
 import styles from './Results.module.scss';
-import capitalize from '../../../functions/capitalize';
+import capitalize from '../../../util/capitalize';
 import { FineliContext } from '../../../context/FineliContext';
 
 const Results = () => {

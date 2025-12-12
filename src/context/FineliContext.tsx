@@ -1,9 +1,9 @@
 import { createContext, type Dispatch } from 'react';
 import type { ProgramState, ReducerAction } from '../@types';
 import getFoods from '../data/fineli/getFoods';
-import energyDensity from '../functions/getEnergyDensity';
+import energyDensity from '../util/getEnergyDensity';
 import { distributionKeys } from '../util/variables';
-import getEnergyDistribution from '../functions/getEnergyDistribution';
+import getEnergyDistribution from '../util/getEnergyDistribution';
 
 export const initialState: ProgramState = {
   isRaw: false,
@@ -95,18 +95,24 @@ export const reducer = (
 ): ProgramState => {
   switch (action.type) {
     case 'TOGGLE_IS_RAW': {
-      return getStateWithFilteredFoods({ ...state, isRaw: !state.isRaw });
+      return getStateWithFilteredFoods({
+        ...state,
+        isRaw: !state.isRaw,
+        pageIndex: 0,
+      });
     }
     case 'TOGGLE_HAS_SCIENTIFIC': {
       return getStateWithFilteredFoods({
         ...state,
         hasScientific: !state.hasScientific,
+        pageIndex: 0,
       });
     }
     case 'TOGGLE_FILTER_MODE': {
       return getStateWithFilteredFoods({
         ...state,
         filterMode: state.filterMode === 'range' ? 'search' : 'range',
+        pageIndex: 0,
       });
     }
     case 'TOGGLE_LANGUAGE': {
@@ -128,24 +134,18 @@ export const reducer = (
         ...state,
         category: action.payload!.category!,
         searchString: '',
+        pageIndex: 0,
       });
     }
     case 'SET_SEARCH': {
       return getStateWithFilteredFoods({
         ...state,
         searchString: action.payload!.searchString!,
+        pageIndex: 0,
       });
     }
 
     // LIMITS
-    // case 'SET_ENERGY_DENSITY_RANGE': {
-    //   return state;
-    //   return getStateWithLimits({
-    //     ...state,
-    //     pageIndex: 0,
-    //     energyDensity: action.payload!.energyDensity!,
-    //   });
-    // }
     case 'SET_LIMITS': {
       return getStateWithFilteredFoods({
         ...state,
@@ -153,66 +153,6 @@ export const reducer = (
         ...action.payload!,
       });
     }
-    // case 'SET_FAT_RANGE': {
-    //   return getStateWithLimits(
-    //     {
-    //       ...state,
-    //       pageIndex: 0,
-    //       fat: action.payload!.fat!,
-    //     },
-    //     'fat'
-    //   );
-    // }
-    // case 'SET_PROTEIN_RANGE': {
-    //   return getStateWithLimits(
-    //     {
-    //       ...state,
-    //       pageIndex: 0,
-    //       protein: action.payload!.protein!,
-    //     },
-    //     'protein'
-    //   );
-    // }
-    // case 'SET_SUGAR_RANGE': {
-    //   return getStateWithLimits(
-    //     {
-    //       ...state,
-    //       pageIndex: 0,
-    //       sugar: action.payload!.sugar!,
-    //     },
-    //     'sugar'
-    //   );
-    // }
-    // case 'SET_STARCH_RANGE': {
-    //   return getStateWithLimits(
-    //     {
-    //       ...state,
-    //       pageIndex: 0,
-    //       starch: action.payload!.starch!,
-    //     },
-    //     'starch'
-    //   );
-    // }
-    // case 'SET_ORGANIC_ACID_RANGE': {
-    //   return getStateWithLimits(
-    //     {
-    //       ...state,
-    //       pageIndex: 0,
-    //       organicAcid: action.payload!.organicAcid!,
-    //     },
-    //     'organicAcid'
-    //   );
-    // }
-    // case 'SET_SUGAR_ALCOHOL_RANGE': {
-    //   return getStateWithLimits(
-    //     {
-    //       ...state,
-    //       pageIndex: 0,
-    //       sugarAlcohol: action.payload!.sugarAlcohol!,
-    //     },
-    //     'sugarAlcohol'
-    //   );
-    // }
   }
   return state;
 };

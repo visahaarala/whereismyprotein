@@ -7,8 +7,8 @@ import {
   type TouchEvent,
 } from 'react';
 import styles from './RangeSlider.module.scss';
-import capitalize from '../../../functions/capitalize';
-import type { ProgramState, ReducerActionType } from '../../../@types';
+import capitalize from '../../../util/capitalize';
+import type { ProgramState, Range, ReducerActionType } from '../../../@types';
 import { FineliContext } from '../../../context/FineliContext';
 
 type DragStateType = {
@@ -23,17 +23,21 @@ const RangeSlider = ({
   name,
   margin,
   dispatchType,
+  type = 'both',
 }: {
   name: keyof ProgramState;
   margin: number;
   dispatchType: ReducerActionType;
+  type?: 'min' | 'max' | 'both';
 }) => {
-  const { dispatch } = useContext(FineliContext);
+  const { state, dispatch } = useContext(FineliContext);
 
   const [isDragging, setIsDragging] = useState(false);
 
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(100);
+
+  const range: Range = state[name] as unknown as Range;
+  const [min, setMin] = useState(range.min);
+  const [max, setMax] = useState(range.max);
 
   const trackRef = useRef<HTMLDivElement>(null);
   const activeThumb = useRef<ThumbType>(null);
@@ -112,7 +116,7 @@ const RangeSlider = ({
     } else {
       const newPctg = clamp(
         newPctgCandidate,
-        Math.max(margin, min + margin),
+        type === 'max' ? 0 : Math.max(margin, min + margin),
         100
       );
       setMax(newPctg);
@@ -131,15 +135,26 @@ const RangeSlider = ({
 
   const heightPow = 3.5;
 
+  const sliderName =
+    type !== 'both'
+      ? type === 'max'
+        ? `max. ${capitalize(name)}`
+        : `min. ${capitalize(name)}`
+      : capitalize(name, true);
+
+  const sliderNumbers =
+    type === 'both'
+      ? `${Math.round(min)}% to ${Math.round(max)}%`
+      : type === 'max'
+      ? `${Math.round(max)}%`
+      : `${Math.round(min)}%`;
+
   return (
     <div
       className={styles.rangeSlider}
       style={{ margin: `0 calc(${margin / 2}% - var(--padding-sides))` }}
     >
-      <p className={styles.name}>{`${capitalize(
-        name as unknown as string,
-        true
-      )}: ${Math.round(min)}% to ${Math.round(max)}%`}</p>
+      <p className={styles.name}>{`${sliderName}: ${sliderNumbers}`}</p>
       <div className={styles.track} ref={trackRef} />
       <div
         className={styles.range}
@@ -149,48 +164,56 @@ const RangeSlider = ({
           transition: isDragging ? 'unset' : '',
         }}
       />
-      <div
-        className={styles.ball}
-        style={{
-          width: `${margin}%`,
-          left: `${min}%`,
-          transition: isDragging ? 'unset' : '',
-        }}
-        onMouseDown={(e) => handleThumbDown(e, 'min')}
-        onTouchStart={(e) => handleThumbDown(e, 'min')}
-        tabIndex={0}
-      >
+      {type !== 'max' ? (
         <div
+          className={styles.ball}
           style={{
-            height: `${Math.max(
-              40,
-              Math.pow((100 - min) / 100, heightPow) * 100,
-              Math.pow(min / 100, heightPow) * 100
-            )}%`,
+            width: `${margin}%`,
+            left: `${min}%`,
+            transition: isDragging ? 'unset' : '',
           }}
-        />
-      </div>
-      <div
-        className={styles.ball}
-        style={{
-          width: `${margin}%`,
-          left: `${max}%`,
-          transition: isDragging ? 'unset' : '',
-        }}
-        onMouseDown={(e) => handleThumbDown(e, 'max')}
-        onTouchStart={(e) => handleThumbDown(e, 'max')}
-        tabIndex={0}
-      >
+          onMouseDown={(e) => handleThumbDown(e, 'min')}
+          onTouchStart={(e) => handleThumbDown(e, 'min')}
+          tabIndex={0}
+        >
+          <div
+            style={{
+              height: `${Math.max(
+                40,
+                Math.pow((100 - min) / 100, heightPow) * 100,
+                Math.pow(min / 100, heightPow) * 100
+              )}%`,
+            }}
+          />
+        </div>
+      ) : (
+        <></>
+      )}
+      {type !== 'min' ? (
         <div
+          className={styles.ball}
           style={{
-            height: `${Math.max(
-              40,
-              Math.pow(max / 100, heightPow) * 100,
-              Math.pow((100 - max) / 100, heightPow) * 100
-            )}%`,
+            width: `${margin}%`,
+            left: `${max}%`,
+            transition: isDragging ? 'unset' : '',
           }}
-        />
-      </div>
+          onMouseDown={(e) => handleThumbDown(e, 'max')}
+          onTouchStart={(e) => handleThumbDown(e, 'max')}
+          tabIndex={0}
+        >
+          <div
+            style={{
+              height: `${Math.max(
+                40,
+                Math.pow(max / 100, heightPow) * 100,
+                Math.pow((100 - max) / 100, heightPow) * 100
+              )}%`,
+            }}
+          />
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

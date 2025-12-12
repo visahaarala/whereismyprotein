@@ -9,7 +9,7 @@ const Info = ({ show }: { show: boolean }) => {
       <p>
         For vegans, there's always the question of where do you get your
         protein. The purpose of this tool is to answer that question as well as
-        give an idea of the balance of other macronutrients.
+        give an idea of the energy balance of other nutrients.
       </p>
 
       <h3>Search</h3>

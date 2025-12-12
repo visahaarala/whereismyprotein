@@ -6,7 +6,15 @@
   background-color: white;
   overflow: scroll;
 
-  & > div {
+  .lang {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .selectedFood {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
@@ -14,15 +22,11 @@
     .title {
       display: flex;
       align-items: center;
-
-      .settingsIcon {
-        align-self: start;
-      }
     }
   }
 
   & > a {
     align-self: start;
-    margin-top: 2rem;
+    margin-top: auto;
   }
 }

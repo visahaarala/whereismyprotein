@@ -5,7 +5,7 @@ export const distributionKeys: (keyof EnergyDistribution)[] = [
   'fat',
   'protein',
   'sugar',
-  'starch',
-  'organicAcid',
-  'sugarAlcohol',
+  // 'starch',
+  // 'organicAcid',
+  // 'sugarAlcohol',
 ];
