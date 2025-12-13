@@ -5,11 +5,13 @@ import energyDensity from '../util/getEnergyDensity';
 import { distributionKeys } from '../util/variables';
 import getEnergyDistribution from '../util/getEnergyDistribution';
 
+const initialLanguage = navigator.language.includes('fi') ? 'fi' : 'en';
+
 export const initialState: ProgramState = {
   isRaw: false,
   hasScientific: false,
   filterMode: 'search',
-  language: navigator.language.includes('fi') ? 'fi' : 'en',
+  language: initialLanguage,
 
   // search
   category: undefined,
@@ -26,7 +28,9 @@ export const initialState: ProgramState = {
   sugarAlcohol: { min: 0, max: 100 },
 
   // results
-  results: getFoods(),
+  results: getFoods().sort((a, b) =>
+    a[initialLanguage].localeCompare(b[initialLanguage])
+  ),
   selectedFood: null,
   pageIndex: 0,
 };
@@ -74,6 +78,7 @@ const getStateWithFilteredFoods = (state: ProgramState) => {
       );
     })
     .filter((food) => {
+      if (state.filterMode !== 'range') return true;
       const pctgs = getEnergyDistribution(food);
       for (const key of distributionKeys) {
         if (pctgs[key] < state[key].min) {

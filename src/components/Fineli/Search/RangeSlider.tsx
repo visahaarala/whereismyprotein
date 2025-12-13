@@ -34,7 +34,6 @@ const RangeSlider = ({
 
   const [isDragging, setIsDragging] = useState(false);
 
-
   const range: Range = state[name] as unknown as Range;
   const [min, setMin] = useState(range.min);
   const [max, setMax] = useState(range.max);
@@ -150,10 +149,7 @@ const RangeSlider = ({
       : `${Math.round(min)}%`;
 
   return (
-    <div
-      className={styles.rangeSlider}
-      style={{ margin: `0 calc(${margin / 2}% - var(--padding-sides))` }}
-    >
+    <div className={styles.rangeSlider}>
       <p className={styles.name}>{`${sliderName}: ${sliderNumbers}`}</p>
       <div className={styles.track} ref={trackRef} />
       <div
@@ -168,7 +164,7 @@ const RangeSlider = ({
         <div
           className={styles.ball}
           style={{
-            width: `${margin}%`,
+            width: `${Math.min(min + margin, max - min, 15)}%`,
             left: `${min}%`,
             transition: isDragging ? 'unset' : '',
           }}
@@ -193,7 +189,7 @@ const RangeSlider = ({
         <div
           className={styles.ball}
           style={{
-            width: `${margin}%`,
+            width: `${Math.min(100 - max + margin, max - min, 15)}%`,
             left: `${max}%`,
             transition: isDragging ? 'unset' : '',
           }}

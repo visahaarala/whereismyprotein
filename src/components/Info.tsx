@@ -9,7 +9,7 @@ const Info = ({ show }: { show: boolean }) => {
       <p>
         For vegans, there's always the question of where do you get your
         protein. The purpose of this tool is to answer that question as well as
-        give an idea of the energy balance of other nutrients.
+        give an idea of the energy balance of some other nutrients.
       </p>
 
       <h3>Search</h3>
@@ -24,12 +24,15 @@ const Info = ({ show }: { show: boolean }) => {
       </p>
       <h4>Language</h4>
       <p>
-        The en/fi toggle in Fineli is for food names and categories only.
+        The en/fi toggle in Fineli is for food and category names only.
         Everything else is in english.
       </p>
 
       <h4>limits</h4>
       <p>there's a 10% margin for both min & max values....</p>
+
+      <h4>Foodview</h4>
+      <p>Click anywhere to close</p>
 
       <h3>Fineli</h3>
       <p>
@@ -43,6 +46,7 @@ const Info = ({ show }: { show: boolean }) => {
         sugar 4kcal/g, protein 4kcal/g, fiber 2kcal/g, sugar alcohols 2.4kcal/g
         and organic acids 3kcal/g.
       </p>
+      <p>---- ADD ALCOHOL: 29 kJ (7 kcal)/g. ----</p>
       <h4>Source of data</h4>
       <p>
         Peruspaketti 1 (Basic package 1)

@@ -1,7 +1,7 @@
 import styles from './Limits.module.scss';
 import RangeSlider from './RangeSlider';
 
-export const PERCENTAGE_MARGIN = 10;
+export const PERCENTAGE_MARGIN = 5;
 
 const Limits = () => {
 
@@ -19,25 +19,25 @@ const Limits = () => {
         name='fiber'
         margin={PERCENTAGE_MARGIN}
         dispatchType='SET_LIMITS'
-        type='min'
+        // type='min'
       />
       <RangeSlider
         name='protein'
         margin={PERCENTAGE_MARGIN}
         dispatchType='SET_LIMITS'
-        type='min'
+        // type='min'
       />
       <RangeSlider
         name='sugar'
         margin={PERCENTAGE_MARGIN}
         dispatchType='SET_LIMITS'
-        type='max'
+        // type='max'
       />
       <RangeSlider
         name='fat'
         margin={PERCENTAGE_MARGIN}
         dispatchType='SET_LIMITS'
-        type='max'
+        // type='max'
       />
     </div>
   );

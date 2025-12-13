@@ -9,3 +9,4 @@ export const distributionKeys: (keyof EnergyDistribution)[] = [
   // 'organicAcid',
   // 'sugarAlcohol',
 ];
+
