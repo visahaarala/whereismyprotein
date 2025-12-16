@@ -3,8 +3,22 @@
 :root {
   --header-height: 2.7rem;
 
+  // INFO
+  --background-color-info-tab: #8404;
+
+  // FINELI
+  --background-color-fineli-tab: #4805;
   --background-color-fineli: #4802;
   --outline-color-fineli: #480;
+
+  // USDA
+  --background-color-usda-tab: #0484;
+  --background-color-usda-tab: #1503be44;
+  --background-color-usda-tab: #4084;
+  --background-color-usda: #0482;
+  --background-color-usda: #4082;
+  --outline-color-usda: #408;
+
   --border-color: #888;
   --border: 1px solid var(--border-color);
 
@@ -12,6 +26,7 @@
   --background-color-isOn: #4a0;
 
   --padding-sides: 1rem;
+  --padding-common: 1.5rem var(--padding-sides) 0.8rem;
 }
 
 *,
@@ -74,18 +89,16 @@ h1 {
   flex: 1;
   display: flex;
   align-items: center;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   letter-spacing: 0.04rem;
   font-weight: 600;
 
-  & + p {
-    margin-top: 0.8rem;
-  }
+  margin-bottom: 1rem;
 }
 
 h2 {
   // Settings -- subtitle
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 600;
   margin-right: auto;
 
@@ -96,20 +109,25 @@ h2 {
     margin-left: 0.5rem;
   }
 
-  & + p {
-    margin-top: 0.8rem;
-  }
+  margin-bottom: min(3vw, 1.5rem);
 }
 
 h3 {
   // Info -- smaller title
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: 0.03rem;
   border-bottom: 1px solid #333;
-  margin-bottom: 0.3rem;
-  &:not(:first-child) {
-    margin-top: 1.5rem;
+
+  p + & {
+    // in info
+    margin-top: 2rem;
+    margin-bottom: 0.3rem;
+  }
+
+  div + & {
+    // in food
+    margin-top: 1rem;
   }
 }
 
@@ -134,6 +152,15 @@ h5 {
     font-weight: 400;
     margin-left: 0.4rem;
   }
+}
+
+h6 {
+  margin: 0.3rem 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 0;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 p + p {

@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { FineliContext } from '../../../context/FineliContext';
 import energyDensity from '../../../util/getEnergyDensity';
 import getEnergyDistribution from '../../../util/getEnergyDistribution';
-import Toggle from '../../Common/Toggle';
+import Toggle from '../Search/Toggle';
 
 const Food = () => {
   const { state, dispatch } = useContext(FineliContext);

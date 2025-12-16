@@ -3,9 +3,9 @@ import { FineliContext, initialMacroLimits } from './OldFineliContext';
 import type {
   Language,
   FineliFood,
-  Mode,
+  FineliMode,
   View,
-} from '../@types';
+} from '../types';
 import getFoods from '../data/fineli/getFoods';
 
 const FineliContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -17,7 +17,7 @@ const FineliContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
         viewState: useState<View>('fineli'),
         searchState: useState(''),
         pageIndexState: useState(0),
-        modeState: useState<Mode>('search'),
+        modeState: useState<FineliMode>('search'),
         // settingsResultsState: useState<FineliFoodType[]>(getFoods()),
         searchResultsState: useState<FineliFood[]>(getFoods()),
         languageState: useState<Language>(initialLanguage),

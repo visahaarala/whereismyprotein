@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styles from './Search.module.scss';
 
-import Toggle from '../../Common/Toggle';
+import Toggle from './Toggle';
 import { FineliContext } from '../../../context/FineliContext';
 import { categories } from '../../../data/fineli/categories';
 import Limits from './Limits';
@@ -19,16 +19,7 @@ const Search = () => {
           <Toggle type={'TOGGLE_IS_RAW'} isOn={state.isRaw} />
           <span>Raw</span>
         </div>
-        <div />
-        <div>
-          <Toggle type={'TOGGLE_HAS_SCIENTIFIC'} isOn={state.hasScientific} />
-          <span>Scientific</span>
-        </div>
-        <div />
-        <div>
-          <Toggle type={'TOGGLE_LANGUAGE'} isOn={state.language === 'fi'} />
-          <span>Finnish</span>
-        </div>
+        {/* <RangeSlider margin={5} /> */}
       </div>
       <div className={styles.modes}>
         <div className={styles.modes__line} />
@@ -54,7 +45,7 @@ const Search = () => {
                 : {}
             }
           >
-            limit
+            category distribution
           </span>
         </div>
         <div className={styles.modes__line} />

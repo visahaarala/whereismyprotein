@@ -43,8 +43,8 @@ const Info = ({ show }: { show: boolean }) => {
       <h4>Calculations</h4>
       <p>
         Energy balance is calculated such that fats are 9kcal/g, starch 4kcal/g,
-        sugar 4kcal/g, protein 4kcal/g, fiber 2kcal/g, sugar alcohols 2.4kcal/g
-        and organic acids 3kcal/g.
+        sugar 4kcal/g, protein 4kcal/g, fiber 2kcal/g, sugar alcohols 2.4kcal/g,
+        organic acids 3kcal/g and alcohol 7kcal/g.
       </p>
       <p>---- ADD ALCOHOL: 29 kJ (7 kcal)/g. ----</p>
       <h4>Source of data</h4>

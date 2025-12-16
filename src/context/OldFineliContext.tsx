@@ -4,9 +4,9 @@ import type {
   Language,
   Limit,
   MacroLimits,
-  Mode,
+  FineliMode,
   View,
-} from '../@types';
+} from '../types';
 
 export const initialMacroLimits: MacroLimits = {
   fat: { min: 0, max: 100 },
@@ -26,7 +26,7 @@ export const FineliContext = createContext<{
   //   FineliFoodType[],
   //   Dispatch<SetStateAction<FineliFoodType[]>>
   // ];
-  modeState: [Mode, Dispatch<SetStateAction<Mode>>];
+  modeState: [FineliMode, Dispatch<SetStateAction<FineliMode>>];
   searchResultsState: [
     FineliFood[],
     Dispatch<SetStateAction<FineliFood[]>>

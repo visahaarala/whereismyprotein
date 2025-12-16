@@ -1,4 +1,4 @@
-import type { FineliFood } from '../../@types';
+import type { FineliFood } from '../../types';
 import { foods } from './foods';
 
 export default () => {

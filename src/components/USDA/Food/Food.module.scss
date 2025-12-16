@@ -1,0 +1,33 @@
+@import '../../../scss/mixins';
+
+.food {
+  @include content;
+
+  background-color: white;
+  overflow: scroll;
+
+  .lang {
+    display: flex;
+    justify-content: end;
+    margin-left: auto;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .selectedFood {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    .title {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  & > a {
+    align-self: start;
+    margin-top: auto;
+  }
+}

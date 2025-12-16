@@ -7,7 +7,7 @@ import Info from './components/Info';
 // import FineliContextProvider from './context/OldFineliContextProvider';
 import FineliContextProvider from './context/FineliContextProvider';
 import Navigation from './components/Navigation';
-import type { View } from './@types';
+import type { View } from './types';
 
 // theme color for mobile devices
 if (matchMedia('(pointer:coarse)').matches) {

@@ -1,0 +1,75 @@
+$rangeColor: #343;
+
+$top: 70%;
+
+.rangeSlider {
+  height: 1.5rem;
+  position: relative;
+
+  // background-color: #a885;
+  border-right: 0.05rem solid #222;
+  border-left: 0.05rem solid #222;
+
+  .name {
+    user-select: none;
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    text-align: center;
+    top: 0;
+    line-height: 1;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+  }
+
+  .range,
+  .ball {
+    transition: all 0.5s ease;
+  }
+
+  .track {
+    position: absolute;
+    top: $top;
+    transform: translateY(-50%);
+    border-radius: 0.1rem;
+    width: 100%;
+    height: 0.05rem;
+    background-color: #222;
+  }
+
+  .range {
+    z-index: 1;
+    position: absolute;
+    content: '';
+    height: 0.2rem;
+    background-color: $rangeColor;
+    top: $top;
+    transform: translateY(-50%);
+    border-radius: 0.05rem;
+  }
+
+  .ball {
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    content: '';
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    & > div {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      height: 50%;
+      width: 0.2rem;
+      width: 0.4rem;
+      border-radius: 0.1rem;
+      background-color: white;
+      border: 0.1rem solid $rangeColor;
+    }
+  }
+}

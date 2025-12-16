@@ -7,4 +7,19 @@
   @include content;
 
   // padding-top: 2rem;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 1rem;
+    border: 0.1rem solid white;
+  }
+
+  &::-webkit-scrollbar-corner {
+    display: none;
+  }
 }

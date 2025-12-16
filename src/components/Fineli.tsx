@@ -1,20 +1,29 @@
 import styles from './Fineli.module.scss';
 
-import Pages from './Fineli/Results/Pages';
+import Pages from './Common/Pages';
 import Food from './Fineli/Food/Food';
 import Search from './Fineli/Search/Search';
 import Results from './Fineli/Results/Results';
+import { FineliContext } from '../context/FineliContext';
+import { useContext } from 'react';
 
 const Fineli = ({ show }: { show: boolean }) => {
-  // results 
-  // if food chosen, show food
-  // else show search, results & pages
+  const { state, dispatch } = useContext(FineliContext);
+
+  const setPage = (pageIndex: number) => {
+    dispatch({ type: 'SET_PAGE_INDEX', payload: { pageIndex } });
+  };
 
   return (
     <div className={styles.fineli} style={show ? {} : { display: 'none' }}>
       <Search />
       <Results />
-      <Pages />
+      <Pages
+        numResults={state.results.length}
+        pageIndex={state.pageIndex}
+        isFoodSelected={state.selectedFood !== null}
+        setPage={setPage}
+      />
       <Food />
     </div>
   );

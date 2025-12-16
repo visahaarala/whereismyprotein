@@ -1,7 +1,15 @@
+import styles from './USDA.module.scss';
+
+import Food from './Fineli/Food/Food';
+import Results from './USDA/Results/Results';
+import Search from './USDA/Search/Search';
+
 const USDA = ({ show }: { show: boolean }) => {
   return (
-    <div style={show ? {} : { display: 'none' }}>
-      <h2>usda</h2>
+    <div className={styles.usda} style={show ? {} : { display: 'none' }}>
+      <Search />
+      <Results />
+      <Food />
     </div>
   );
 };

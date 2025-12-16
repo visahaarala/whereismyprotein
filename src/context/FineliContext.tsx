@@ -1,5 +1,5 @@
 import { createContext, type Dispatch } from 'react';
-import type { ProgramState, ReducerAction } from '../@types';
+import type { FineliState, FineliReducerAction } from '../types';
 import getFoods from '../data/fineli/getFoods';
 import energyDensity from '../util/getEnergyDensity';
 import { distributionKeys } from '../util/variables';
@@ -7,7 +7,7 @@ import getEnergyDistribution from '../util/getEnergyDistribution';
 
 const initialLanguage = navigator.language.includes('fi') ? 'fi' : 'en';
 
-export const initialState: ProgramState = {
+export const initialState: FineliState = {
   isRaw: false,
   hasScientific: false,
   filterMode: 'search',
@@ -26,6 +26,7 @@ export const initialState: ProgramState = {
   starch: { min: 0, max: 100 },
   organicAcid: { min: 0, max: 100 },
   sugarAlcohol: { min: 0, max: 100 },
+  alcohol: { min: 0, max: 100 },
 
   // results
   results: getFoods().sort((a, b) =>
@@ -35,7 +36,7 @@ export const initialState: ProgramState = {
   pageIndex: 0,
 };
 
-const getStateWithFilteredFoods = (state: ProgramState) => {
+const getStateWithFilteredFoods = (state: FineliState) => {
   const results = getFoods()
     .filter((food) => !state.isRaw || food.raw)
     .filter((food) => !state.hasScientific || food.scientific)
@@ -95,9 +96,9 @@ const getStateWithFilteredFoods = (state: ProgramState) => {
 };
 
 export const reducer = (
-  state: ProgramState,
-  action: ReducerAction
-): ProgramState => {
+  state: FineliState,
+  action: FineliReducerAction
+): FineliState => {
   switch (action.type) {
     case 'TOGGLE_IS_RAW': {
       return getStateWithFilteredFoods({
@@ -163,6 +164,6 @@ export const reducer = (
 };
 
 export const FineliContext = createContext<{
-  state: ProgramState;
-  dispatch: Dispatch<ReducerAction>;
+  state: FineliState;
+  dispatch: Dispatch<FineliReducerAction>;
 }>({ state: initialState, dispatch: () => {} });

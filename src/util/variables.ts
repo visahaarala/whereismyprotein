@@ -1,12 +1,8 @@
-import type { EnergyDistribution } from '../@types';
+import type { FineliEnergyDistribution } from '../types';
 
-export const distributionKeys: (keyof EnergyDistribution)[] = [
+export const distributionKeys: (keyof FineliEnergyDistribution)[] = [
   'fiber',
   'fat',
   'protein',
   'sugar',
-  // 'starch',
-  // 'organicAcid',
-  // 'sugarAlcohol',
 ];
-

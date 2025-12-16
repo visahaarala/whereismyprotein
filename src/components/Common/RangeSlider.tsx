@@ -1,5 +1,4 @@
 import {
-  useContext,
   useEffect,
   useRef,
   useState,
@@ -7,9 +6,8 @@ import {
   type TouchEvent,
 } from 'react';
 import styles from './RangeSlider.module.scss';
-import capitalize from '../../../util/capitalize';
-import type { ProgramState, Range, ReducerActionType } from '../../../@types';
-import { FineliContext } from '../../../context/FineliContext';
+import capitalize from '../../util/capitalize';
+import type { Range } from '../../types';
 
 type DragStateType = {
   startX: number;
@@ -22,21 +20,19 @@ type ThumbType = 'min' | 'max' | null;
 const RangeSlider = ({
   name,
   margin,
-  dispatchType,
+  value,
+  setValue,
   type = 'both',
 }: {
-  name: keyof ProgramState;
+  name: string;
   margin: number;
-  dispatchType: ReducerActionType;
+  value: Range;
+  setValue: (newRange: Range) => void;
   type?: 'min' | 'max' | 'both';
 }) => {
-  const { state, dispatch } = useContext(FineliContext);
-
+  const [min, setMin] = useState(value.min);
+  const [max, setMax] = useState(value.max);
   const [isDragging, setIsDragging] = useState(false);
-
-  const range: Range = state[name] as unknown as Range;
-  const [min, setMin] = useState(range.min);
-  const [max, setMax] = useState(range.max);
 
   const trackRef = useRef<HTMLDivElement>(null);
   const activeThumb = useRef<ThumbType>(null);
@@ -48,13 +44,10 @@ const RangeSlider = ({
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      dispatch({
-        type: dispatchType,
-        // name must be correct for this to work! .. no check
-        payload: { [name]: { min, max } },
-      });
+      setValue({ min: Math.round(min), max: Math.round(max) });
     }, 200);
     return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [min, max]);
 
   const clamp = (value: number, min: number, max: number) => {
@@ -132,8 +125,6 @@ const RangeSlider = ({
     window.removeEventListener('touchend', handleDragEnd);
   };
 
-  const heightPow = 3.5;
-
   const sliderName =
     type !== 'both'
       ? type === 'max'
@@ -147,6 +138,8 @@ const RangeSlider = ({
       : type === 'max'
       ? `${Math.round(max)}%`
       : `${Math.round(min)}%`;
+
+  const ballHeightPow = 3.5;
 
   return (
     <div className={styles.rangeSlider}>
@@ -170,16 +163,16 @@ const RangeSlider = ({
           }}
           onMouseDown={(e) => handleThumbDown(e, 'min')}
           onTouchStart={(e) => handleThumbDown(e, 'min')}
-          tabIndex={0}
         >
           <div
             style={{
               height: `${Math.max(
                 40,
-                Math.pow((100 - min) / 100, heightPow) * 100,
-                Math.pow(min / 100, heightPow) * 100
+                Math.pow((100 - min) / 100, ballHeightPow) * 100,
+                Math.pow(min / 100, ballHeightPow) * 100
               )}%`,
             }}
+            tabIndex={0}
           />
         </div>
       ) : (
@@ -195,16 +188,16 @@ const RangeSlider = ({
           }}
           onMouseDown={(e) => handleThumbDown(e, 'max')}
           onTouchStart={(e) => handleThumbDown(e, 'max')}
-          tabIndex={0}
         >
           <div
             style={{
               height: `${Math.max(
                 40,
-                Math.pow(max / 100, heightPow) * 100,
-                Math.pow((100 - max) / 100, heightPow) * 100
+                Math.pow(max / 100, ballHeightPow) * 100,
+                Math.pow((100 - max) / 100, ballHeightPow) * 100
               )}%`,
             }}
+            tabIndex={0}
           />
         </div>
       ) : (

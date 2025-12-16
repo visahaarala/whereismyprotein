@@ -1,17 +1,6 @@
-// @import '../scss/_mixins.scss';
-
-// .usda {
-//   height: 100%;
-//   background-color: #0482;
-//   // display: flex; set in inline style
-//   flex-direction: column;
-
-//   .search {
-//     input:focus {
-//       outline: 1px solid #048;
-//     }
-//   }
-
-//   @include search;
-//   @include results;
-// }
+.usda {
+  height: 100%;
+  background-color: var(--background-color-usda);
+  display: flex;
+  flex-direction: column;
+}
