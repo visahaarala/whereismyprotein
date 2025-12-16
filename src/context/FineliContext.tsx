@@ -1,7 +1,7 @@
 import { createContext, type Dispatch } from 'react';
 import type { FineliState, FineliReducerAction } from '../types';
 import getFoods from '../data/fineli/getFoods';
-import energyDensity from '../util/getEnergyDensity';
+import getEnergyDensity from '../util/getEnergyDensity';
 import { distributionKeys } from '../util/variables';
 import getEnergyDistribution from '../util/getEnergyDistribution';
 
@@ -72,14 +72,14 @@ const getStateWithFilteredFoods = (state: FineliState) => {
       return true;
     })
     .filter((food) => {
-      if (state.filterMode !== 'range') return true;
+      if (state.filterMode !== 'limit') return true;
       return (
-        energyDensity(food.energy) >= state.energyDensity.min &&
-        energyDensity(food.energy) <= state.energyDensity.max
+        getEnergyDensity(food.energy) >= state.energyDensity.min &&
+        getEnergyDensity(food.energy) <= state.energyDensity.max
       );
     })
     .filter((food) => {
-      if (state.filterMode !== 'range') return true;
+      if (state.filterMode !== 'limit') return true;
       const pctgs = getEnergyDistribution(food);
       for (const key of distributionKeys) {
         if (pctgs[key] < state[key].min) {
@@ -117,7 +117,7 @@ export const reducer = (
     case 'TOGGLE_FILTER_MODE': {
       return getStateWithFilteredFoods({
         ...state,
-        filterMode: state.filterMode === 'range' ? 'search' : 'range',
+        filterMode: state.filterMode === 'limit' ? 'search' : 'limit',
         pageIndex: 0,
       });
     }

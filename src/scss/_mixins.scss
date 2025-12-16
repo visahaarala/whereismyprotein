@@ -1,41 +1,80 @@
-// @mixin top {
-//   padding: var(--padding-common);
-//   padding: 0;
-//   border-bottom: 1px solid #888;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 0.8rem;
+@mixin search {
+  padding: var(--padding-common);
+  border-bottom: 1px solid #888;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 
-//   & > div {
-//     flex: 1;
-//     display: flex;
-//     align-items: center;
-//     gap: 1.5rem;
+  .property {
+    user-select: none;
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto;
+    
+    & > div {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
 
-//     select,
-//     input {
-//       flex: 1;
-//       font-family: inherit;
-//       border-radius: 0.1rem;
-//       border: 1px solid #888;
-//       color: inherit;
-//     }
+  .modes {
+    display: flex;
+    align-items: center;
 
-//     select {
-//       font-size: 0.95rem;
-//       padding: 0.2rem 0.2rem;
-//     }
+    &__line {
+      flex: 1;
+      background-color: #777;
+      height: 0.1rem;
+      transform: translateY(0.1rem);
+    }
 
-//     input {
-//       font-size: 1rem;
-//       padding: 0.2rem 0.4rem;
+    &__select {
+      margin: 0 1rem;
+      display: flex;
+      cursor: pointer;
+      user-select: none;
+      div {
+        width: 0.7rem;
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%) rotate(-70deg);
+          height: 0.1rem;
+          width: 1rem;
+          background-color: currentcolor;
+        }
+      }
+    }
+  }
 
-//       &::placeholder {
-//         font-weight: 200;
-//       }
-//     }
-//   }
-// }
+  select,
+  input[type='text'] {
+    flex: 1;
+    font-family: inherit;
+    border-radius: 0.1rem;
+    border: 1px solid #888;
+    color: inherit;
+    background-color: white;
+  }
+
+  select {
+    font-size: 0.95rem;
+    padding: 0.1rem 0.2rem;
+  }
+
+  input[type='text'] {
+    font-size: 1rem;
+    padding: 0.1rem 0.4rem;
+    caret-color: #444;
+
+    &::placeholder {
+      font-weight: 200;
+    }
+  }
+}
 
 @mixin content {
   flex: 1;

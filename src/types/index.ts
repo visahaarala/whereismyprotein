@@ -5,13 +5,14 @@ export type Language = 'fi' | 'en';
 export type View = 'usda' | 'info' | 'fineli';
 
 ///////////////////
+///////////////////
 // FINELI
 //
 export type FineliState = {
   // SEARCH
   isRaw: boolean;
   hasScientific: boolean;
-  filterMode: 'search' | 'range';
+  filterMode: 'search' | 'limit';
   language: 'fi' | 'en';
 
   // search
@@ -54,10 +55,10 @@ export type FineliReducerActionType =
 export type FineliFood = {
   id: number;
   scientific: string | null;
-  fi: string; // CHANGE
-  en: string; // CHANGE
+  fi: string;
+  en: string;
   raw: boolean;
-  category: string; // CHANGE
+  category: string;
   energy: number;
   fat: number;
   protein: number;
@@ -80,4 +81,67 @@ export type FineliEnergyDistribution = {
   alcohol: number;
 };
 
-export type FineliMode = 'limit' | 'search';
+//
+
+//
+
+///////////////////
+// USDA
+//
+export type UsdaState = {
+  // SEARCH
+
+  // viewmode
+  viewMode: 'categoryDistribution' | 'search';
+  // search
+  category: string | undefined;
+  searchString: string;
+  // limits
+  energyDensity: Range;
+  rdi: Range;
+  protein: boolean;
+  eaas: boolean;
+  fiber: boolean;
+
+  // RESULTS
+
+  results: UsdaFood[];
+  selectedFood: UsdaFood | null;
+  pageIndex: number;
+};
+
+export type UsdaReducerAction = {
+  type: UsdaReducerActionType;
+  payload?: Partial<UsdaState>;
+};
+
+export type UsdaReducerActionType =
+  | 'TOGGLE_VIEW_MODE'
+  | 'SET_CATEGORY'
+  | 'SET_SEARCH'
+  | 'SET_LIMITS'
+  | 'TOGGLE_PROTEIN'
+  | 'TOGGLE_FIBER'
+  | 'TOGGLE_EAAS'
+  | 'SET_SELECTED_FOOD'
+  | 'SET_PAGE_INDEX';
+
+export type UsdaFood = {
+  id: number;
+  description: string;
+  category: string;
+  energy: number;
+  protein: number;
+  fiber: number;
+  tryptophan: number;
+  threonine: number;
+  isoleucine: number;
+  leucine: number;
+  lysine: number;
+  methionine: number;
+  cystine: number;
+  phenylalanine: number;
+  tyrosine: number;
+  valine: number;
+  histidine: number;
+};

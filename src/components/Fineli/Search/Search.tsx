@@ -16,17 +16,26 @@ const Search = () => {
     >
       <div className={styles.property}>
         <div>
-          <Toggle type={'TOGGLE_IS_RAW'} isOn={state.isRaw} />
+          <Toggle
+            isOn={state.isRaw}
+            toggleIsOn={() => dispatch({ type: 'TOGGLE_IS_RAW' })}
+          />
           <span>Raw</span>
         </div>
         <div />
         <div>
-          <Toggle type={'TOGGLE_HAS_SCIENTIFIC'} isOn={state.hasScientific} />
+          <Toggle
+            isOn={state.hasScientific}
+            toggleIsOn={() => dispatch({ type: 'TOGGLE_HAS_SCIENTIFIC' })}
+          />
           <span>Scientific</span>
         </div>
         <div />
         <div>
-          <Toggle type={'TOGGLE_LANGUAGE'} isOn={state.language === 'fi'} />
+          <Toggle
+            isOn={state.language === 'fi'}
+            toggleIsOn={() => dispatch({ type: 'TOGGLE_LANGUAGE' })}
+          />
           <span>Finnish</span>
         </div>
       </div>
@@ -49,7 +58,7 @@ const Search = () => {
           <div />
           <span
             style={
-              state.filterMode === 'range'
+              state.filterMode === 'limit'
                 ? { textDecoration: 'underline' }
                 : {}
             }

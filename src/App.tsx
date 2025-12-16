@@ -8,6 +8,7 @@ import Info from './components/Info';
 import FineliContextProvider from './context/FineliContextProvider';
 import Navigation from './components/Navigation';
 import type { View } from './types';
+import UsdaContextProvider from './context/UsdaContextProvider';
 
 // theme color for mobile devices
 if (matchMedia('(pointer:coarse)').matches) {
@@ -17,7 +18,8 @@ if (matchMedia('(pointer:coarse)').matches) {
 }
 
 const App = () => {
-  const [view, setView] = useState<View>('info');
+  // const [view, setView] = useState<View>('info');
+  const [view, setView] = useState<View>('usda');
 
   return (
     <>
@@ -28,8 +30,10 @@ const App = () => {
         <FineliContextProvider>
           <Fineli show={view === 'fineli'} />
         </FineliContextProvider>
-        <USDA show={view === 'usda'} />
-        <Info show={view === 'info'} />
+        <UsdaContextProvider>
+          <USDA show={view === 'usda'} />
+          <Info show={view === 'info'} />
+        </UsdaContextProvider>
       </main>
     </>
   );

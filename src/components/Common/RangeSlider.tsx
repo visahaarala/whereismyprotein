@@ -8,6 +8,7 @@ import {
 import styles from './RangeSlider.module.scss';
 import capitalize from '../../util/capitalize';
 import type { Range } from '../../types';
+import { PERCENTAGE_MARGIN } from '../../util/variables';
 
 type DragStateType = {
   startX: number;
@@ -19,13 +20,13 @@ type ThumbType = 'min' | 'max' | null;
 
 const RangeSlider = ({
   name,
-  margin,
+  margin = PERCENTAGE_MARGIN,
   value,
   setValue,
   type = 'both',
 }: {
   name: string;
-  margin: number;
+  margin?: number;
   value: Range;
   setValue: (newRange: Range) => void;
   type?: 'min' | 'max' | 'both';
@@ -108,6 +109,7 @@ const RangeSlider = ({
     } else {
       const newPctg = clamp(
         newPctgCandidate,
+        /// THIS HERE!... type === 'max'
         type === 'max' ? 0 : Math.max(margin, min + margin),
         100
       );
@@ -157,7 +159,7 @@ const RangeSlider = ({
         <div
           className={styles.ball}
           style={{
-            width: `${Math.min(min + margin, max - min, 15)}%`,
+            width: `min(${max - min}%, calc(var(--padding-sides) * 2))`,
             left: `${min}%`,
             transition: isDragging ? 'unset' : '',
           }}
@@ -182,7 +184,7 @@ const RangeSlider = ({
         <div
           className={styles.ball}
           style={{
-            width: `${Math.min(100 - max + margin, max - min, 15)}%`,
+            width: `min(${max - min}%, calc(var(--padding-sides) * 2))`,
             left: `${max}%`,
             transition: isDragging ? 'unset' : '',
           }}

@@ -6,3 +6,5 @@ export const distributionKeys: (keyof FineliEnergyDistribution)[] = [
   'protein',
   'sugar',
 ];
+
+export const PERCENTAGE_MARGIN = 5;

@@ -3,6 +3,8 @@ $rangeColor: #343;
 $top: 70%;
 
 .rangeSlider {
+  margin: 0 var(--padding-sides);
+
   height: 1.5rem;
   position: relative;
 
@@ -49,6 +51,8 @@ $top: 70%;
   }
 
   .ball {
+    background-color: red;
+
     cursor: pointer;
     z-index: 1;
     position: absolute;
