@@ -18,20 +18,34 @@ export default () => {
 
     food.energy = Number(row[header.indexOf('energy')]); // kJ
 
-    food.protein = Math.round(
-      (Number(row[header.indexOf('protein')]) /
-        food.energy /
-        rdiValues.protein) *
-        100
-    ); // % of RDI
+    food.protein =
+      food.energy === 0
+        ? 0
+        : Math.round(
+            (Number(row[header.indexOf('protein')]) /
+              food.energy /
+              rdiValues.protein) *
+              100
+          ); // % of RDI
 
-    food.fiber = Math.round(
-      (Number(row[header.indexOf('fiber')]) / food.energy / rdiValues.fiber) *
-        100
-    ); // % of RDI
+    food.fiber =
+      food.energy === 0
+        ? 0
+        : Math.round(
+            (Number(row[header.indexOf('fiber')]) /
+              food.energy /
+              rdiValues.fiber) *
+              100
+          ); // % of RDI
 
     food.eaas = rdiValues.eaas.map((eaaCombo) => {
       const { names, abbreviations, rdi } = eaaCombo;
+
+      if (food.energy! === 0) {
+        food.minEaaPctg = 0;
+        return { names, abbreviations, pctgOfRdi: 0 };
+      }
+
       let grams = 0;
       for (const name of names) {
         grams += Number(row[header.indexOf(name)]);
