@@ -12,7 +12,7 @@ export type FineliState = {
   // SEARCH
   isRaw: boolean;
   hasScientific: boolean;
-  filterMode: 'search' | 'limit';
+  filterMode: FineliFilterMode;
   language: 'fi' | 'en';
 
   // search
@@ -35,6 +35,8 @@ export type FineliState = {
   selectedFood: FineliFood | null;
   pageIndex: number;
 };
+
+export type FineliFilterMode = 'search' | 'limit';
 
 export type FineliReducerAction = {
   type: FineliReducerActionType;
@@ -92,16 +94,16 @@ export type UsdaState = {
   // SEARCH
 
   // viewmode
-  viewMode: 'categoryDistribution' | 'search';
+  viewMode: ViewMode;
   // search
   category: string | undefined;
   searchString: string;
   // limits
   energyDensity: Range;
+  proteinOn: boolean;
+  eaasOn: boolean;
+  fiberOn: boolean;
   rdi: Range;
-  protein: boolean;
-  eaas: boolean;
-  fiber: boolean;
 
   // RESULTS
 
@@ -109,6 +111,8 @@ export type UsdaState = {
   selectedFood: UsdaFood | null;
   pageIndex: number;
 };
+
+export type ViewMode = 'view categories' | 'search';
 
 export type UsdaReducerAction = {
   type: UsdaReducerActionType;
@@ -127,12 +131,37 @@ export type UsdaReducerActionType =
   | 'SET_PAGE_INDEX';
 
 export type UsdaFood = {
-  id: number;
+  id: string;
   description: string;
   category: string;
-  energy: number;
-  protein: number;
-  fiber: number;
+  energy: number; // kJ
+  protein: number; // % of RDI
+  fiber: number; // % of RDI
+  raw: boolean;
+
+  eaas: {
+    names: (keyof EAAs)[];
+    abbreviations: string[];
+    pctgOfRdi: number; // % of RDI
+  }[];
+
+  minEaaPctg: number; // % of RDI
+
+  // // EAAS
+  // tryptophan: number;
+  // threonine: number;
+  // isoleucine: number;
+  // leucine: number;
+  // lysine: number;
+  // methionine: number;
+  // cystine: number;
+  // phenylalanine: number;
+  // tyrosine: number;
+  // valine: number;
+  // histidine: number;
+};
+
+export type EAAs = {
   tryptophan: number;
   threonine: number;
   isoleucine: number;

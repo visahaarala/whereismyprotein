@@ -1,0 +1,17 @@
+@import '../../scss/mixins';
+
+.search {
+  @include search;
+
+  .property {
+    grid-template-columns: 0fr auto 3fr auto 3fr auto 0fr;
+    // grid-template-columns: 1fr auto 4fr auto 4fr auto 1fr;
+  }
+
+  select,
+  input[type='text'] {
+    &:focus {
+      outline: 1px solid var(--outline-color-fineli);
+    }
+  }
+}

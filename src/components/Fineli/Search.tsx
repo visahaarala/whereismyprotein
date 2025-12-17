@@ -1,10 +1,12 @@
 import { useContext } from 'react';
 import styles from './Search.module.scss';
 
-import Toggle from '../../Common/Toggle';
-import { FineliContext } from '../../../context/FineliContext';
-import { categories } from '../../../data/fineli/categories';
+import Toggle from '../Common/Toggle';
+import { FineliContext } from '../../context/FineliContext';
+import { categories } from '../../data/fineli/categories';
 import Limits from './Limits';
+import ModeSelect from '../Common/ModeSelect';
+import type { FineliFilterMode } from '../../types';
 
 const Search = () => {
   const { state, dispatch } = useContext(FineliContext);
@@ -15,63 +17,42 @@ const Search = () => {
       style={state.selectedFood ? { display: 'none' } : {}}
     >
       <div className={styles.property}>
+        <div />
         <div>
           <Toggle
+            name='Raw'
             isOn={state.isRaw}
             toggleIsOn={() => dispatch({ type: 'TOGGLE_IS_RAW' })}
           />
-          <span>Raw</span>
         </div>
         <div />
         <div>
           <Toggle
+            name='Scientific'
             isOn={state.hasScientific}
             toggleIsOn={() => dispatch({ type: 'TOGGLE_HAS_SCIENTIFIC' })}
           />
-          <span>Scientific</span>
         </div>
         <div />
         <div>
           <Toggle
+            name='Finnish'
             isOn={state.language === 'fi'}
             toggleIsOn={() => dispatch({ type: 'TOGGLE_LANGUAGE' })}
           />
-          <span>Finnish</span>
         </div>
+        <div />
       </div>
-      <div className={styles.modes}>
-        <div className={styles.modes__line} />
-        <div
-          className={styles.modes__select}
-          onClick={() => dispatch({ type: 'TOGGLE_FILTER_MODE' })}
-          tabIndex={0}
-        >
-          <span
-            style={
-              state.filterMode === 'search'
-                ? { textDecoration: 'underline' }
-                : {}
-            }
-          >
-            search
-          </span>
-          <div />
-          <span
-            style={
-              state.filterMode === 'limit'
-                ? { textDecoration: 'underline' }
-                : {}
-            }
-          >
-            limit
-          </span>
-        </div>
-        <div className={styles.modes__line} />
-      </div>
+
+      <ModeSelect<FineliFilterMode>
+        options={['search', 'limit']}
+        selectedOption={state.filterMode}
+        toggleFn={() => dispatch({ type: 'TOGGLE_FILTER_MODE' })}
+      />
+
       {state.filterMode === 'search' ? (
         <>
           <select
-            name='category'
             id='category'
             value={state.category}
             onChange={(e) =>

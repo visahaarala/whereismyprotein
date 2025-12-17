@@ -1,1 +1,15 @@
-export const categories: { [id: string]: string } = {"1":"Dairy and Egg Products","5":"Poultry Products","9":"Fruits and Fruit Juices","10":"Pork Products","11":"Vegetables and Vegetable Products","12":"Nut and Seed Products","13":"Beef Products","15":"Finfish and Shellfish Products","16":"Legumes and Legume Products","17":"Lamb, Veal, and Game Products","20":"Cereal Grains and Pasta","24":"American Indian/Alaska Native Foods"};
+export const categories: { [id: string]: string } = {
+  '1': 'Dairy and Egg Products',
+  '2': 'Spices and Herbs',
+  '4': 'Fats and Oils',
+  '5': 'Poultry Products',
+  '9': 'Fruits and Fruit Juices',
+  '10': 'Pork Products',
+  '11': 'Vegetables and Vegetable Products',
+  '12': 'Nut and Seed Products',
+  '13': 'Beef Products',
+  '15': 'Finfish and Shellfish Products',
+  '16': 'Legumes and Legume Products',
+  '17': 'Lamb, Veal, and Game Products',
+  '20': 'Cereal Grains and Pasta',
+};

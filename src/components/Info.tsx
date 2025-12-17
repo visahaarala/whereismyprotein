@@ -66,10 +66,21 @@ const Info = ({ show }: { show: boolean }) => {
       </p>
       <h4>Calculations</h4>
       <p>Reference 70kg 2000kcal person. WHY???</p>
+      <p>
+        tools.myfooddata.com suggests that 200 kcal is 10% of DV; daily energy
+        reference is 2000kcal. Amino acid bar chart shows percentage for 1/10th
+        of the assumed daily energy of 2000kcal.
+      </p>
+      <p></p>
       <p>...</p>
       <h4>Source of data</h4>
       <p>RDI recommendations: wikipedia etc</p>
       <p>USDA database</p>
+      <p>
+        Included only foods with ", raw" in the description as well as data
+        about essential amino acids, protein, fiber and energy. The rest of the
+        database is discarded.
+      </p>
 
       {showThoughts ? (
         <>

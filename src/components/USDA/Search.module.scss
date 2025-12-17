@@ -1,7 +1,12 @@
-@import '../../../scss/mixins';
+@import '../../scss/mixins';
 
 .search {
   @include search;
+
+  .property {
+    margin-bottom: -0.2rem;
+    grid-template-columns: 2fr auto 1fr auto 1fr auto 2fr;
+  }
 
   select,
   input[type='text'] {

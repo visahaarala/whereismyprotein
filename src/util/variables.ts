@@ -1,4 +1,4 @@
-import type { FineliEnergyDistribution } from '../types';
+import type { EAAs, FineliEnergyDistribution } from '../types';
 
 export const distributionKeys: (keyof FineliEnergyDistribution)[] = [
   'fiber',
@@ -8,3 +8,17 @@ export const distributionKeys: (keyof FineliEnergyDistribution)[] = [
 ];
 
 export const PERCENTAGE_MARGIN = 5;
+
+export const eaas: (keyof EAAs)[] = [
+  'tryptophan',
+  'threonine',
+  'isoleucine',
+  'leucine',
+  'lysine',
+  'methionine',
+  'cystine',
+  'phenylalanine',
+  'tyrosine',
+  'valine',
+  'histidine',
+];

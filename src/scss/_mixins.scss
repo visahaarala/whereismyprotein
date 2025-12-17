@@ -8,46 +8,7 @@
   .property {
     user-select: none;
     display: grid;
-    grid-template-columns: auto 1fr auto 1fr auto;
-    
-    & > div {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-  }
-
-  .modes {
-    display: flex;
-    align-items: center;
-
-    &__line {
-      flex: 1;
-      background-color: #777;
-      height: 0.1rem;
-      transform: translateY(0.1rem);
-    }
-
-    &__select {
-      margin: 0 1rem;
-      display: flex;
-      cursor: pointer;
-      user-select: none;
-      div {
-        width: 0.7rem;
-        position: relative;
-        &::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translateX(-50%) translateY(-50%) rotate(-70deg);
-          height: 0.1rem;
-          width: 1rem;
-          background-color: currentcolor;
-        }
-      }
-    }
+    // grid-template-columns: SET IN CSS MODULE
   }
 
   select,
@@ -59,6 +20,13 @@
     color: inherit;
     background-color: white;
   }
+
+  // select,
+  // input[type='text'] {
+  //   &:focus {
+  //     outline: SET IN CSS MODULE
+  //   }
+  // }
 
   select {
     font-size: 0.95rem;
@@ -83,4 +51,12 @@
   overflow: scroll;
   display: flex;
   flex-direction: column;
+
+  .settingsIcon {
+    // align-self: start;
+    margin-left: 1rem;
+    min-width: 1.8rem;
+    min-height: 1.8rem;
+    cursor: pointer;
+  }
 }

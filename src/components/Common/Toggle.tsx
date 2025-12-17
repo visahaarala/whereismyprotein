@@ -1,15 +1,24 @@
 import styles from './Toggle.module.scss';
 
-const Toggle = ({ isOn, toggleIsOn }: { isOn: boolean, toggleIsOn: () => void }) => {
-
+const Toggle = ({
+  name,
+  isOn,
+  toggleIsOn,
+}: {
+  name: string;
+  isOn: boolean;
+  toggleIsOn: () => void;
+}) => {
   return (
-    <div
-      className={`${styles.toggle} ${isOn ? styles['toggle--isOn'] : ''}`}
-      onClick={toggleIsOn}
-      onKeyDown={(e) => e.code === 'Space' && toggleIsOn}
-      tabIndex={0}
-    >
-      <div className={`${styles.ball}`} />
+    <div className={styles.toggle} onClick={toggleIsOn}>
+      <div
+        className={`${styles.switch} ${isOn ? styles['switch--isOn'] : ''}`}
+        // onKeyDown={(e) => e.code === 'Space' && toggleIsOn}
+        // tabIndex={0}
+      >
+        <div className={`${styles.ball}`} />
+      </div>
+      <span>{name}</span>
     </div>
   );
 };

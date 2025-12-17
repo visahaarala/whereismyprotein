@@ -1,10 +1,13 @@
 import { useContext } from 'react';
 import styles from './Search.module.scss';
 
-import Toggle from '../../Common/Toggle';
-import { UsdaContext } from '../../../context/UsdaContext';
-import { categories } from '../../../data/usda/categories';
-import RangeSlider from '../../Common/RangeSlider';
+import Toggle from '../Common/Toggle';
+import { UsdaContext } from '../../context/UsdaContext';
+import { categories } from '../../data/usda/categories';
+import RangeSlider from '../Common/RangeSlider';
+import ModeSelect from '../Common/ModeSelect';
+import type { ViewMode } from '../../types';
+import Categories from './Categories';
 
 const Search = () => {
   const { state, dispatch } = useContext(UsdaContext);
@@ -12,78 +15,69 @@ const Search = () => {
   return (
     <div
       className={styles.search}
-      style={state.selectedFood ? { display: 'none' } : {}}
+      style={
+        state.selectedFood
+          ? { display: 'none' }
+          : state.viewMode === 'view categories'
+          ? { flex: 1 }
+          : {}
+      }
     >
+      <h6>energy density</h6>
+
       <RangeSlider
-        name={'energy density'}
         value={state.energyDensity}
-        setValue={() => {}}
+        setValue={(energyDensity) =>
+          dispatch({ type: 'SET_LIMITS', payload: { energyDensity } })
+        }
       />
-      <RangeSlider
-        name={'rdi'}
-        value={state.rdi}
-        setValue={() => {}}
-      />
+
+      <h6>recommended daily intake</h6>
+
       <div className={styles.property}>
+        <div />
         <div>
           <Toggle
-            isOn={state.eaas}
+            name='EAAs'
+            isOn={state.eaasOn}
             toggleIsOn={() => dispatch({ type: 'TOGGLE_EAAS' })}
           />
-          <span>EAAs</span>
         </div>
         <div />
         <div>
           <Toggle
-            isOn={state.protein}
+            name='Protein'
+            isOn={state.proteinOn}
             toggleIsOn={() => dispatch({ type: 'TOGGLE_PROTEIN' })}
           />
-          <span>Protein</span>
         </div>
         <div />
         <div>
           <Toggle
-            isOn={state.fiber}
+            name='Fiber'
+            isOn={state.fiberOn}
             toggleIsOn={() => dispatch({ type: 'TOGGLE_FIBER' })}
           />
-          <span>Fiber</span>
         </div>
-        {/* <RangeSlider margin={5} /> */}
+        <div />
       </div>
-      <div className={styles.modes}>
-        <div className={styles.modes__line} />
-        <div
-          className={styles.modes__select}
-          onClick={() => {
-            console.log('toggle view mode');
-            dispatch({ type: 'TOGGLE_VIEW_MODE' });
-          }}
-          tabIndex={0}
-        >
-          <span
-            style={
-              state.viewMode === 'search' ? { textDecoration: 'underline' } : {}
-            }
-          >
-            search
-          </span>
-          <div />
-          <span
-            style={
-              state.viewMode === 'categoryDistribution'
-                ? { textDecoration: 'underline' }
-                : {}
-            }
-          >
-            category distribution
-          </span>
-        </div>
-        <div className={styles.modes__line} />
-      </div>
+
+      <RangeSlider
+        name='RDI'
+        value={state.rdi}
+        setValue={(rdi) => dispatch({ type: 'SET_LIMITS', payload: { rdi } })}
+        type='min'
+      />
+
+      <ModeSelect<ViewMode>
+        options={['search', 'view categories']}
+        selectedOption={state.viewMode}
+        toggleFn={() => dispatch({ type: 'TOGGLE_VIEW_MODE' })}
+      />
+
       {state.viewMode === 'search' ? (
         <>
           <select
-            name='category'
             id='category'
             value={state.category}
             onChange={(e) =>
@@ -116,7 +110,7 @@ const Search = () => {
           />
         </>
       ) : (
-        <p>category distribution</p>
+        <Categories />
       )}
     </div>
   );

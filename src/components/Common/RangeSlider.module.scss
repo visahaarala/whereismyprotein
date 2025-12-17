@@ -13,7 +13,9 @@ $top: 70%;
   border-left: 0.05rem solid #222;
 
   .name {
+    -webkit-user-select: none;
     user-select: none;
+    cursor: default;
     position: absolute;
     width: 100%;
     left: 50%;
@@ -51,8 +53,6 @@ $top: 70%;
   }
 
   .ball {
-    background-color: red;
-
     cursor: pointer;
     z-index: 1;
     position: absolute;

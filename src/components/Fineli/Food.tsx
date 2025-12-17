@@ -1,13 +1,13 @@
 import styles from './Food.module.scss';
 
-import capitalize from '../../../util/capitalize';
-import Bar from './Bar';
-import CloseIcon from '../../../svg/CloseIcon';
+import capitalize from '../../util/capitalize';
+import Bar from '../Common/Bar';
+import CloseIcon from '../../svg/CloseIcon';
 import { useContext } from 'react';
-import { FineliContext } from '../../../context/FineliContext';
-import energyDensity from '../../../util/getEnergyDensity';
-import getEnergyDistribution from '../../../util/getEnergyDistribution';
-import Toggle from '../../Common/Toggle';
+import { FineliContext } from '../../context/FineliContext';
+import energyDensity from '../../util/getEnergyDensity';
+import getEnergyDistribution from '../../util/getEnergyDistribution';
+import Toggle from '../Common/Toggle';
 
 const Food = () => {
   const { state, dispatch } = useContext(FineliContext);
@@ -38,8 +38,11 @@ const Food = () => {
       }
     >
       <div className={styles.lang} onClick={(e) => e.stopPropagation()}>
-        <Toggle type={'TOGGLE_LANGUAGE'} isOn={state.language === 'fi'} />
-        <span>Finnish</span>
+        <Toggle
+          name='Finnish'
+          isOn={state.language === 'fi'}
+          toggleIsOn={() => dispatch({ type: 'TOGGLE_LANGUAGE' })}
+        />
       </div>
       {state.selectedFood ? (
         <div className={styles.selectedFood}>
@@ -65,50 +68,50 @@ const Food = () => {
           </h5>
           <Bar
             percentage={energy / 37}
-            fillStyle={{ backgroundColor: '#2c3539' }}
+            style={{ backgroundColor: '#2c3539' }}
           />
           <h3>Energy distribution</h3>
           <h5>Fiber: {pctgs.fiber}%</h5>
           <Bar
             percentage={pctgs.fiber}
-            fillStyle={{ backgroundColor: 'green' }}
+            style={{ backgroundColor: 'green' }}
           />
           <h5>Fat: {pctgs.fat}%</h5>
           <Bar
             percentage={pctgs.fat}
-            fillStyle={{ backgroundColor: 'brown' }}
+            style={{ backgroundColor: 'brown' }}
           />
           <h5>Protein: {pctgs.protein}%</h5>
           <Bar
             percentage={pctgs.protein}
-            fillStyle={{ backgroundColor: 'purple' }}
+            style={{ backgroundColor: 'purple' }}
           />
           <h5>Carbohydrates: {carbsTotalPctg}%</h5>
           <Bar
             name='Sugar'
             percentage={pctgs.sugar}
-            fillStyle={{ backgroundColor: '#ff6347' }}
+            style={{ backgroundColor: '#ff6347' }}
           />
           <Bar
             name='Starch'
             percentage={pctgs.starch}
             // fillStyle={{ backgroundColor: '#eaf516' }}
-            fillStyle={{ backgroundColor: '#fdbd01' }}
+            style={{ backgroundColor: '#fdbd01' }}
           />
           <Bar
             name='Organic acids'
             percentage={pctgs.organicAcid}
-            fillStyle={{ backgroundColor: '#a0d000' }}
+            style={{ backgroundColor: '#a0d000' }}
           />
           <Bar
             name='Sugar alcolhols'
             percentage={pctgs.sugarAlcohol}
-            fillStyle={{ backgroundColor: '#44b3d7' }}
+            style={{ backgroundColor: '#44b3d7' }}
           />
           <h5>Alcohol: {pctgs.alcohol}%</h5>
           <Bar
             percentage={pctgs.alcohol}
-            fillStyle={{ backgroundColor: '#ff9c46' }}
+            style={{ backgroundColor: '#ff9c46' }}
           />
         </div>
       ) : (

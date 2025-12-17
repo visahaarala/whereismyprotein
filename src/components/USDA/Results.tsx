@@ -1,11 +1,11 @@
 import { useContext, useEffect, useRef, type KeyboardEvent } from 'react';
 import styles from './Results.module.scss';
-import capitalize from '../../../util/capitalize';
-import { FineliContext } from '../../../context/FineliContext';
-import type { FineliFood } from '../../../types';
+import capitalize from '../../util/capitalize';
+import { UsdaContext } from '../../context/UsdaContext';
+import type { UsdaFood } from '../../types';
 
 const Results = () => {
-  const { state, dispatch } = useContext(FineliContext);
+  const { state, dispatch } = useContext(UsdaContext);
 
   const resultsRef = useRef<HTMLDivElement>(null);
 
@@ -20,7 +20,7 @@ const Results = () => {
     }
   }, [state.pageIndex]);
 
-  const keyDownHandler = (e: KeyboardEvent, food: FineliFood) => {
+  const keyDownHandler = (e: KeyboardEvent, food: UsdaFood) => {
     const indexChange =
       e.code === 'ArrowUp' ? -1 : e.code === 'ArrowDown' ? 1 : undefined;
     if (indexChange !== undefined) {
@@ -49,7 +49,11 @@ const Results = () => {
   return (
     <div
       className={styles.results}
-      style={state.selectedFood ? { display: 'none' } : {}}
+      style={
+        state.selectedFood || state.viewMode === 'view categories'
+          ? { display: 'none' }
+          : {}
+      }
       id='FineliResults'
       ref={resultsRef}
       tabIndex={-1}
@@ -66,12 +70,7 @@ const Results = () => {
           tabIndex={0}
           onKeyDown={(e) => keyDownHandler(e, food)}
         >
-          {capitalize(food[state.language])}
-          {food.scientific ? (
-            <span>({capitalize(food.scientific)})</span>
-          ) : (
-            <></>
-          )}
+          {capitalize(food.description)}
         </p>
       ))}
     </div>

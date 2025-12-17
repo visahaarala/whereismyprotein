@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, type KeyboardEvent } from 'react';
 import styles from './Results.module.scss';
-import capitalize from '../../../util/capitalize';
-import { FineliContext } from '../../../context/FineliContext';
-import type { FineliFood } from '../../../types';
+import capitalize from '../../util/capitalize';
+import { FineliContext } from '../../context/FineliContext';
+import type { FineliFood } from '../../types';
 
 const Results = () => {
   const { state, dispatch } = useContext(FineliContext);

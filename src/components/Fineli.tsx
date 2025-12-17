@@ -1,9 +1,9 @@
 import styles from './Fineli.module.scss';
 
 import Pages from './Common/Pages';
-import Food from './Fineli/Food/Food';
-import Search from './Fineli/Search/Search';
-import Results from './Fineli/Results/Results';
+import Food from './Fineli/Food';
+import Search from './Fineli/Search';
+import Results from './Fineli/Results';
 import { FineliContext } from '../context/FineliContext';
 import { useContext } from 'react';
 

@@ -9,9 +9,9 @@ export const initialState: UsdaState = {
   searchString: '',
   energyDensity: { min: 0, max: 100 },
   rdi: { min: 0, max: 100 },
-  fiber: true,
-  protein: true,
-  eaas: true,
+  fiberOn: true,
+  proteinOn: true,
+  eaasOn: true,
   results: getFoods().sort((a, b) =>
     a.description.localeCompare(b.description)
   ),
@@ -54,12 +54,11 @@ const getStateWithFilteredFoods = (state: UsdaState) => {
         getEnergyDensity(food.energy) <= state.energyDensity.max
       );
     })
-    .filter(() => {
-      /// EAAS, PROTEIN, FIBER
-
-      return true;
-    })
+    .filter((food) => !state.eaasOn || food.minEaaPctg >= state.rdi.min)
+    .filter((food) => !state.fiberOn || food.fiber >= state.rdi.min)
+    .filter((food) => !state.proteinOn || food.protein >= state.rdi.min)
     .sort((a, b) => a.description.localeCompare(b.description));
+
   return { ...state, results };
 };
 
@@ -69,30 +68,28 @@ export const reducer = (
 ): UsdaState => {
   switch (action.type) {
     case 'TOGGLE_VIEW_MODE': {
-      console.log('toggle view mode');
       return getStateWithFilteredFoods({
         ...state,
-        viewMode:
-          state.viewMode === 'search' ? 'categoryDistribution' : 'search',
+        viewMode: state.viewMode === 'search' ? 'view categories' : 'search',
         pageIndex: 0,
       });
     }
     case 'TOGGLE_EAAS': {
       return getStateWithFilteredFoods({
         ...state,
-        eaas: !state.eaas,
+        eaasOn: !state.eaasOn,
       });
     }
     case 'TOGGLE_FIBER': {
       return getStateWithFilteredFoods({
         ...state,
-        fiber: !state.fiber,
+        fiberOn: !state.fiberOn,
       });
     }
     case 'TOGGLE_PROTEIN': {
       return getStateWithFilteredFoods({
         ...state,
-        protein: !state.protein,
+        proteinOn: !state.proteinOn,
       });
     }
     case 'SET_PAGE_INDEX': {

@@ -4,13 +4,14 @@ import styles from './Bar.module.scss';
 const Bar = ({
   name,
   percentage,
-  fillStyle,
+  style,
 }: {
   name?: string;
   percentage?: number;
-  fillStyle?: CSSProperties;
+  style?: CSSProperties;
 }) => {
   const pctg = percentage || 0;
+
   return (
     <div className={`${styles.bar} ${!name && styles['bar--thin']}`}>
       {name ? (
@@ -22,7 +23,7 @@ const Bar = ({
       )}
       <div
         className={styles.fill}
-        style={{ width: pctg + '%', ...fillStyle }}
+        style={{ width: pctg + '%', ...style }}
       />
     </div>
   );

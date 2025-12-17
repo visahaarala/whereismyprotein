@@ -6,7 +6,6 @@ import {
   type TouchEvent,
 } from 'react';
 import styles from './RangeSlider.module.scss';
-import capitalize from '../../util/capitalize';
 import type { Range } from '../../types';
 import { PERCENTAGE_MARGIN } from '../../util/variables';
 
@@ -25,10 +24,10 @@ const RangeSlider = ({
   setValue,
   type = 'both',
 }: {
-  name: string;
+  name?: string;
   margin?: number;
   value: Range;
-  setValue: (newRange: Range) => void;
+  setValue: (range: Range) => void;
   type?: 'min' | 'max' | 'both';
 }) => {
   const [min, setMin] = useState(value.min);
@@ -103,7 +102,8 @@ const RangeSlider = ({
       const newPctg = clamp(
         newPctgCandidate,
         0,
-        Math.min(100 - margin, max - margin)
+
+        type === 'min' ? 100 : Math.min(100 - margin, max - margin)
       );
       setMin(newPctg);
     } else {
@@ -127,25 +127,18 @@ const RangeSlider = ({
     window.removeEventListener('touchend', handleDragEnd);
   };
 
-  const sliderName =
-    type !== 'both'
-      ? type === 'max'
-        ? `max. ${capitalize(name)}`
-        : `min. ${capitalize(name)}`
-      : capitalize(name, true);
-
-  const sliderNumbers =
+  const sliderText =
     type === 'both'
-      ? `${Math.round(min)}% to ${Math.round(max)}%`
-      : type === 'max'
-      ? `${Math.round(max)}%`
-      : `${Math.round(min)}%`;
+      ? `${name ? name + ': ' : ''}${Math.round(min)}% to ${Math.round(max)}%`
+      : type === 'min'
+      ? `> ${Math.round(min)}%${name ? ` of ${name}` : ''}`
+      : `< ${Math.round(max)}%${name ? ` of ${name}` : ''}`;
 
   const ballHeightPow = 3.5;
 
   return (
     <div className={styles.rangeSlider}>
-      <p className={styles.name}>{`${sliderName}: ${sliderNumbers}`}</p>
+      <p className={styles.name}>{sliderText}</p>
       <div className={styles.track} ref={trackRef} />
       <div
         className={styles.range}
@@ -159,7 +152,10 @@ const RangeSlider = ({
         <div
           className={styles.ball}
           style={{
-            width: `min(${max - min}%, calc(var(--padding-sides) * 2))`,
+            width:
+              type === 'min'
+                ? 'calc(var(--padding-sides) * 2)'
+                : `min(${max - min}%, calc(var(--padding-sides) * 2))`,
             left: `${min}%`,
             transition: isDragging ? 'unset' : '',
           }}
@@ -184,7 +180,10 @@ const RangeSlider = ({
         <div
           className={styles.ball}
           style={{
-            width: `min(${max - min}%, calc(var(--padding-sides) * 2))`,
+            width:
+              type === 'max'
+                ? 'calc(var(--padding-sides) * 2)'
+                : `min(${max - min}%, calc(var(--padding-sides) * 2))`,
             left: `${max}%`,
             transition: isDragging ? 'unset' : '',
           }}
