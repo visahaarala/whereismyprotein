@@ -30,17 +30,39 @@ const Categories = () => {
 
   const categoryNames = Object.keys(categories).map((key) => categories[key]);
 
+  const categoryInfo: {
+    [key: string]: {
+      percentage: number;
+      totalFoods: number;
+      filteredFoods: number;
+    };
+  } = {};
+
+  categoryNames.forEach((name) => {
+    const totalFoods = categoryTotals[name];
+    const filteredFoods = categoryFiltered[name] || 0;
+    const percentage = Math.round((filteredFoods / totalFoods) * 100);
+    categoryInfo[name] = { totalFoods, filteredFoods, percentage };
+  });
+
   return (
     <div
       className={styles.categories}
       style={state.viewMode !== 'view categories' ? { display: 'none' } : {}}
     >
-      {categoryNames.map((name) => {
-        const percentage = categoryFiltered[name]
-          ? Math.round((categoryFiltered[name] / categoryTotals[name]) * 100)
-          : 0;
-
-        return <Bar key={name} name={name} percentage={percentage} />;
+      {Object.keys(categoryInfo).map((name) => {
+        const {
+          // totalFoods, filteredFoods,
+          percentage,
+        } = categoryInfo[name];
+        return (
+          <Bar
+            key={name}
+            percentage={percentage}
+            text={`${name}: ${percentage}%`}
+            // text={`${name}: ${percentage}% (${filteredFoods}/${totalFoods})`}
+          />
+        );
       })}
     </div>
   );

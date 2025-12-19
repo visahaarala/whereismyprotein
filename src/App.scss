@@ -3,45 +3,26 @@
 :root {
   --header-height: 2.7rem;
 
+  --background-color-html: #f7f8f9;
   --background-color-tab: #ddd;
   --background-color-tab-selected: #4807;
   --background-color-search: #4488002a;
+  --background-color-bar: #f8f8f8;
+  --background-color-bar-fill: #4806;
+  --background-color-isOn: #4a0;
 
   --outline-color: #480;
 
-  --background-color-bar: #f8f8f8;
-  --background-color-bar-fill: #4806;
-
-  --background-color-isOn: #4a0;
-
-  // // INFO
-  // --background-color-info-tab: #0484;
-
-  // // FINELI
-  // --background-color-fineli-tab: #4805;
-  // --background-color-fineli: #4802;
-  // --outline-color-fineli: #480;
-
-  // // USDA
-  // --background-color-usda-tab: #1503be44;
-  // --background-color-usda-tab: #4084;
-  // --background-color-usda-tab: #0484;
-  // --background-color-usda-tab: #8404;
-  // --background-color-usda-tab: #4805;
-  // --background-color-usda: #4082;
-  // --background-color-usda: #0482;
-  // --background-color-usda: #8402;
-  // --background-color-usda: #4802;
-  // --outline-color-usda: #408;
-  // --outline-color-usda: #480;
-
-  // --background-color-bar: #84c5e3;
+  --color: #111;
+  --color-small: #222;
+  --color-scientific: #444;
 
   --border-color: #888;
   --border: 1px solid var(--border-color);
 
   --padding-sides: 1rem;
-  --padding-common: 1.5rem var(--padding-sides) 0.8rem;
+  --padding-search: 1.5rem var(--padding-sides) 0.8rem;
+  --padding-results: 1rem var(--padding-sides);
 }
 
 *,
@@ -53,19 +34,18 @@
 }
 
 html {
-  background-color: #f7f8f9;
+  background-color: var(--background-color-html);
 }
 
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
-  color: #111;
+  color: var(--color);
 
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  // background-color: white;
 }
 
 #root {
@@ -101,12 +81,10 @@ main {
 }
 
 h1 {
-  // Where is my protein -- title
-  flex: 1;
+  margin: 2rem 0 1.5rem;
   font-size: 1.4rem;
   letter-spacing: 0.05rem;
   font-weight: 600;
-  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -119,7 +97,7 @@ h2 {
   span {
     font-size: 0.9em;
     font-weight: 400;
-    color: #444;
+    color: var(--color-scientific);
     display: block;
     margin-top: 0.2rem;
   }
@@ -132,7 +110,7 @@ h3 {
   font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: 0.03rem;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--color);
 
   p + & {
     // in info
@@ -146,10 +124,10 @@ h3 {
   }
 
   span {
-    margin-left: 0.4rem;
+    margin-left: 0.2rem;
     font-weight: 400;
     font-size: 0.9rem;
-    color: #222;
+    color: var(--color-small);
   }
 }
 
@@ -166,6 +144,13 @@ h5 {
   line-height: 0;
   margin-top: 0.8rem;
   margin-bottom: 0.2rem;
+
+  span {
+    font-weight: 400;
+    font-size: 0.9em;
+    margin-left: 0.2rem;
+    color: var(--color-small);
+  }
 }
 
 h6 {
@@ -182,7 +167,7 @@ h6 {
 small {
   font-size: 0.85rem;
   font-weight: 400;
-  color: #333;
+  color: #222;
   margin-top: 0.1rem;
   margin-bottom: -0.1rem;
 }

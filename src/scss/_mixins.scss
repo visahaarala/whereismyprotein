@@ -1,5 +1,5 @@
 @mixin search {
-  padding: var(--padding-common);
+  padding: var(--padding-search);
   border-bottom: 1px solid #888;
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@
 
 @mixin content {
   flex: 1;
-  padding: var(--padding-common);
+  padding: var(--padding-results);
   background-color: white;
   overflow: scroll;
   display: flex;

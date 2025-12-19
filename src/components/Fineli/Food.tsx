@@ -78,10 +78,16 @@ const Food = () => {
           <h5>Protein: {pctgs.protein}%</h5>
           <Bar percentage={pctgs.protein} />
           <h5>Carbohydrates: {carbsTotalPctg}%</h5>
-          <Bar name='Sugar' percentage={pctgs.sugar} />
-          <Bar name='Starch' percentage={pctgs.starch} />
-          <Bar name='Organic acids' percentage={pctgs.organicAcid} />
-          <Bar name='Sugar alcolhols' percentage={pctgs.sugarAlcohol} />
+          <Bar text={`Sugar: ${pctgs.sugar}%`} percentage={pctgs.sugar} />
+          <Bar text={`Starch: ${pctgs.starch}%`} percentage={pctgs.starch} />
+          <Bar
+            text={`Organic acids: ${pctgs.organicAcid}%`}
+            percentage={pctgs.organicAcid}
+          />
+          <Bar
+            text={`Sugar alcolhols: ${pctgs.sugarAlcohol}%`}
+            percentage={pctgs.sugarAlcohol}
+          />
           <h5>Alcohol: {pctgs.alcohol}%</h5>
           <Bar percentage={pctgs.alcohol} />
         </div>

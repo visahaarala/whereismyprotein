@@ -2,29 +2,20 @@ import type { CSSProperties } from 'react';
 import styles from './Bar.module.scss';
 
 const Bar = ({
-  name,
+  text,
   percentage,
   style,
 }: {
-  name?: string;
+  text?: string;
   percentage?: number;
   style?: CSSProperties;
 }) => {
   const pctg = percentage || 0;
 
   return (
-    <div className={`${styles.bar} ${!name && styles['bar--thin']}`}>
-      {name ? (
-        <p>
-          {name}: {percentage}%
-        </p>
-      ) : (
-        <></>
-      )}
-      <div
-        className={styles.fill}
-        style={{ ...style, width: pctg + '%' }}
-      />
+    <div className={`${styles.bar} ${!text && styles['bar--thin']}`}>
+      {text ? <p>{text}</p> : <></>}
+      <div className={styles.fill} style={{ ...style, width: pctg + '%' }} />
     </div>
   );
 };

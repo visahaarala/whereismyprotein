@@ -57,7 +57,9 @@ const Food = () => {
         <h5>{`Protein: ${protein}%`}</h5>
         <BarThousand pctg={protein} />
 
-        <h5>{`Essential amino acids, min: ${minEaaPctg}%`}</h5>
+        <h5>
+          Essential amino acids <span>(min: {minEaaPctg}%)</span>
+        </h5>
         <BarThousand />
         {eaas.map((eaa) => {
           const name = eaa.names.map((n) => capitalize(n)).join(' & ');
