@@ -39,29 +39,21 @@ const Food = () => {
             <CloseIcon />
           </div>
         </div>
-        <h5>
-          Energy density: {energyDensity(energy)}%
-          <span>
-            ({Math.round(kcal)}
-            kcal/100g &rarr; {(2000 / kcal / 10).toFixed(2)} kg to 2000kcal)
-          </span>
-        </h5>
+        <h5>Energy density: {energyDensity(energy)}%</h5>
+        <small>
+          ({Math.round(kcal)}
+          kcal/100g &rarr; {(2000 / kcal / 10).toFixed(2)} kg to 2000kcal)
+        </small>
 
-        <Bar
-          percentage={energyDensity(energy)}
-        />
+        <Bar percentage={energyDensity(energy)} />
 
         <h3>% of RDI</h3>
 
         <h5>{`Fiber: ${fiber}%`}</h5>
-        <BarThousand
-          pctg={fiber}
-        />
+        <BarThousand pctg={fiber} />
 
         <h5>{`Protein: ${protein}%`}</h5>
-        <BarThousand
-          pctg={protein}
-        />
+        <BarThousand pctg={protein} />
 
         <h5>{`Essential amino acids, min: ${minEaaPctg}%`}</h5>
         {eaas.map((eaa) => {

@@ -18,8 +18,7 @@ if (matchMedia('(pointer:coarse)').matches) {
 }
 
 const App = () => {
-  // const [view, setView] = useState<View>('info');
-  const [view, setView] = useState<View>('usda');
+  const [view, setView] = useState<View>('info');
 
   return (
     <>

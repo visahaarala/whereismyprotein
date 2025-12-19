@@ -61,13 +61,11 @@ const Food = () => {
               <CloseIcon />
             </div>
           </div>
-          <h5>
-            Energy density: {energyDensity(energy)}%
-            <span>
-              ({Math.round(kcal)}
-              kcal/100g &rarr; {(2000 / kcal / 10).toFixed(2)} kg to 2000kcal)
-            </span>
-          </h5>
+          <h5>Energy density: {energyDensity(energy)}%</h5>
+          <small>
+            ({Math.round(kcal)}
+            kcal/100g &rarr; {(2000 / kcal / 10).toFixed(2)} kg to 2000kcal)
+          </small>
           <Bar percentage={energy / 37} />
           <h3>Energy distribution</h3>
           <h5>Fiber: {pctgs.fiber}%</h5>

@@ -15,8 +15,8 @@ const Info = ({ show }: { show: boolean }) => {
       <h3>Fineli</h3>
       <p>
         Browse the energy balance of macronutrients (including fiber and
-        alcohol) in different foods. Carbohydrates are split into sugars,
-        starches, organic acids and sugar alcohols.
+        alcohol) in different foods. Carbohydrates are split into sugar, starch,
+        organic acid and sugar alcohol.
       </p>
 
       <h4>Raw</h4>
