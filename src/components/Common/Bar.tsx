@@ -23,7 +23,7 @@ const Bar = ({
       )}
       <div
         className={styles.fill}
-        style={{ width: pctg + '%', ...style }}
+        style={{ ...style, width: pctg + '%' }}
       />
     </div>
   );

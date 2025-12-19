@@ -10,14 +10,26 @@ const Navigation = ({
   view: View;
   setView: Dispatch<SetStateAction<View>>;
 }) => {
+  const tabNames: View[] = ['info', 'fineli', 'usda'];
+
   return (
     <nav className={styles.nav}>
-      <div
-        style={
-          view === 'info'
-            ? { backgroundColor: 'var(--background-color-info-tab)' }
-            : {}
-        }
+      {tabNames.map((tabName) => (
+        <div
+          className={`${styles.tab} ${
+            view === tabName ? styles['tab--selected'] : ''
+          }`}
+          onClick={() => setView(tabName)}
+        >
+          {tabName}
+        </div>
+      ))}
+      {/* <div
+        // style={
+        //   view === 'info'
+        //     ? { backgroundColor: 'var(--background-color-info-tab)' }
+        //     : {}
+        // }
         onClick={() => setView('info')}
         onKeyDown={(e) => e.code === 'Space' && setView('info')}
         tabIndex={0}
@@ -43,7 +55,7 @@ const Navigation = ({
         tabIndex={0}
       >
         USDA
-      </div>
+      </div> */}
     </nav>
   );
 };

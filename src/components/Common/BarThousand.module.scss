@@ -16,10 +16,11 @@
 
   .tenth {
     border: 1px solid #ccce;
+    background-color: var(--background-color-bar);
 
     & > div {
       height: 100%;
-      background-color: var(--background-color-bar);
+      background-color: var(--background-color-bar-fill);
     }
   }
 }

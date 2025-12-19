@@ -36,7 +36,7 @@ export type FineliState = {
   pageIndex: number;
 };
 
-export type FineliFilterMode = 'search' | 'limit';
+export type FineliFilterMode = 'Search' | 'Limit';
 
 export type FineliReducerAction = {
   type: FineliReducerActionType;

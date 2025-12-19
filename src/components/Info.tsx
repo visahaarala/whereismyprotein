@@ -9,44 +9,44 @@ const Info = ({ show }: { show: boolean }) => {
       <p>
         For vegans, there's always the question of where do you get your
         protein. The purpose of this tool is to answer that question as well as
-        give an idea of the energy balance of some other nutrients.
+        give an idea of the energy balance of different nutrients.
       </p>
-
-      <h3>Search</h3>
-      <p>Raw: Unprocessed or raw. Scientific: Has a scientific name.</p>
-      <p>
-        Search with words or parts of words. Use '-' in front to exclude a word.
-      </p>
-      <h4>Categories</h4>
-      <p>
-        Choose category from the dropdown menu. With no category chosen, all
-        foods are displayed.
-      </p>
-      <h4>Language</h4>
-      <p>
-        The en/fi toggle in Fineli is for food and category names only.
-        Everything else is in english.
-      </p>
-
-      <h4>limits</h4>
-      <p>there's a 10% margin for both min & max values....</p>
-
-      <h4>Foodview</h4>
-      <p>Click anywhere to close</p>
 
       <h3>Fineli</h3>
       <p>
-        Browse the energy balance of macronutrients (including fiber) in
-        different foods. Carbohydrates are split into sugars and starches. There
-        is an option to search the results in either english or finnish.
+        Browse the energy balance of macronutrients (including fiber and
+        alcohol) in different foods. Carbohydrates are split into sugars,
+        starches, organic acids and sugar alcohols.
       </p>
+
+      <h4>Raw</h4>
+      <p>Show only foods that are raw or unprocessed.</p>
+
+      <h4>Scientific</h4>
+      <p>Show only foods that have a scientific name.</p>
+
+      <h4>Finnish</h4>
+      <p>Toggle search & results language between finnish and english.</p>
+
+      <h4>Search / limit</h4>
+      <p>
+        Choose between searching foods by categories and food names or limiting
+        foods by energy density and energy distribution.
+      </p>
+
+      <h4>Results view</h4>
+      <p>
+        Click on a food name to view details. Click anywhere on the details to
+        exit back to browsing.
+      </p>
+
       <h4>Calculations</h4>
       <p>
-        Energy balance is calculated such that fats are 9kcal/g, starch 4kcal/g,
-        sugar 4kcal/g, protein 4kcal/g, fiber 2kcal/g, sugar alcohols 2.4kcal/g,
-        organic acids 3kcal/g and alcohol 7kcal/g.
+        Energy balance is calculated such that fats are 9kcal/g, protein
+        4kcal/g, fiber 2kcal/g, starch 4kcal/g, sugar 4kcal/g, sugar alcohols
+        2.4kcal/g, organic acids 3kcal/g and alcohol 7kcal/g.
       </p>
-      <p>---- ADD ALCOHOL: 29 kJ (7 kcal)/g. ----</p>
+
       <h4>Source of data</h4>
       <p>
         Peruspaketti 1 (Basic package 1)
@@ -64,22 +64,51 @@ const Info = ({ show }: { show: boolean }) => {
         daily intake (RDI), assuming that the daily energy needs would be met
         with that particular food.
       </p>
-      <h4>Calculations</h4>
-      <p>Reference 70kg 2000kcal person. WHY???</p>
+
+      <h4>Search details</h4>
       <p>
-        tools.myfooddata.com suggests that 200 kcal is 10% of DV; daily energy
-        reference is 2000kcal. Amino acid bar chart shows percentage for 1/10th
-        of the assumed daily energy of 2000kcal.
+        Energy density, percentage of RDI, search/viewcategories, etc.. (fix
+        this)
       </p>
-      <p></p>
-      <p>...</p>
-      <h4>Source of data</h4>
-      <p>RDI recommendations: wikipedia etc</p>
-      <p>USDA database</p>
+
+      <h4>Calculations</h4>
       <p>
-        Included only foods with ", raw" in the description as well as data
-        about essential amino acids, protein, fiber and energy. The rest of the
-        database is discarded.
+        <a href='https://tools.myfooddata.com/protein-calculator/'>
+          Tools.myfooddata.com protein calculator
+        </a>{' '}
+        suggests that 200 kcal is 10% of DV; daily energy reference is 2000kcal.
+        Comparing tools.myfooddata.com amino acid RDI percentages with{' '}
+        <a href='https://en.wikipedia.org/wiki/Essential_amino_acid#Recommended_daily_intake'>
+          wikipedia essential amino acid RDI chart
+        </a>{' '}
+        (WHO) suggests that the calculations are for a 70kg person. Thus, the{' '}
+        <b>% of RDI</b> calculations in this program are for a 70kg person
+        consuming 2000kcal of a particular food.
+      </p>
+
+      <h4>Source of data</h4>
+      <p>
+        SR Legacy dataset from{' '}
+        <a href='https://fdc.nal.usda.gov/download-datasets'>
+          https://fdc.nal.usda.gov/download-datasets
+        </a>
+      </p>
+      <p>
+        The dataset is filtered such that only foods with info about energy,
+        protein, fiber and essential amino acid content are included.
+      </p>
+
+      <h3>About</h3>
+      <p>
+        This software is inspired by
+        <br />
+        <a href='https://nutritionfacts.org'>https://nutritionfacts.org </a>
+        <br />
+        and
+        <br />
+        <a href='https://tools.myfooddata.com/protein-calculator/'>
+          https://tools.myfooddata.com/protein-calculator/
+        </a>
       </p>
 
       {showThoughts ? (

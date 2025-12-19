@@ -45,12 +45,12 @@ const Search = () => {
       </div>
 
       <ModeSelect<FineliFilterMode>
-        options={['search', 'limit']}
+        options={['Search', 'Limit']}
         selectedOption={state.filterMode}
         toggleFn={() => dispatch({ type: 'TOGGLE_FILTER_MODE' })}
       />
 
-      {state.filterMode === 'search' ? (
+      {state.filterMode === 'Search' ? (
         <>
           <select
             id='category'

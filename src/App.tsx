@@ -27,12 +27,12 @@ const App = () => {
         <Navigation view={view} setView={setView} />
       </header>
       <main>
+        <Info show={view === 'info'} />
         <FineliContextProvider>
           <Fineli show={view === 'fineli'} />
         </FineliContextProvider>
         <UsdaContextProvider>
           <USDA show={view === 'usda'} />
-          <Info show={view === 'info'} />
         </UsdaContextProvider>
       </main>
     </>

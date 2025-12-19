@@ -6,7 +6,7 @@
   box-shadow: 0 0.1rem 0.1rem #555;
   z-index: 1; // to show box-shadow
 
-  & > div {
+  .tab {
     height: 100%;
     display: flex;
     align-items: center;
@@ -15,9 +15,13 @@
       border-right: var(--border);
     }
     flex: 1;
-    background-color: #ddd;
+    background-color: var(--background-color-tab);
     text-transform: uppercase;
     font-weight: 400;
     cursor: pointer;
+
+    &--selected {
+      background-color: var(--background-color-tab-selected);
+    }
   }
 }

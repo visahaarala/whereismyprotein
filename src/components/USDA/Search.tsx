@@ -32,7 +32,7 @@ const Search = () => {
         }
       />
 
-      <h6>% of recommended daily intake</h6>
+      <h6>percentage of rdi</h6>
 
       <div className={styles.property}>
         <div />

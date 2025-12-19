@@ -10,7 +10,7 @@ const initialLanguage = navigator.language.includes('fi') ? 'fi' : 'en';
 export const initialState: FineliState = {
   isRaw: false,
   hasScientific: false,
-  filterMode: 'search',
+  filterMode: 'Search',
   language: initialLanguage,
 
   // search
@@ -43,13 +43,13 @@ const getStateWithFilteredFoods = (state: FineliState) => {
     .filter(
       (food) =>
         // filter category ONLY if mode is search
-        state.filterMode !== 'search' ||
+        state.filterMode !== 'Search' ||
         !state.category ||
         food.category === state.category
     )
     .filter((food) => {
       // filter searchString ONLY if mode is search
-      if (state.filterMode !== 'search') return true;
+      if (state.filterMode !== 'Search') return true;
       const words = state.searchString.split(' ').map((w) => w.toLowerCase());
       for (const word of words) {
         if (word.charAt(0) === '-') {
@@ -72,14 +72,14 @@ const getStateWithFilteredFoods = (state: FineliState) => {
       return true;
     })
     .filter((food) => {
-      if (state.filterMode !== 'limit') return true;
+      if (state.filterMode !== 'Limit') return true;
       return (
         getEnergyDensity(food.energy) >= state.energyDensity.min &&
         getEnergyDensity(food.energy) <= state.energyDensity.max
       );
     })
     .filter((food) => {
-      if (state.filterMode !== 'limit') return true;
+      if (state.filterMode !== 'Limit') return true;
       const pctgs = getEnergyDistribution(food);
       for (const key of distributionKeys) {
         if (pctgs[key] < state[key].min) {
@@ -117,7 +117,7 @@ export const reducer = (
     case 'TOGGLE_FILTER_MODE': {
       return getStateWithFilteredFoods({
         ...state,
-        filterMode: state.filterMode === 'limit' ? 'search' : 'limit',
+        filterMode: state.filterMode === 'Limit' ? 'Search' : 'Limit',
         pageIndex: 0,
       });
     }

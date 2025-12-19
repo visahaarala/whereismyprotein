@@ -27,6 +27,8 @@ const Food = () => {
 
   const url = `https://fineli.fi/fineli/${state.language}/elintarvikkeet/${selectedFood.id}`;
 
+  const kcal = energy / 4.184;
+
   return (
     <div
       className={styles.food}
@@ -62,57 +64,25 @@ const Food = () => {
           <h5>
             Energy density: {energyDensity(energy)}%
             <span>
-              ({Math.round(energy / 4.184)}
-              kcal/100g)
+              ({Math.round(kcal)}
+              kcal/100g &rarr; {(2000 / kcal / 10).toFixed(2)} kg to 2000kcal)
             </span>
           </h5>
-          <Bar
-            percentage={energy / 37}
-            style={{ backgroundColor: '#2c3539' }}
-          />
+          <Bar percentage={energy / 37} />
           <h3>Energy distribution</h3>
           <h5>Fiber: {pctgs.fiber}%</h5>
-          <Bar
-            percentage={pctgs.fiber}
-            style={{ backgroundColor: 'green' }}
-          />
+          <Bar percentage={pctgs.fiber} />
           <h5>Fat: {pctgs.fat}%</h5>
-          <Bar
-            percentage={pctgs.fat}
-            style={{ backgroundColor: 'brown' }}
-          />
+          <Bar percentage={pctgs.fat} />
           <h5>Protein: {pctgs.protein}%</h5>
-          <Bar
-            percentage={pctgs.protein}
-            style={{ backgroundColor: 'purple' }}
-          />
+          <Bar percentage={pctgs.protein} />
           <h5>Carbohydrates: {carbsTotalPctg}%</h5>
-          <Bar
-            name='Sugar'
-            percentage={pctgs.sugar}
-            style={{ backgroundColor: '#ff6347' }}
-          />
-          <Bar
-            name='Starch'
-            percentage={pctgs.starch}
-            // fillStyle={{ backgroundColor: '#eaf516' }}
-            style={{ backgroundColor: '#fdbd01' }}
-          />
-          <Bar
-            name='Organic acids'
-            percentage={pctgs.organicAcid}
-            style={{ backgroundColor: '#a0d000' }}
-          />
-          <Bar
-            name='Sugar alcolhols'
-            percentage={pctgs.sugarAlcohol}
-            style={{ backgroundColor: '#44b3d7' }}
-          />
+          <Bar name='Sugar' percentage={pctgs.sugar} />
+          <Bar name='Starch' percentage={pctgs.starch} />
+          <Bar name='Organic acids' percentage={pctgs.organicAcid} />
+          <Bar name='Sugar alcolhols' percentage={pctgs.sugarAlcohol} />
           <h5>Alcohol: {pctgs.alcohol}%</h5>
-          <Bar
-            percentage={pctgs.alcohol}
-            style={{ backgroundColor: '#ff9c46' }}
-          />
+          <Bar percentage={pctgs.alcohol} />
         </div>
       ) : (
         <></>

@@ -19,14 +19,11 @@
     border: 1px solid #888;
     color: inherit;
     background-color: white;
-  }
 
-  // select,
-  // input[type='text'] {
-  //   &:focus {
-  //     outline: SET IN CSS MODULE
-  //   }
-  // }
+    &:focus {
+      outline: 1px solid var(--outline-color);
+    }
+  }
 
   select {
     font-size: 0.95rem;

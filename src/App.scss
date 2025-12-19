@@ -3,30 +3,42 @@
 :root {
   --header-height: 2.7rem;
 
-  // INFO
-  --background-color-info-tab: #0484;
+  --background-color-tab: #ddd;
+  --background-color-tab-selected: #4805;
+  --background-color-search: #4802;
 
-  // FINELI
-  --background-color-fineli-tab: #4805;
-  --background-color-fineli: #4802;
-  --outline-color-fineli: #480;
+  --outline-color: #480;
 
-  // USDA
-  --background-color-usda-tab: #1503be44;
-  --background-color-usda-tab: #4084;
-  --background-color-usda-tab: #0484;
-  --background-color-usda-tab: #8404;
-  --background-color-usda: #4082;
-  --background-color-usda: #0482;
-  --background-color-usda: #8402;
-  --outline-color-usda: #408;
+  --background-color-bar: #f8f8f8;
+  --background-color-bar-fill: #4805;
 
-  --background-color-bar: #84c5e3;
+  --background-color-isOn: #4a0;
+
+  // // INFO
+  // --background-color-info-tab: #0484;
+
+  // // FINELI
+  // --background-color-fineli-tab: #4805;
+  // --background-color-fineli: #4802;
+  // --outline-color-fineli: #480;
+
+  // // USDA
+  // --background-color-usda-tab: #1503be44;
+  // --background-color-usda-tab: #4084;
+  // --background-color-usda-tab: #0484;
+  // --background-color-usda-tab: #8404;
+  // --background-color-usda-tab: #4805;
+  // --background-color-usda: #4082;
+  // --background-color-usda: #0482;
+  // --background-color-usda: #8402;
+  // --background-color-usda: #4802;
+  // --outline-color-usda: #408;
+  // --outline-color-usda: #480;
+
+  // --background-color-bar: #84c5e3;
 
   --border-color: #888;
   --border: 1px solid var(--border-color);
-
-  --background-color-isOn: #4a0;
 
   --padding-sides: 1rem;
   --padding-common: 1.5rem var(--padding-sides) 0.8rem;
@@ -46,6 +58,7 @@ html {
 
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
   color: #111;
 
   display: flex;
@@ -90,13 +103,11 @@ main {
 h1 {
   // Where is my protein -- title
   flex: 1;
-  display: flex;
-  align-items: center;
   font-size: 1.4rem;
-  letter-spacing: 0.04rem;
+  letter-spacing: 0.05rem;
   font-weight: 600;
-
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 h2 {
@@ -136,7 +147,7 @@ h3 {
 
 h4 {
   // Info -- smaller subtitle
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.02rem;
   margin-top: 0.8rem;
@@ -168,6 +179,11 @@ h6 {
   text-decoration: underline;
 }
 
-p + p {
+p + p,
+h3 + p {
   margin-top: 0.4rem;
+}
+
+b {
+  font-weight: 600;
 }

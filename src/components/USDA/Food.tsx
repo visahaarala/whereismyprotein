@@ -17,7 +17,10 @@ const Food = () => {
     return <></>;
   }
 
-  const { description, energy, protein, fiber, eaas, minEaaPctg } = selectedFood;
+  const { description, energy, protein, fiber, eaas, minEaaPctg } =
+    selectedFood;
+
+  const kcal = energy / 4.184;
 
   return (
     <div
@@ -39,14 +42,13 @@ const Food = () => {
         <h5>
           Energy density: {energyDensity(energy)}%
           <span>
-            ({Math.round(energy / 4.184)}
-            kcal/100g)
+            ({Math.round(kcal)}
+            kcal/100g &rarr; {(2000 / kcal / 10).toFixed(2)} kg to 2000kcal)
           </span>
         </h5>
 
         <Bar
           percentage={energyDensity(energy)}
-          // style={{ backgroundColor: 'var(--background-color-usda-tab)' }}
         />
 
         <h3>% of RDI</h3>
@@ -54,13 +56,11 @@ const Food = () => {
         <h5>{`Fiber: ${fiber}%`}</h5>
         <BarThousand
           pctg={fiber}
-          // style={{ backgroundColor: 'var(--background-color-usda-tab)' }}
         />
 
         <h5>{`Protein: ${protein}%`}</h5>
         <BarThousand
           pctg={protein}
-          // style={{ backgroundColor: 'var(--background-color-usda-tab)' }}
         />
 
         <h5>{`Essential amino acids, min: ${minEaaPctg}%`}</h5>
@@ -71,7 +71,6 @@ const Food = () => {
               key={name}
               text={`${name}: ${eaa.pctgOfRdi}%`}
               pctg={eaa.pctgOfRdi}
-              // style={{ backgroundColor: 'var(--background-color-usda-tab)' }}
             />
           );
         })}
@@ -80,7 +79,8 @@ const Food = () => {
         href={`https://tools.myfooddata.com/protein-calculator/${selectedFood.id}/200cals/`}
         onClick={(e) => e.stopPropagation()}
       >
-        tools.myfooddata.com/protein-calculator
+        https://tools.myfooddata.com/protein-calculator/{selectedFood.id}
+        /200cals/
       </a>
     </div>
   );
