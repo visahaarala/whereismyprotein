@@ -47,7 +47,9 @@ const Food = () => {
 
         <Bar percentage={energyDensity(energy)} />
 
-        <h3>% of RDI</h3>
+        <h3>
+          % of RDI <span>(for a 70kg person consuming 2000kcal)</span>
+        </h3>
 
         <h5>{`Fiber: ${fiber}%`}</h5>
         <BarThousand pctg={fiber} />

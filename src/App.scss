@@ -112,12 +112,12 @@ h1 {
 
 h2 {
   // Settings -- subtitle
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 600;
   margin-right: auto;
 
   span {
-    font-size: 1rem;
+    font-size: 0.9em;
     font-weight: 400;
     color: #444;
     display: block;
@@ -144,19 +144,24 @@ h3 {
     // in food
     margin-top: 1rem;
   }
+
+  span {
+    margin-left: 0.4rem;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #222;
+  }
 }
 
 h4 {
-  // Info -- smaller subtitle
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 600;
-  letter-spacing: 0.02rem;
   margin-top: 0.8rem;
   margin-bottom: 0.1rem;
 }
 
 h5 {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
   line-height: 0;
   margin-top: 0.8rem;
@@ -189,4 +194,8 @@ h3 + p {
 
 b {
   font-weight: 600;
+}
+
+a {
+  word-break: break-word;
 }

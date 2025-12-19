@@ -71,31 +71,43 @@ const Info = ({ show }: { show: boolean }) => {
         this)
       </p>
 
-      <h4>Calculations</h4>
+      <h4>Calculations - Recommended Daily Intake</h4>
       <p>
         <a href='https://tools.myfooddata.com/protein-calculator/'>
-          Tools.myfooddata.com protein calculator
+          https://tools.myfooddata.com/protein-calculator/
         </a>{' '}
         suggests that 200 kcal is 10% of DV; daily energy reference is 2000kcal.
-        Comparing tools.myfooddata.com amino acid RDI percentages with{' '}
+        Comparing tools.myfooddata.com amino acid RDI percentages with wikipedia
+        essential amino acid{' '}
         <a href='https://en.wikipedia.org/wiki/Essential_amino_acid#Recommended_daily_intake'>
-          wikipedia essential amino acid RDI chart
+          RDI chart (WHO)
         </a>{' '}
-        (WHO) suggests that the calculations are for a 70kg person. Thus, the{' '}
-        <b>% of RDI</b> calculations in this program are for a 70kg person
-        consuming 2000kcal of a particular food.
+        suggests that the calculations are for a 70kg person. Thus, the % of RDI
+        calculations in this program are for a 70kg person consuming 2000kcal of
+        a particular food.
       </p>
+      <p>Protein RDI used is 10% of energy.</p>
+      <p>Fiber RDI used is 14g/1000kcal.</p>
 
       <h4>Source of data</h4>
       <p>
-        SR Legacy dataset from{' '}
+        SR Legacy dataset
+        <br />
         <a href='https://fdc.nal.usda.gov/download-datasets'>
           https://fdc.nal.usda.gov/download-datasets
         </a>
       </p>
       <p>
+        WHO essential amino acid RDI
+        <br />
+        <a href='https://en.wikipedia.org/wiki/Essential_amino_acid#Recommended_daily_intake'>
+          https://en.wikipedia.org/wiki/Essential_amino_acid#Recommended_daily_intake
+        </a>
+      </p>
+      <p>
         The dataset is filtered such that only foods with info about energy,
-        protein, fiber and essential amino acid content are included.
+        protein, fiber and essential amino acid content are included. Only
+        categories that seem to contain whole unprocessed foods are included.
       </p>
 
       <h3>About</h3>

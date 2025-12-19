@@ -37,7 +37,7 @@ const BarThousand = ({
           ))
         : divIndices.map((index) => (
             <div className={styles.percentage} key={index}>
-              <div>{index < 4 ? `${(index + 1) * 100}%` : ''}</div>
+              <div>{index < 3 ? `${(index + 1) * 100}%` : ''}</div>
             </div>
           ))}
     </div>
