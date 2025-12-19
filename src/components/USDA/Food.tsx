@@ -50,12 +50,15 @@ const Food = () => {
         <h3>% of RDI</h3>
 
         <h5>{`Fiber: ${fiber}%`}</h5>
+        <BarThousand />
         <BarThousand pctg={fiber} />
 
         <h5>{`Protein: ${protein}%`}</h5>
+        <BarThousand />
         <BarThousand pctg={protein} />
 
         <h5>{`Essential amino acids, min: ${minEaaPctg}%`}</h5>
+        <BarThousand />
         {eaas.map((eaa) => {
           const name = eaa.names.map((n) => capitalize(n)).join(' & ');
           return (

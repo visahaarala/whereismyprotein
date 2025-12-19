@@ -120,7 +120,8 @@ h2 {
     font-size: 1rem;
     font-weight: 400;
     color: #444;
-    margin-left: 0.5rem;
+    display: block;
+    margin-top: 0.2rem;
   }
 
   margin-bottom: min(3vw, 1.5rem);
@@ -177,6 +178,8 @@ small {
   font-size: 0.85rem;
   font-weight: 400;
   color: #333;
+  margin-top: 0.1rem;
+  margin-bottom: -0.1rem;
 }
 
 p + p,

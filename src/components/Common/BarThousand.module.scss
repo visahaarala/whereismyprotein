@@ -23,4 +23,14 @@
       background-color: var(--background-color-bar-fill);
     }
   }
+
+  .percentage {
+    display: flex;
+    justify-content: flex-end;
+    & > div {
+      transform: translateX(calc(50% + 0.1rem));
+      font-size: 0.7rem;
+      color: #333;
+    }
+  }
 }

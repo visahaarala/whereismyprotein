@@ -52,7 +52,10 @@ const Food = () => {
             <h2>
               {capitalize(selectedFood[state.language])}
               {selectedFood.scientific ? (
-                <span>({capitalize(selectedFood.scientific)})</span>
+                <>
+                  <br />
+                  <span>({capitalize(selectedFood.scientific)})</span>
+                </>
               ) : (
                 <></>
               )}

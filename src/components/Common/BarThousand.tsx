@@ -6,7 +6,7 @@ const BarThousand = ({
   text,
   style,
 }: {
-  pctg: number;
+  pctg?: number;
   text?: string;
   style?: CSSProperties;
 }) => {
@@ -24,16 +24,22 @@ const BarThousand = ({
     >
       {text ? <div className={styles.text}>{text}</div> : <></>}
 
-      {divIndices.map((index) => (
-        <div className={styles.tenth} key={index}>
-          <div
-            style={{
-              ...style,
-              width: getWidth(pctg, index),
-            }}
-          />
-        </div>
-      ))}
+      {pctg !== undefined
+        ? divIndices.map((index) => (
+            <div className={styles.tenth} key={index}>
+              <div
+                style={{
+                  ...style,
+                  width: getWidth(pctg, index),
+                }}
+              />
+            </div>
+          ))
+        : divIndices.map((index) => (
+            <div className={styles.percentage} key={index}>
+              <div>{index < 4 ? `${(index + 1) * 100}%` : ''}</div>
+            </div>
+          ))}
     </div>
   );
 };
