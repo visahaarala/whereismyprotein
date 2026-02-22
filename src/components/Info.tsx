@@ -83,7 +83,7 @@ const Info = ({ show }: { show: boolean }) => {
           RDI chart (WHO)
         </a>{' '}
         suggests that the calculations are for a 70kg person. Thus, the % of RDI
-        calculations in this program are for a 70kg person consuming 2000kcal of
+        calculations in this tool are for a 70kg person consuming 2000kcal of
         a particular food.
       </p>
       <p>Protein RDI used is 10% of energy.</p>
