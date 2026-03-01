@@ -1,7 +1,7 @@
 # TODO list
 
 - details view click anywhere only mobile
-- add github link
+- write readme.md file and add github link
 - browsing results back & forth
 - fineli limit fiber possible to zero (rule out plant foods)
 - x button to search field for clearing

@@ -9,9 +9,9 @@ import FineliContextProvider from './context/FineliContextProvider';
 import Navigation from './components/Navigation';
 import type { View } from './types';
 import UsdaContextProvider from './context/UsdaContextProvider';
+import isMobile from './util/isMobile';
 
-// theme color for mobile devices
-if (matchMedia('(pointer:coarse)').matches) {
+if (isMobile()) {
   document
     .querySelector('meta[name="theme-color"]')
     ?.setAttribute('content', '#222324');

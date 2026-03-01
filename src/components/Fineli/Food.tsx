@@ -8,6 +8,7 @@ import { FineliContext } from '../../context/FineliContext';
 import energyDensity from '../../util/getEnergyDensity';
 import getEnergyDistribution from '../../util/getEnergyDistribution';
 import Toggle from '../Common/Toggle';
+import isMobile from '../../util/isMobile';
 
 const Food = () => {
   const { state, dispatch } = useContext(FineliContext);
@@ -33,6 +34,7 @@ const Food = () => {
     <div
       className={styles.food}
       onClick={() =>
+        isMobile() &&
         dispatch({
           type: 'SET_SELECTED_FOOD',
           payload: { ...state, selectedFood: null },
@@ -60,9 +62,21 @@ const Food = () => {
                 <></>
               )}
             </h2>
-            <div className={`settingsIcon ${styles.settingsIcon}`}>
-              <CloseIcon />
-            </div>
+            {!isMobile() ? (
+              <div
+                className={`settingsIcon ${styles.settingsIcon}`}
+                onClick={() =>
+                  dispatch({
+                    type: 'SET_SELECTED_FOOD',
+                    payload: { ...state, selectedFood: null },
+                  })
+                }
+              >
+                <CloseIcon />
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
           <h5>Energy density: {energyDensity(energy)}%</h5>
           <small>

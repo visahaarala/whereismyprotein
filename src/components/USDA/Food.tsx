@@ -7,6 +7,7 @@ import energyDensity from '../../util/getEnergyDensity';
 import { UsdaContext } from '../../context/UsdaContext';
 import Bar from '../Common/Bar';
 import BarThousand from '../Common/BarThousand';
+import isMobile from '../../util/isMobile';
 
 const Food = () => {
   const { state, dispatch } = useContext(UsdaContext);
@@ -26,6 +27,7 @@ const Food = () => {
     <div
       className={styles.food}
       onClick={() =>
+        isMobile() &&
         dispatch({
           type: 'SET_SELECTED_FOOD',
           payload: { ...state, selectedFood: null },
@@ -35,9 +37,21 @@ const Food = () => {
       <div className={styles.selectedFood}>
         <div className={styles.title}>
           <h2>{capitalize(description)}</h2>
-          <div className={`settingsIcon ${styles.settingsIcon}`}>
-            <CloseIcon />
-          </div>
+          {!isMobile() ? (
+            <div
+              className={`settingsIcon ${styles.settingsIcon}`}
+              onClick={() =>
+                dispatch({
+                  type: 'SET_SELECTED_FOOD',
+                  payload: { ...state, selectedFood: null },
+                })
+              }
+            >
+              <CloseIcon />
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
         <h5>Energy density: {energyDensity(energy)}%</h5>
         <small>
