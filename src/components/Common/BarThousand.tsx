@@ -20,7 +20,7 @@ const BarThousand = ({
   return (
     <div
       className={styles.barThousand}
-      style={{ height: text ? '1.2rem' : '0.4rem' }}
+      style={{ height: text ? '1.2rem' : '0.6rem' }}
     >
       {text ? <div className={styles.text}>{text}</div> : <></>}
 

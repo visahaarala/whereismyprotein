@@ -52,10 +52,17 @@
   display: flex;
   flex-direction: column;
 
-  .settingsIcon {
+  .closeIcon {
+    $size: 1.4rem;
+    $padding: 0.2rem;
+    $d: $size + $padding;
+
     margin-left: 1rem;
-    min-width: 1.4rem;
-    min-height: 1.4rem;
+    width: $d;
+    height: $d;
+    min-width: $d + $padding; // strange
+    min-height: $d + $padding; // strange
+    padding: $padding;
     cursor: pointer;
   }
 }

@@ -5,7 +5,6 @@ import Bar from '../Common/Bar';
 import CloseIcon from '../../svg/CloseIcon';
 import { useContext } from 'react';
 import { FineliContext } from '../../context/FineliContext';
-import energyDensity from '../../util/getEnergyDensity';
 import getEnergyDistribution from '../../util/getEnergyDistribution';
 import Toggle from '../Common/Toggle';
 import isMobile from '../../util/isMobile';
@@ -64,7 +63,7 @@ const Food = () => {
             </h2>
             {!isMobile() ? (
               <div
-                className={`settingsIcon ${styles.settingsIcon}`}
+                className={styles.closeIcon}
                 onClick={() =>
                   dispatch({
                     type: 'SET_SELECTED_FOOD',
@@ -78,7 +77,7 @@ const Food = () => {
               <></>
             )}
           </div>
-          <h5>Energy density: {energyDensity(energy)}%</h5>
+          <h5>Energy density</h5>
           <small>
             ({Math.round(kcal)}
             kcal/100g &rarr; {(2000 / kcal / 10).toFixed(2)} kg to 2000kcal)

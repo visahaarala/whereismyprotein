@@ -1,8 +1,7 @@
 .barThousand {
   position: relative;
   display: grid;
-  grid-template-columns: 55fr 34fr 21fr 13fr 8fr 5fr 3fr 2fr 1fr 1fr;
-  grid-template-columns: 65fr 44fr 31fr 23fr 18fr 15fr 13fr 12fr 11fr 11fr;
+  grid-template-columns: 65fr 44fr 31fr 23fr 18fr 15fr 13fr 12fr 11fr 10fr;
   gap: 0.2rem;
 
   .text {
