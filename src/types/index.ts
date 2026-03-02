@@ -98,6 +98,7 @@ export type UsdaState = {
   // search
   category: string | undefined;
   searchString: string;
+  searchRaw: boolean;
   // limits
   energyDensity: Range;
   proteinOn: boolean;
@@ -123,6 +124,7 @@ export type UsdaReducerActionType =
   | 'TOGGLE_VIEW_MODE'
   | 'SET_CATEGORY'
   | 'SET_SEARCH'
+  | 'TOGGLE_RAW'
   | 'SET_LIMITS'
   | 'TOGGLE_PROTEIN'
   | 'TOGGLE_FIBER'

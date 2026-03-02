@@ -7,13 +7,14 @@ export const initialState: UsdaState = {
   viewMode: 'search',
   category: undefined,
   searchString: '',
+  searchRaw: false,
   energyDensity: { min: 0, max: 100 },
   rdi: { min: 0, max: 100 },
   fiberOn: true,
   proteinOn: true,
   eaasOn: true,
   results: getFoods().sort((a, b) =>
-    a.description.localeCompare(b.description)
+    a.description.localeCompare(b.description),
   ),
   selectedFood: null,
   pageIndex: 0,
@@ -26,8 +27,14 @@ const getStateWithFilteredFoods = (state: UsdaState) => {
         // filter category ONLY if mode is search
         state.viewMode !== 'search' ||
         !state.category ||
-        food.category === state.category
+        food.category === state.category,
     )
+    .filter((food) => {
+      // filter raw ONLY if mode is search
+      if (state.viewMode !== 'search') return true;
+      // ... and searchRaw is true
+      return !state.searchRaw || food.description.includes(', raw');
+    })
     .filter((food) => {
       // filter searchString ONLY if mode is search
       if (state.viewMode !== 'search') return true;
@@ -64,7 +71,7 @@ const getStateWithFilteredFoods = (state: UsdaState) => {
 
 export const reducer = (
   state: UsdaState,
-  action: UsdaReducerAction
+  action: UsdaReducerAction,
 ): UsdaState => {
   switch (action.type) {
     case 'TOGGLE_VIEW_MODE': {
@@ -113,6 +120,12 @@ export const reducer = (
         ...state,
         searchString: action.payload!.searchString!,
         pageIndex: 0,
+      });
+    }
+    case 'TOGGLE_RAW': {
+      return getStateWithFilteredFoods({
+        ...state,
+        searchRaw: !state.searchRaw,
       });
     }
 

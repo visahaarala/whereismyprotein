@@ -96,17 +96,24 @@ const Search = () => {
               </option>
             ))}
           </select>
-          <SearchInput
-            id='usdaSearch'
-            placeholder='Search'
-            value={state.searchString}
-            setValue={(searchString: string) =>
-              dispatch({
-                type: 'SET_SEARCH',
-                payload: { searchString },
-              })
-            }
-          />
+          <div className={styles.searchInput}>
+            <SearchInput
+              id='usdaSearch'
+              placeholder='Search'
+              value={state.searchString}
+              setValue={(searchString: string) =>
+                dispatch({
+                  type: 'SET_SEARCH',
+                  payload: { searchString },
+                })
+              }
+            />
+            <Toggle
+              name='raw'
+              isOn={state.searchRaw}
+              toggleIsOn={() => dispatch({ type: 'TOGGLE_RAW' })}
+            />
+          </div>
         </>
       ) : (
         <Categories />

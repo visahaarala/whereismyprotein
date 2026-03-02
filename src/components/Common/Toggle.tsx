@@ -11,11 +11,7 @@ const Toggle = ({
 }) => {
   return (
     <div className={styles.toggle} onClick={toggleIsOn}>
-      <div
-        className={`${styles.switch} ${isOn ? styles['switch--isOn'] : ''}`}
-        // onKeyDown={(e) => e.code === 'Space' && toggleIsOn}
-        // tabIndex={0}
-      >
+      <div className={`${styles.switch} ${isOn ? styles['switch--isOn'] : ''}`}>
         <div className={`${styles.ball}`} />
       </div>
       <span>{name}</span>

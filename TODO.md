@@ -1,6 +1,12 @@
 # TODO list
 
 - fineli combine search & limit just like in USDA
+- add RAW to usda search
+- finish writing INFO... how to use USDA
+
+
+- slider focus color not nice, fix
+- take away focus or change everything to work with focus... keyboard navigation (for the search?)
 
 - write readme.md file and add github link
 - browsing results back & forth

@@ -7,4 +7,9 @@
     margin-bottom: -0.2rem;
     grid-template-columns: 2fr auto 1fr auto 1fr auto 2fr;
   }
+
+  .searchInput {
+    display: flex;
+    gap: 1rem;
+  }
 }
