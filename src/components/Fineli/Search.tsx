@@ -7,6 +7,7 @@ import { categories } from '../../data/fineli/categories';
 import Limits from './Limits';
 import ModeSelect from '../Common/ModeSelect';
 import type { FineliFilterMode } from '../../types';
+import SearchInput from '../Common/SearchInput';
 
 const Search = () => {
   const { state, dispatch } = useContext(FineliContext);
@@ -70,18 +71,16 @@ const Search = () => {
               </option>
             ))}
           </select>
-          <input
-            id='searchInput'
-            type='text'
+          <SearchInput
+            id='fineliSearch'
             placeholder={state.language === 'fi' ? 'Hae' : 'Search'}
             value={state.searchString}
-            onChange={(e) =>
+            setValue={(searchString: string) =>
               dispatch({
                 type: 'SET_SEARCH',
-                payload: { searchString: e.target.value },
+                payload: { searchString },
               })
             }
-            tabIndex={0}
           />
         </>
       ) : (

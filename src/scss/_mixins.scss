@@ -15,24 +15,27 @@
   input[type='text'] {
     flex: 1;
     font-family: inherit;
-    border-radius: 0.1rem;
-    border: 1px solid #888;
     color: inherit;
     background-color: white;
-
-    &:focus {
-      outline: 1px solid var(--outline-color);
-    }
   }
 
   select {
     font-size: 0.95rem;
     padding: 0.1rem 0.2rem;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    &:focus {
+      outline: var(--outline);
+    }
   }
 
   input[type='text'] {
+    border: none;
+    &:focus {
+      outline: none;
+    }
+
     font-size: 1rem;
-    padding: 0.1rem 0.4rem;
     caret-color: #444;
 
     &::placeholder {
@@ -50,10 +53,9 @@
   flex-direction: column;
 
   .settingsIcon {
-    // align-self: start;
     margin-left: 1rem;
-    min-width: 1.8rem;
-    min-height: 1.8rem;
+    min-width: 1.4rem;
+    min-height: 1.4rem;
     cursor: pointer;
   }
 }

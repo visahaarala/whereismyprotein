@@ -1,6 +1,6 @@
 # TODO list
 
-- details view click anywhere only mobile
+- energy density pctg pois
 - write readme.md file and add github link
 - browsing results back & forth
 - fineli limit fiber possible to zero (rule out plant foods)

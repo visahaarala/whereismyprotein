@@ -10,12 +10,14 @@
   --background-color-isOn: #4a0;
 
   --outline-color: #480;
+  --outline: 1px solid var(--outline-color);
 
   --color: #111;
   --color-small: #222;
   --color-scientific: #444;
 
   --border-color: #888;
+  --border-radius: 0.1rem;
   --border: 1px solid var(--border-color);
 
   --padding-sides: 1rem;

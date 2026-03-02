@@ -8,6 +8,7 @@ import RangeSlider from '../Common/RangeSlider';
 import ModeSelect from '../Common/ModeSelect';
 import type { ViewMode } from '../../types';
 import Categories from './Categories';
+import SearchInput from '../Common/SearchInput';
 
 const Search = () => {
   const { state, dispatch } = useContext(UsdaContext);
@@ -19,8 +20,8 @@ const Search = () => {
         state.selectedFood
           ? { display: 'none' }
           : state.viewMode === 'view categories'
-          ? { flex: 1 }
-          : {}
+            ? { flex: 1 }
+            : {}
       }
     >
       <h6>energy density</h6>
@@ -95,18 +96,16 @@ const Search = () => {
               </option>
             ))}
           </select>
-          <input
-            id='searchInput'
-            type='text'
+          <SearchInput
+            id='usdaSearch'
             placeholder='Search'
             value={state.searchString}
-            onChange={(e) =>
+            setValue={(searchString: string) =>
               dispatch({
                 type: 'SET_SEARCH',
-                payload: { searchString: e.target.value },
+                payload: { searchString },
               })
             }
-            tabIndex={0}
           />
         </>
       ) : (
