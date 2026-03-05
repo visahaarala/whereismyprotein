@@ -67,7 +67,7 @@ const Results = () => {
               payload: { selectedFood: food },
             })
           }
-          tabIndex={0}
+          // tabIndex={0}
           onKeyDown={(e) => keyDownHandler(e, food)}
         >
           {capitalize(food.description)}

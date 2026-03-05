@@ -1,13 +1,13 @@
 import styles from './Food.module.scss';
 
 import capitalize from '../../util/capitalize';
-import CloseIcon from '../../svg/CloseIcon';
+// import CloseIcon from '../../svg/CloseIcon';
 import { useContext } from 'react';
 import energyDensity from '../../util/getEnergyDensity';
 import { UsdaContext } from '../../context/UsdaContext';
 import Bar from '../Common/Bar';
 import BarThousand from '../Common/BarThousand';
-import isMobile from '../../util/isMobile';
+// import isMobile from '../../util/isMobile';
 
 const Food = () => {
   const { state, dispatch } = useContext(UsdaContext);
@@ -27,7 +27,7 @@ const Food = () => {
     <div
       className={styles.food}
       onClick={() =>
-        isMobile() &&
+        // isMobile() &&
         dispatch({
           type: 'SET_SELECTED_FOOD',
           payload: { ...state, selectedFood: null },
@@ -37,7 +37,7 @@ const Food = () => {
       <div className={styles.selectedFood}>
         <div className={styles.title}>
           <h2>{capitalize(description)}</h2>
-          {!isMobile() ? (
+          {/* {!isMobile() ? (
             <div
               className={styles.closeIcon}
               onClick={() =>
@@ -51,7 +51,7 @@ const Food = () => {
             </div>
           ) : (
             <></>
-          )}
+          )} */}
         </div>
         <h5>Energy density</h5>
         <small>

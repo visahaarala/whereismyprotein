@@ -47,7 +47,7 @@ const Pages = ({
         `}
         onClick={() => handleChange(-1)}
         onKeyDown={(e) => keyDownHandler(e, -1)}
-        tabIndex={0}
+        // tabIndex={0}
       >
         <LeftIcon />
       </div>
@@ -64,7 +64,7 @@ const Pages = ({
         }`}
         onClick={() => handleChange(1)}
         onKeyDown={(e) => keyDownHandler(e, 1)}
-        tabIndex={0}
+        // tabIndex={0}
       >
         <LeftIcon />
       </div>

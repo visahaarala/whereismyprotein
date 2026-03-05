@@ -23,14 +23,18 @@
   }
 
   p {
-    position: relative;
-    // font-weight: 600;
-    margin-left: 0.3rem;
+    margin: 0 0.3rem;
     z-index: 1;
     font-size: 0.9rem;
     color: black;
     text-shadow: white 0 0 3px;
-    // color: white;
-    // text-shadow: black 0 0 3px;
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    span {
+      margin-left: auto;
+    }
   }
 }

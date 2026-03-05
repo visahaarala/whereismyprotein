@@ -126,6 +126,7 @@ export const reducer = (
       return getStateWithFilteredFoods({
         ...state,
         searchRaw: !state.searchRaw,
+        pageIndex: 0,
       });
     }
 

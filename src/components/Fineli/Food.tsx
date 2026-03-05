@@ -2,12 +2,12 @@ import styles from './Food.module.scss';
 
 import capitalize from '../../util/capitalize';
 import Bar from '../Common/Bar';
-import CloseIcon from '../../svg/CloseIcon';
+// import CloseIcon from '../../svg/CloseIcon';
 import { useContext } from 'react';
 import { FineliContext } from '../../context/FineliContext';
 import getEnergyDistribution from '../../util/getEnergyDistribution';
 import Toggle from '../Common/Toggle';
-import isMobile from '../../util/isMobile';
+// import isMobile from '../../util/isMobile';
 
 const Food = () => {
   const { state, dispatch } = useContext(FineliContext);
@@ -33,7 +33,7 @@ const Food = () => {
     <div
       className={styles.food}
       onClick={() =>
-        isMobile() &&
+        // isMobile() &&
         dispatch({
           type: 'SET_SELECTED_FOOD',
           payload: { ...state, selectedFood: null },
@@ -61,7 +61,7 @@ const Food = () => {
                 <></>
               )}
             </h2>
-            {!isMobile() ? (
+            {/* {!isMobile() ? (
               <div
                 className={styles.closeIcon}
                 onClick={() =>
@@ -75,7 +75,7 @@ const Food = () => {
               </div>
             ) : (
               <></>
-            )}
+            )} */}
           </div>
           <h5>Energy density</h5>
           <small>

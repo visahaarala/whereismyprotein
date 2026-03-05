@@ -170,7 +170,7 @@ const RangeSlider = ({
                 Math.pow(min / 100, ballHeightPow) * 100
               )}%`,
             }}
-            tabIndex={0}
+            // tabIndex={0}
           />
         </div>
       ) : (
@@ -198,7 +198,7 @@ const RangeSlider = ({
                 Math.pow((100 - max) / 100, ballHeightPow) * 100
               )}%`,
             }}
-            tabIndex={0}
+            // tabIndex={0}
           />
         </div>
       ) : (

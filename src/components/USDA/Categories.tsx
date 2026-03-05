@@ -51,16 +51,13 @@ const Categories = () => {
       style={state.viewMode !== 'view categories' ? { display: 'none' } : {}}
     >
       {Object.keys(categoryInfo).map((name) => {
-        const {
-          // totalFoods, filteredFoods,
-          percentage,
-        } = categoryInfo[name];
+        const { totalFoods, filteredFoods, percentage } = categoryInfo[name];
         return (
           <Bar
             key={name}
             percentage={percentage}
-            text={`${name}: ${percentage}%`}
-            // text={`${name}: ${percentage}% (${filteredFoods}/${totalFoods})`}
+            text={name}
+            span={`(${filteredFoods}/${totalFoods})`}
           />
         );
       })}

@@ -1,21 +1,19 @@
 # TODO list
 
-- fineli combine search & limit just like in USDA
-- add RAW to usda search
-- finish writing INFO... how to use USDA
+- energy density to kcal per 100g (instead of %)
 
+- usda check oils limiting, maybe max energy 100% just a tiny bit more. Or maybe go through data manipulation, if something is wrong
+
+- write readme.md file and add github link to INFO
+
+- food "click anywhere to close" overlay
+- browsing results back & forth
+- finish writing INFO... how to use USDA
+- fineli limit fiber possible to zero (rule out plant foods)
+- fineli dropdown menu of typical nutrient profiles (fruits/veggies/starch/animal)
 
 - slider focus color not nice, fix
 - take away focus or change everything to work with focus... keyboard navigation (for the search?)
-
-- write readme.md file and add github link
-- browsing results back & forth
-- fineli limit fiber possible to zero (rule out plant foods)
-- fineli dropdown menu of typical nutrient profiles (fruits/veggies/starch/animal)
-- usda categories show "(99 of 340)" to make a point that there are so many results on beef and so few results on veggies.. typical american
-- usda check oils limiting, maybe max energy 100% just a tiny bit more. Or maybe go through data manipulation, if something is wrong
-- X close icon, but food details view close anywhere (mobile)
 - energydensity/rdi/etc reset buttons
-- usda searchfield add raw button
 - usda scientific (data manipulation)?
-- 
+- keyboard tab/arrow/space navigation, focus outline colors fix
