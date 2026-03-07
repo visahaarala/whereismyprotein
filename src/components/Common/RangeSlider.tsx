@@ -19,12 +19,16 @@ type ThumbType = 'min' | 'max' | null;
 
 const RangeSlider = ({
   name,
+  displayRange = { min: 0, max: 100 },
+  unit = '%',
   margin = PERCENTAGE_MARGIN,
   value,
   setValue,
   type = 'both',
 }: {
   name?: string;
+  displayRange?: Range;
+  unit?: string;
   margin?: number;
   value: Range;
   setValue: (range: Range) => void;
@@ -55,7 +59,7 @@ const RangeSlider = ({
   };
 
   const getClientX = (
-    e: MouseEvent | TouchEvent | globalThis.MouseEvent | globalThis.TouchEvent
+    e: MouseEvent | TouchEvent | globalThis.MouseEvent | globalThis.TouchEvent,
   ) => {
     if ('clientX' in e) return e.clientX;
     if ('touches' in e && e.touches.length) return e.touches[0].clientX;
@@ -103,7 +107,7 @@ const RangeSlider = ({
         newPctgCandidate,
         0,
 
-        type === 'min' ? 100 : Math.min(100 - margin, max - margin)
+        type === 'min' ? 100 : Math.min(100 - margin, max - margin),
       );
       setMin(newPctg);
     } else {
@@ -111,7 +115,7 @@ const RangeSlider = ({
         newPctgCandidate,
         /// THIS HERE!... type === 'max'
         type === 'max' ? 0 : Math.max(margin, min + margin),
-        100
+        100,
       );
       setMax(newPctg);
     }
@@ -127,18 +131,39 @@ const RangeSlider = ({
     window.removeEventListener('touchend', handleDragEnd);
   };
 
-  const sliderText =
-    type === 'both'
-      ? `${name ? name + ': ' : ''}${Math.round(min)}% to ${Math.round(max)}%`
-      : type === 'min'
-      ? `> ${Math.round(min)}%${name ? ` of ${name}` : ''}`
-      : `< ${Math.round(max)}%${name ? ` of ${name}` : ''}`;
+  const sliderText = () => {
+    const rangeSize = displayRange.max - displayRange.min;
+    const textMin = Math.round((min / 100) * rangeSize + displayRange.min);
+    const textMax = Math.round((max / 100) * rangeSize + displayRange.min);
+
+    return (
+      <>
+        {type === 'both' && (
+          <>
+            {name ? <>{name + ': '}&nbsp;</> : ''}
+            {textMin}
+            {unit === '%' ? '%' : ''}
+            {' to '}
+            {textMax}
+            {unit === '%' ? '%' : ' ' + unit}
+          </>
+        )}
+        {type == 'min' && (
+          <>
+            {'> ' + textMin}
+            {unit === '%' ? `% of ${name}` : ` ${unit}`}
+          </>
+        )}
+        {/* IMPLEMENT type === 'max' */}
+      </>
+    );
+  };
 
   const ballHeightPow = 3.5;
 
   return (
     <div className={styles.rangeSlider}>
-      <p className={styles.name}>{sliderText}</p>
+      <p className={styles.name}>{sliderText()}</p>
       <div className={styles.track} ref={trackRef} />
       <div
         className={styles.range}
@@ -167,7 +192,7 @@ const RangeSlider = ({
               height: `${Math.max(
                 40,
                 Math.pow((100 - min) / 100, ballHeightPow) * 100,
-                Math.pow(min / 100, ballHeightPow) * 100
+                Math.pow(min / 100, ballHeightPow) * 100,
               )}%`,
             }}
             // tabIndex={0}
@@ -195,7 +220,7 @@ const RangeSlider = ({
               height: `${Math.max(
                 40,
                 Math.pow(max / 100, ballHeightPow) * 100,
-                Math.pow((100 - max) / 100, ballHeightPow) * 100
+                Math.pow((100 - max) / 100, ballHeightPow) * 100,
               )}%`,
             }}
             // tabIndex={0}

@@ -1,5 +1,7 @@
 # TODO list
 
+- corn oil 900 kcal / 100g
+
 - energy density to kcal per 100g (instead of %)
 
 - usda check oils limiting, maybe max energy 100% just a tiny bit more. Or maybe go through data manipulation, if something is wrong

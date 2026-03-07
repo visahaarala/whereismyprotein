@@ -27,6 +27,8 @@ const Search = () => {
       <h6>energy density</h6>
 
       <RangeSlider
+        displayRange={{ min: 0, max: 900 }}
+        unit='kcal/100g'
         value={state.energyDensity}
         setValue={(energyDensity) =>
           dispatch({ type: 'SET_LIMITS', payload: { energyDensity } })
