@@ -1,19 +1,23 @@
 # TODO list
 
-- corn oil 900 kcal / 100g
-
-- energy density to kcal per 100g (instead of %)
-
-- usda check oils limiting, maybe max energy 100% just a tiny bit more. Or maybe go through data manipulation, if something is wrong
-
+- finish writing INFO... how to use USDA
+- INFO ... explain what categories are excluded... or maybe not exclude anything?
 - write readme.md file and add github link to INFO
 
-- food "click anywhere to close" overlay
-- browsing results back & forth
-- finish writing INFO... how to use USDA
-- fineli limit fiber possible to zero (rule out plant foods)
-- fineli dropdown menu of typical nutrient profiles (fruits/veggies/starch/animal)
+### wa
 
+- INFO energy balance -> distribution?
+- search/limit OR (or isolla)
+- mobile/desktop click anywhere -> tap anywhere
+- wimp category placeholder
+
+
+### Maybe later
+
+- food "click anywhere to close" overlay
+- fineli limit fiber possible to zero (rule out plant foods)
+- browsing results back & forth
+- fineli dropdown menu of typical nutrient profiles (fruits/veggies/starch/animal)
 - slider focus color not nice, fix
 - take away focus or change everything to work with focus... keyboard navigation (for the search?)
 - energydensity/rdi/etc reset buttons
