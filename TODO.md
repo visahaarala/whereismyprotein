@@ -4,13 +4,10 @@
 - INFO ... explain what categories are excluded... or maybe not exclude anything?
 - write readme.md file and add github link to INFO
 
-### wa
+### maybe not
 
 - INFO energy balance -> distribution?
-- search/limit OR (or isolla)
-- mobile/desktop click anywhere -> tap anywhere
 - wimp category placeholder
-
 
 ### Maybe later
 

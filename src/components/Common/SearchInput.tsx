@@ -39,7 +39,7 @@ const SearchInput = ({
           // cursor: value.length === 0 ? 'default' : 'pointer',
         }}
       >
-        <CloseIcon strokeWidth={15} />
+        <CloseIcon strokeWidth={18} />
       </div>
     </div>
   );

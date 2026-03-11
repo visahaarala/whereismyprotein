@@ -1,8 +1,9 @@
+import isMobile from '../util/isMobile';
 import styles from './Info.module.scss';
 
 const Info = ({ show }: { show: boolean }) => {
   return (
-    <div className={styles.info} style={{ display: show ? 'flex' : 'none' }}>
+    <div className={styles.info} style={show ? {} : { display: 'none' }}>
       <h1>Where is my protein?</h1>
       <p>
         For vegans, there's always the question of where do you get your
@@ -28,15 +29,18 @@ const Info = ({ show }: { show: boolean }) => {
 
       <h4>Search / limit</h4>
       <p>
-        Choose between searching foods by categories and food names or limiting
-        foods by energy density and energy distribution.
+        Search foods by categories and food names.
+        <br />
+        Limit foods by energy density and energy distribution.
       </p>
 
       <h4>Results view</h4>
       <p>
-        Click on a food name to view details.
+        {isMobile() ? 'Tap ' : 'Click '}
+        on a food name to view details.
         <br />
-        Click anywhere on the details to exit back to browsing.
+        {isMobile() ? 'Tap ' : 'Click '}
+        anywhere on the details to exit back to browsing.
       </p>
 
       <h4>Calculations</h4>
@@ -72,9 +76,11 @@ const Info = ({ show }: { show: boolean }) => {
 
       <h4>Results view</h4>
       <p>
-        Click on a food name to view details.
+        {isMobile() ? 'Tap ' : 'Click '}
+        on a food name to view details.
         <br />
-        Click anywhere on the details to exit back to browsing.
+        {isMobile() ? 'Tap ' : 'Click '}
+        anywhere on the details to exit back to browsing.
       </p>
 
       <h4>Calculations - Recommended Daily Intake</h4>
