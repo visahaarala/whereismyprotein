@@ -75,10 +75,10 @@ const Info = ({ show }: { show: boolean }) => {
 
       <h4>Percentage of RDI</h4>
       <p>
-        The % of RDI slider is to show only foods that meet the percentage of
-        RDI requirement (as in the above description of the USDA section). The
-        usage of essential amino acids (EAAs), total protein and fiber as a
-        limiter in this filter can be toggled on/off one by one.
+        The % of RDI slider is to filter out foods that do not meet the given
+        percentage of RDI requirement (as in the above description of the USDA
+        section). The usage of essential amino acids (EAAs), total protein and
+        fiber as a limiter in this filter can be toggled on/off one by one.
       </p>
 
       <h4>Search / view categories</h4>
