@@ -1,13 +1,13 @@
 # TODO list
 
 - finish writing INFO... how to use USDA
-- INFO ... explain what categories are excluded... or maybe not exclude anything?
 - write readme.md file and add github link to INFO
 
 ### maybe not
 
 - INFO energy balance -> distribution?
 - wimp category placeholder
+- INFO ... explain what categories are excluded... or maybe not exclude anything?
 
 ### Maybe later
 

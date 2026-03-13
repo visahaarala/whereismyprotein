@@ -60,12 +60,33 @@ const Info = ({ show }: { show: boolean }) => {
       </p>
 
       <h3>USDA</h3>
-      <p>The PROTEIN investigator!</p>
       <p>
         Browse the fiber, the essential amino acid and the total protein content
         in different foods. Results are shown as a percentage of recommended
         daily intake (RDI), assuming that the daily energy needs would be met
         with that particular food.
+      </p>
+
+      <h4>Energy density</h4>
+      <p>
+        Filter out foods that are not included in a given range of energy
+        density.
+      </p>
+
+      <h4>Percentage of RDI</h4>
+      <p>
+        The % of RDI slider is to show only foods that meet the percentage of
+        RDI requirement (as in the above description of the USDA section). The
+        usage of essential amino acids (EAAs), total protein and fiber as a
+        limiter in this filter can be toggled on/off one by one.
+      </p>
+
+      <h4>Search / view categories</h4>
+      <p>
+        Search foods by category/name or view the effect of energy density and
+        percentage of RDI sliders to the inclusion of foods in different
+        categories. The raw toggle can be used to filter out foods whose name
+        does not contain ", raw".
       </p>
 
       <h4>Search details</h4>
@@ -118,21 +139,27 @@ const Info = ({ show }: { show: boolean }) => {
       </p>
       <p>
         The dataset is filtered such that only foods with info about energy,
-        protein, fiber and essential amino acid content are included. Only
-        categories that seem to contain whole unprocessed foods are included.
+        protein, fiber and essential amino acid content are included. Not all
+        categories from the database are included.
       </p>
 
       <h3>About</h3>
       <p>
-        This software is inspired by
-        <br />
-        <a href='https://nutritionfacts.org'>https://nutritionfacts.org </a>
-        <br />
-        and
-        <br />
+        The FINELI part of this software was inspired by{' '}
+        <a href='https://fineli.fi/'>fineli.fi</a> as well as a curiosity of the
+        energy balance of macronutrients in foods.
+      </p>
+      <p>
+        The USDA part of this software was inspired by{' '}
         <a href='https://tools.myfooddata.com/protein-calculator/'>
-          https://tools.myfooddata.com/protein-calculator/
-        </a>
+          myfooddata.com protein calculator
+        </a>{' '}
+        with an intent to make the fiber and essential amino acid information
+        more easily accessible.
+      </p>
+      <p>
+        More info at{' '}
+        <a href='https://github.com/visahaarala/whereismyprotein'>github</a>.
       </p>
     </div>
   );
