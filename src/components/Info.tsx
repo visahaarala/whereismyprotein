@@ -89,12 +89,6 @@ const Info = ({ show }: { show: boolean }) => {
         does not contain ", raw".
       </p>
 
-      <h4>Search details</h4>
-      <p>
-        Energy density, percentage of RDI, search/viewcategories, etc..
-        <br /> (... finish writing this)
-      </p>
-
       <h4>Results view</h4>
       <p>
         {isMobile() ? 'Tap ' : 'Click '}
