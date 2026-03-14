@@ -139,12 +139,12 @@ const Info = ({ show }: { show: boolean }) => {
 
       <h3>About</h3>
       <p>
-        The FINELI part of this software was inspired by{' '}
+        The FINELI section of this software was inspired by{' '}
         <a href='https://fineli.fi/'>fineli.fi</a> as well as a curiosity of the
         energy balance of macronutrients in foods.
       </p>
       <p>
-        The USDA part of this software was inspired by{' '}
+        The USDA section of this software was inspired by{' '}
         <a href='https://tools.myfooddata.com/protein-calculator/'>
           myfooddata.com protein calculator
         </a>{' '}
