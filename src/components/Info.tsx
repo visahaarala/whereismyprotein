@@ -141,7 +141,7 @@ const Info = ({ show }: { show: boolean }) => {
       <p>
         The FINELI section of this software was inspired by{' '}
         <a href='https://fineli.fi/'>fineli.fi</a> as well as a curiosity of the
-        energy balance of macronutrients in foods.
+        energy balance of different macronutrients in foods.
       </p>
       <p>
         The USDA section of this software was inspired by{' '}
