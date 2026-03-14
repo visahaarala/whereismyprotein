@@ -1,22 +1,20 @@
 # TODO list
 
-- finish writing INFO... how to use USDA
-- write readme.md file and add github link to INFO
+### Maybe later
+
+- fineli limit fiber possible to zero (rule out plant foods)
+- browsing results back & forth
+- fineli dropdown menu of typical nutrient profiles (fruits/veggies/starch/animal)
+- energydensity/rdi/etc reset buttons
+- usda scientific (data manipulation)?
+- take away focus or change everything to work with focus... keyboard navigation (for the search?)
+- keyboard tab/arrow/space navigation, focus outline colors fix
+- slider focus color not nice, fix
 
 ### maybe not
 
 - INFO energy balance -> distribution?
 - wimp category placeholder
 - INFO ... explain what categories are excluded... or maybe not exclude anything?
-
-### Maybe later
-
+- write readme.md file and add github link to INFO
 - food "click anywhere to close" overlay
-- fineli limit fiber possible to zero (rule out plant foods)
-- browsing results back & forth
-- fineli dropdown menu of typical nutrient profiles (fruits/veggies/starch/animal)
-- slider focus color not nice, fix
-- take away focus or change everything to work with focus... keyboard navigation (for the search?)
-- energydensity/rdi/etc reset buttons
-- usda scientific (data manipulation)?
-- keyboard tab/arrow/space navigation, focus outline colors fix

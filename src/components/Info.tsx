@@ -151,10 +151,6 @@ const Info = ({ show }: { show: boolean }) => {
         with an intent to make the fiber and essential amino acid information
         more easily accessible.
       </p>
-      <p>
-        More info at{' '}
-        <a href='https://github.com/visahaarala/whereismyprotein'>github</a>.
-      </p>
     </div>
   );
 };
