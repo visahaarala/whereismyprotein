@@ -1,6 +1,8 @@
 .modeSelect {
   display: flex;
+  flex: 1;
   align-items: center;
+  gap: 1rem;
 
   &__line {
     flex: 1;
@@ -10,7 +12,6 @@
   }
 
   &__select {
-    margin: 0 1.2rem;
     display: flex;
     cursor: pointer;
     user-select: none;

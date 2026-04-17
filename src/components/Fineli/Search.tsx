@@ -54,7 +54,7 @@ const Search = () => {
       {state.filterMode === 'Search' ? (
         <>
           <select
-            id='category'
+            id='fineliCategory'
             value={state.category}
             onChange={(e) =>
               dispatch({

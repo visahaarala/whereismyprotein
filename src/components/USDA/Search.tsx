@@ -72,16 +72,23 @@ const Search = () => {
         type='min'
       />
 
-      <ModeSelect<ViewMode>
-        options={['search', 'view categories']}
-        selectedOption={state.viewMode}
-        toggleFn={() => dispatch({ type: 'TOGGLE_VIEW_MODE' })}
-      />
+      <div className={styles.modeAndRaw}>
+        <ModeSelect<ViewMode>
+          options={['search', 'view categories']}
+          selectedOption={state.viewMode}
+          toggleFn={() => dispatch({ type: 'TOGGLE_VIEW_MODE' })}
+        />
+        <Toggle
+          name='raw'
+          isOn={state.searchRaw}
+          toggleIsOn={() => dispatch({ type: 'TOGGLE_RAW' })}
+        />
+      </div>
 
       {state.viewMode === 'search' ? (
         <>
           <select
-            id='category'
+            id='usdaCategory'
             value={state.category}
             onChange={(e) =>
               dispatch({
@@ -98,24 +105,17 @@ const Search = () => {
               </option>
             ))}
           </select>
-          <div className={styles.searchInput}>
-            <SearchInput
-              id='usdaSearch'
-              placeholder='Search'
-              value={state.searchString}
-              setValue={(searchString: string) =>
-                dispatch({
-                  type: 'SET_SEARCH',
-                  payload: { searchString },
-                })
-              }
-            />
-            <Toggle
-              name='raw'
-              isOn={state.searchRaw}
-              toggleIsOn={() => dispatch({ type: 'TOGGLE_RAW' })}
-            />
-          </div>
+          <SearchInput
+            id='usdaSearch'
+            placeholder='Search'
+            value={state.searchString}
+            setValue={(searchString: string) =>
+              dispatch({
+                type: 'SET_SEARCH',
+                payload: { searchString },
+              })
+            }
+          />
         </>
       ) : (
         <Categories />

@@ -30,8 +30,8 @@ const getStateWithFilteredFoods = (state: UsdaState) => {
         food.category === state.category,
     )
     .filter((food) => {
-      // filter raw ONLY if mode is search
-      if (state.viewMode !== 'search') return true;
+      // // filter raw ONLY if mode is search
+      // if (state.viewMode !== 'search') return true;
       // ... and searchRaw is true
       return !state.searchRaw || food.description.includes(', raw');
     })

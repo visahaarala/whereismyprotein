@@ -16,6 +16,7 @@ const Navigation = ({
     <nav className={styles.nav}>
       {tabNames.map((tabName) => (
         <div
+          key={tabName}
           className={`${styles.tab} ${
             view === tabName ? styles['tab--selected'] : ''
           }`}

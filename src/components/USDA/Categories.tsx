@@ -8,7 +8,9 @@ import getFoods from '../../data/usda/getFoods';
 const Categories = () => {
   const { state } = useContext(UsdaContext);
 
-  const allFoods = getFoods();
+  const allFoods = !state.searchRaw
+    ? getFoods()
+    : getFoods().filter((food) => food.description.includes(', raw'));
 
   const categoryTotals: { [key: string]: number } = {};
   for (const food of allFoods) {
@@ -20,6 +22,7 @@ const Categories = () => {
   }
 
   const categoryFiltered: { [key: string]: number } = {};
+  console.log(state.results.length);
   for (const food of state.results) {
     if (!categoryFiltered[food.category]) {
       categoryFiltered[food.category] = 1;
@@ -39,7 +42,7 @@ const Categories = () => {
   } = {};
 
   categoryNames.forEach((name) => {
-    const totalFoods = categoryTotals[name];
+    const totalFoods = categoryTotals[name] || 0;
     const filteredFoods = categoryFiltered[name] || 0;
     const percentage = Math.round((filteredFoods / totalFoods) * 100);
     categoryInfo[name] = { totalFoods, filteredFoods, percentage };
