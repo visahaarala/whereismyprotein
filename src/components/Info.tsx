@@ -27,12 +27,11 @@ const Info = ({ show }: { show: boolean }) => {
       <h4>Finnish</h4>
       <p>Toggle search & results language between finnish and english.</p>
 
-      <h4>Search / limit</h4>
-      <p>
-        Search foods by categories and food names.
-        <br />
-        Limit foods by energy density and energy distribution.
-      </p>
+      <h4>Search</h4>
+      <p>Search foods by categories and food names.</p>
+
+      <h4>Limit</h4>
+      <p>Limit foods by energy density and energy distribution.</p>
 
       <h4>Results view</h4>
       <p>
@@ -81,12 +80,16 @@ const Info = ({ show }: { show: boolean }) => {
         toggled on/off one by one.
       </p>
 
-      <h4>Search / view categories</h4>
+      <h4>Raw</h4>
+      <p>Show only foods whose name contains ", raw".</p>
+
+      <h4>Search</h4>
+      <p>Search foods by category and/or name.</p>
+
+      <h4>View categories</h4>
       <p>
-        Search foods by category/name or view the effect of energy density and
-        percentage of RDI sliders to the inclusion of foods in different
-        categories. The raw toggle can be used to filter out foods whose name
-        does not contain ", raw".
+        View the percentage of the foods that meet the above criteria in
+        different categories.
       </p>
 
       <h4>Results view</h4>
@@ -103,9 +106,9 @@ const Info = ({ show }: { show: boolean }) => {
         <a href='https://tools.myfooddata.com/protein-calculator/'>
           https://tools.myfooddata.com/protein-calculator/
         </a>{' '}
-        suggests that 200 kcal is 10% of DV; daily energy reference is 2000kcal.
-        Comparing tools.myfooddata.com amino acid RDI percentages with wikipedia
-        essential amino acid{' '}
+        (using the same database as this tool) suggests that 200 kcal is 10% of
+        DV; daily energy reference is 2000kcal. Comparing tools.myfooddata.com
+        amino acid RDI percentages with wikipedia essential amino acid{' '}
         <a href='https://en.wikipedia.org/wiki/Essential_amino_acid#Recommended_daily_intake'>
           RDI chart (WHO)
         </a>{' '}
