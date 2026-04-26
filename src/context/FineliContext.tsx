@@ -1,5 +1,5 @@
 import { createContext, type Dispatch } from 'react';
-import type { FineliState, FineliReducerAction } from '../types';
+import type { FineliState, FineliReducerAction, FineliPreset } from '../types';
 import getFoods from '../data/fineli/getFoods';
 import getEnergyDensity from '../util/getEnergyDensity';
 import { distributionKeys } from '../util/variables';
@@ -8,14 +8,13 @@ import getEnergyDistribution from '../util/getEnergyDistribution';
 const initialLanguage = navigator.language.includes('fi') ? 'fi' : 'en';
 
 export const initialState: FineliState = {
+  // preset
+  preset: '',
+
+  // toggles
   isRaw: false,
   hasScientific: false,
-  filterMode: 'Search',
   language: initialLanguage,
-
-  // search
-  category: undefined,
-  searchString: '',
 
   // limits
   energyDensity: { min: 0, max: 100 },
@@ -28,9 +27,17 @@ export const initialState: FineliState = {
   sugarAlcohol: { min: 0, max: 100 },
   alcohol: { min: 0, max: 100 },
 
+  // viewmode
+  viewMode: 'search',
+
+  // search
+  // category: undefined,
+  category: '',
+  searchString: '',
+
   // results
   results: getFoods().sort((a, b) =>
-    a[initialLanguage].localeCompare(b[initialLanguage])
+    a[initialLanguage].localeCompare(b[initialLanguage]),
   ),
   selectedFood: null,
   pageIndex: 0,
@@ -43,13 +50,13 @@ const getStateWithFilteredFoods = (state: FineliState) => {
     .filter(
       (food) =>
         // filter category ONLY if mode is search
-        state.filterMode !== 'Search' ||
+        state.viewMode !== 'search' ||
         !state.category ||
-        food.category === state.category
+        food.category === state.category,
     )
     .filter((food) => {
       // filter searchString ONLY if mode is search
-      if (state.filterMode !== 'Search') return true;
+      if (state.viewMode !== 'search') return true;
       const words = state.searchString.split(' ').map((w) => w.toLowerCase());
       for (const word of words) {
         if (word.charAt(0) === '-') {
@@ -72,14 +79,16 @@ const getStateWithFilteredFoods = (state: FineliState) => {
       return true;
     })
     .filter((food) => {
-      if (state.filterMode !== 'Limit') return true;
+      // filter limits ONLY if mode is 'limit'
+      if (state.viewMode !== 'limit') return true;
       return (
         getEnergyDensity(food.energy) >= state.energyDensity.min &&
         getEnergyDensity(food.energy) <= state.energyDensity.max
       );
     })
     .filter((food) => {
-      if (state.filterMode !== 'Limit') return true;
+      // filter limits ONLY if mode is 'limit'
+      if (state.viewMode !== 'limit') return true;
       const pctgs = getEnergyDistribution(food);
       for (const key of distributionKeys) {
         if (pctgs[key] < state[key].min) {
@@ -97,7 +106,7 @@ const getStateWithFilteredFoods = (state: FineliState) => {
 
 export const reducer = (
   state: FineliState,
-  action: FineliReducerAction
+  action: FineliReducerAction,
 ): FineliState => {
   switch (action.type) {
     case 'TOGGLE_IS_RAW': {
@@ -105,6 +114,7 @@ export const reducer = (
         ...state,
         isRaw: !state.isRaw,
         pageIndex: 0,
+        preset: '',
       });
     }
     case 'TOGGLE_HAS_SCIENTIFIC': {
@@ -112,12 +122,13 @@ export const reducer = (
         ...state,
         hasScientific: !state.hasScientific,
         pageIndex: 0,
+        preset: '',
       });
     }
-    case 'TOGGLE_FILTER_MODE': {
+    case 'TOGGLE_VIEW_MODE': {
       return getStateWithFilteredFoods({
         ...state,
-        filterMode: state.filterMode === 'Limit' ? 'Search' : 'Limit',
+        viewMode: state.viewMode === 'search' ? 'limit' : 'search',
         pageIndex: 0,
       });
     }
@@ -157,10 +168,144 @@ export const reducer = (
         ...state,
         pageIndex: 0,
         ...action.payload!,
+        preset: '',
+      });
+    }
+
+    // SET_PRESET
+    case 'SET_PRESET': {
+      const preset = action.payload!.preset! as unknown as FineliPreset;
+      let presetValues: Partial<FineliState> = {};
+      switch (preset) {
+        case '': {
+          presetValues = {
+            ...state,
+            isRaw: false,
+            hasScientific: false,
+            energyDensity: { min: 0, max: 100 },
+            fiber: { min: 0, max: 100 },
+            protein: { min: 0, max: 100 },
+            sugar: { min: 0, max: 100 },
+            fat: { min: 0, max: 100 },
+          };
+          break;
+        }
+        case 'Fruits': {
+          presetValues = {
+            ...state,
+            isRaw: false,
+            hasScientific: true,
+            energyDensity: { min: 2, max: 10 },
+            fiber: { min: 2, max: 20 },
+            protein: { min: 0, max: 10 },
+            sugar: { min: 45, max: 90 },
+            fat: { min: 0, max: 10 },
+          };
+          break;
+        }
+        case 'Vegetables': {
+          presetValues = {
+            ...state,
+            isRaw: false,
+            hasScientific: true,
+            energyDensity: { min: 0, max: 15 },
+            fiber: { min: 4, max: 62 },
+            protein: { min: 6, max: 61 },
+            sugar: { min: 0, max: 71 },
+            fat: { min: 0, max: 30 },
+          };
+          break;
+        }
+        case 'Nuts & seeds': {
+          presetValues = {
+            ...state,
+            isRaw: false,
+            hasScientific: true,
+            energyDensity: { min: 50, max: 80 },
+            fiber: { min: 1, max: 15 },
+            protein: { min: 5, max: 25 },
+            sugar: { min: 0, max: 5 },
+            fat: { min: 65, max: 90 },
+          };
+          break;
+        }
+        case 'Legumes (wet & dry)': {
+          presetValues = {
+            ...state,
+            isRaw: false,
+            hasScientific: true,
+            energyDensity: { min: 8, max: 39 },
+            fiber: { min: 3, max: 20 },
+            protein: { min: 25, max: 35 },
+            sugar: { min: 0, max: 8 },
+            fat: { min: 0, max: 15 },
+          };
+          break;
+        }
+        case 'Grains': {
+          presetValues = {
+            ...state,
+            isRaw: false,
+            hasScientific: true,
+            energyDensity: { min: 32, max: 41 },
+            fiber: { min: 2, max: 20 },
+            protein: { min: 9, max: 24 },
+            sugar: { min: 0, max: 11 },
+            fat: { min: 3, max: 20 },
+          };
+          break;
+        }
+        case 'Animal products': {
+          presetValues = {
+            ...state,
+            isRaw: false,
+            hasScientific: false,
+            fiber: { min: 0, max: 0 },
+            sugar: { min: 0, max: 0 },
+            energyDensity: { min: 7, max: 52 },
+            protein: { min: 14, max: 95 },
+            fat: { min: 5, max: 85 },
+          };
+          break;
+        }
+        case 'Visan energia': {
+          presetValues = {
+            ...state,
+            isRaw: false,
+            hasScientific: true,
+            energyDensity: { min: 7, max: 100 },
+            fiber: { min: 2, max: 100 },
+            protein: { min: 8, max: 100 },
+            sugar: { min: 0, max: 5 },
+            fat: { min: 0, max: 20 },
+          };
+        }
+      }
+
+      return getStateWithFilteredFoods({
+        ...state,
+        ...presetValues,
+        preset,
+        pageIndex: 0,
+      });
+    }
+
+    // RESET
+    case 'RESET_LIMITS': {
+      return getStateWithFilteredFoods({
+        ...state,
+        isRaw: false,
+        hasScientific: false,
+        preset: '',
+        energyDensity: { min: 0, max: 100 },
+        fiber: { min: 0, max: 100 },
+        protein: { min: 0, max: 100 },
+        sugar: { min: 0, max: 100 },
+        fat: { min: 0, max: 100 },
       });
     }
   }
-  return state;
+  // return state;
 };
 
 export const FineliContext = createContext<{

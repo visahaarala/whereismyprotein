@@ -7,9 +7,15 @@
   min-height: 1.2rem;
   position: relative;
 
+  transition: all 0.7s;
+
   &--thin {
     min-height: 0.6rem;
     height: 0.6rem;
+  }
+
+  &--disabled {
+    background-color: #aaa8;
   }
 
   .fill {

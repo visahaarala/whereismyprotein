@@ -33,6 +33,12 @@ const Info = ({ show }: { show: boolean }) => {
       <h4>Limit</h4>
       <p>Limit foods by energy density and energy distribution.</p>
 
+      <h4>Presets</h4>
+      <p>
+        Example presets of typical energy density and distribution combinations
+        for different types of foods.
+      </p>
+
       <h4>Results view</h4>
       <p>
         {isMobile() ? 'Tap ' : 'Click '}

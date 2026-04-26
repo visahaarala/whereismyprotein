@@ -21,7 +21,7 @@ const Fineli = ({ show }: { show: boolean }) => {
       <Pages
         numResults={state.results.length}
         pageIndex={state.pageIndex}
-        isFoodSelected={state.selectedFood !== null}
+        show={state.selectedFood === null}
         setPage={setPage}
       />
       <Food />

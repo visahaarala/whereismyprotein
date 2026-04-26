@@ -19,6 +19,7 @@ type ThumbType = 'min' | 'max' | null;
 
 const RangeSlider = ({
   name,
+  endText,
   displayRange = { min: 0, max: 100 },
   unit = '%',
   margin = PERCENTAGE_MARGIN,
@@ -27,6 +28,7 @@ const RangeSlider = ({
   type = 'both',
 }: {
   name?: string;
+  endText?: string;
   displayRange?: Range;
   unit?: string;
   margin?: number;
@@ -36,6 +38,10 @@ const RangeSlider = ({
 }) => {
   const [min, setMin] = useState(value.min);
   const [max, setMax] = useState(value.max);
+
+  // first load or after valuechanges from state, from don't set values in useEffect
+  const [skipSetValue, setSkipSetValue] = useState(true);
+
   const [isDragging, setIsDragging] = useState(false);
 
   const trackRef = useRef<HTMLDivElement>(null);
@@ -47,8 +53,18 @@ const RangeSlider = ({
   });
 
   useEffect(() => {
+    setMin(value.min);
+    setMax(value.max);
+    setSkipSetValue(true);
+  }, [value]);
+
+  useEffect(() => {
     const timeout = setTimeout(() => {
-      setValue({ min: Math.round(min), max: Math.round(max) });
+      if (!skipSetValue) {
+        setValue({ min: Math.round(min), max: Math.round(max) });
+      } else {
+        setSkipSetValue(false);
+      }
     }, 200);
     return () => clearTimeout(timeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -146,6 +162,7 @@ const RangeSlider = ({
             {' to '}
             {textMax}
             {unit === '%' ? '%' : ' ' + unit}
+            {endText ? <>&nbsp;({endText})</> : ''}
           </>
         )}
         {type == 'min' && (
@@ -194,6 +211,7 @@ const RangeSlider = ({
                 Math.pow((100 - min) / 100, ballHeightPow) * 100,
                 Math.pow(min / 100, ballHeightPow) * 100,
               )}%`,
+              transition: isDragging ? 'unset' : '',
             }}
             // tabIndex={0}
           />
@@ -222,6 +240,7 @@ const RangeSlider = ({
                 Math.pow(max / 100, ballHeightPow) * 100,
                 Math.pow((100 - max) / 100, ballHeightPow) * 100,
               )}%`,
+              transition: isDragging ? 'unset' : '',
             }}
             // tabIndex={0}
           />

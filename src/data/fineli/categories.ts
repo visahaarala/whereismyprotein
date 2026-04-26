@@ -1,1 +1,22 @@
-export const categories: { [key: string]: { en: string, fi: string } } = {"SUGARTOT":{"fi":"Sokerit ja makeiset","en":"Sugar and confectionery"},"INGRTOT":{"fi":"Valmistusaineet","en":"Other ingredients"},"CERTOT":{"fi":"Viljat","en":"Cereals"},"FLAVTOT":{"fi":"Mausteet","en":"Spices"},"NONINGR":{"fi":"Ei raaka-aine","en":"Non-ingredient"},"FRUITTOT":{"fi":"Hedelmät","en":"Fruits"},"POTATOT":{"fi":"Perunat","en":"Potatoes"},"VEGTOT":{"fi":"Kasvikset","en":"Vegetables"},"LEGUTOT":{"fi":"Palkokasvit ja pähkinät","en":"Pulses and nuts"},"FATTOT":{"fi":"Ravintorasvat","en":"Fat"},"MILKTOT":{"fi":"Maito","en":"Milk"},"MEATTOT":{"fi":"Lihat","en":"Meat"},"FISHTOT":{"fi":"Kala","en":"Fish"},"EGGTOT":{"fi":"Muna","en":"Egg"},"BEVTOT":{"fi":"Juomat","en":"Beverages"},"ALCTOT":{"fi":"Alkoholijuomat","en":"Alcoholic beverages"},"DIETTOT":{"fi":"Ravintovalmisteet","en":"Products for special nutritional use"}};
+export const categories: { [key: string]: { en: string; fi: string } } = {
+  SUGARTOT: { fi: 'Sokerit ja makeiset', en: 'Sugar and confectionery' },
+  INGRTOT: { fi: 'Valmistusaineet', en: 'Other ingredients' },
+  CERTOT: { fi: 'Viljat', en: 'Cereals' },
+  FLAVTOT: { fi: 'Mausteet', en: 'Spices' },
+  // NONINGR: { fi: 'Ei raaka-aine', en: 'Non-ingredient' },
+  FRUITTOT: { fi: 'Hedelmät', en: 'Fruits' },
+  POTATOT: { fi: 'Perunat', en: 'Potatoes' },
+  VEGTOT: { fi: 'Kasvikset', en: 'Vegetables' },
+  LEGUTOT: { fi: 'Palkokasvit ja pähkinät', en: 'Pulses and nuts' },
+  FATTOT: { fi: 'Ravintorasvat', en: 'Fat' },
+  MILKTOT: { fi: 'Maito', en: 'Milk' },
+  MEATTOT: { fi: 'Lihat', en: 'Meat' },
+  FISHTOT: { fi: 'Kala', en: 'Fish' },
+  EGGTOT: { fi: 'Muna', en: 'Egg' },
+  BEVTOT: { fi: 'Juomat', en: 'Beverages' },
+  ALCTOT: { fi: 'Alkoholijuomat', en: 'Alcoholic beverages' },
+  DIETTOT: {
+    fi: 'Ravintovalmisteet',
+    en: 'Products for special nutritional use',
+  },
+};

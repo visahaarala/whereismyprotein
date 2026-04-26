@@ -10,5 +10,5 @@ export default () => {
     }
     foodsList.push(newFood as FineliFood);
   }
-  return foodsList;
+  return foodsList.filter((food) => food.category !== 'NONINGR');
 };

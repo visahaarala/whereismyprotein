@@ -6,16 +6,20 @@ const Bar = ({
   span,
   percentage,
   style,
+  disabled = false,
 }: {
   text?: string;
   span?: string;
   percentage?: number;
   style?: CSSProperties;
+  disabled?: boolean;
 }) => {
   const pctg = percentage || 0;
 
   return (
-    <div className={`${styles.bar} ${!text && styles['bar--thin']}`}>
+    <div
+      className={`${styles.bar} ${!text && styles['bar--thin']} ${disabled && styles['bar--disabled']}`}
+    >
       {text ? (
         <p>
           {text}

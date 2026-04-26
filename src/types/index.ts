@@ -8,15 +8,23 @@ export type View = 'usda' | 'info' | 'fineli';
 ///////////////////
 // FINELI
 //
+export type FineliViewMode = 'search' | 'limit';
+
 export type FineliState = {
+  // PRESET
+  preset: FineliPreset;
+
   // SEARCH
   isRaw: boolean;
   hasScientific: boolean;
-  filterMode: FineliFilterMode;
   language: 'fi' | 'en';
 
+  // filterMode: FineliFilterMode;
+  viewMode: FineliViewMode;
+
   // search
-  category: string | undefined;
+  // category: string | undefined;
+  category: string;
   searchString: string;
 
   // limits
@@ -36,8 +44,6 @@ export type FineliState = {
   pageIndex: number;
 };
 
-export type FineliFilterMode = 'Search' | 'Limit';
-
 export type FineliReducerAction = {
   type: FineliReducerActionType;
   payload?: Partial<FineliState>;
@@ -46,13 +52,25 @@ export type FineliReducerAction = {
 export type FineliReducerActionType =
   | 'TOGGLE_IS_RAW'
   | 'TOGGLE_HAS_SCIENTIFIC'
-  | 'TOGGLE_FILTER_MODE'
+  | 'TOGGLE_VIEW_MODE'
   | 'TOGGLE_LANGUAGE'
   | 'SET_SELECTED_FOOD'
   | 'SET_PAGE_INDEX'
   | 'SET_CATEGORY'
   | 'SET_SEARCH'
-  | 'SET_LIMITS';
+  | 'SET_LIMITS'
+  | 'SET_PRESET'
+  | 'RESET_LIMITS';
+
+export type FineliPreset =
+  | ''
+  | 'Nuts & seeds'
+  | 'Vegetables'
+  | 'Fruits'
+  | 'Legumes (wet & dry)'
+  | 'Grains'
+  | 'Animal products'
+  | 'Visan energia';
 
 export type FineliFood = {
   id: number;
@@ -90,11 +108,13 @@ export type FineliEnergyDistribution = {
 ///////////////////
 // USDA
 //
+export type UsdaViewMode = 'view categories' | 'search';
+
 export type UsdaState = {
   // SEARCH
 
   // viewmode
-  viewMode: ViewMode;
+  viewMode: UsdaViewMode;
   // search
   category: string | undefined;
   searchString: string;
@@ -112,8 +132,6 @@ export type UsdaState = {
   selectedFood: UsdaFood | null;
   pageIndex: number;
 };
-
-export type ViewMode = 'view categories' | 'search';
 
 export type UsdaReducerAction = {
   type: UsdaReducerActionType;

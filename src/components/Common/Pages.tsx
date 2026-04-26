@@ -1,6 +1,4 @@
-import {
-  type KeyboardEvent,
-} from 'react';
+import { type KeyboardEvent } from 'react';
 import LeftIcon from '../../svg/LeftIcon';
 import styles from './Pages.module.scss';
 
@@ -9,12 +7,12 @@ const RESULTS_PER_PAGE = 100;
 const Pages = ({
   numResults,
   pageIndex,
-  isFoodSelected,
+  show,
   setPage,
 }: {
   numResults: number;
   pageIndex: number;
-  isFoodSelected: boolean;
+  show: boolean;
   setPage: (pageIndex: number) => void;
 }) => {
   const numPages = Math.ceil(numResults / RESULTS_PER_PAGE);
@@ -36,10 +34,7 @@ const Pages = ({
   };
 
   return (
-    <div
-      className={styles.pages}
-      style={isFoodSelected ? { display: 'none' } : {}}
-    >
+    <div className={styles.pages} style={!show ? { display: 'none' } : {}}>
       <div
         id='prevPage'
         className={`${styles.leftIcon}

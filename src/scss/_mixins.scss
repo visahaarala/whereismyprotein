@@ -20,12 +20,26 @@
   }
 
   select {
-    font-size: 0.95rem;
+    cursor: pointer;
+    font-size: 0.9rem;
     padding: 0.1rem 0.2rem;
     border: var(--border);
     border-radius: var(--border-radius);
     &:focus {
       outline: var(--outline);
+    }
+  }
+
+  button {
+    all: unset;
+    cursor: pointer;
+    background-color: #f7f7f7;
+    padding: 0.1rem 0.5rem;
+    border: var(--border);
+    border-radius: var(--border-radius);
+
+    &:active {
+      background-color: #ddd;
     }
   }
 

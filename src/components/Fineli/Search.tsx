@@ -6,8 +6,9 @@ import { FineliContext } from '../../context/FineliContext';
 import { categories } from '../../data/fineli/categories';
 import Limits from './Limits';
 import ModeSelect from '../Common/ModeSelect';
-import type { FineliFilterMode } from '../../types';
+import type { FineliPreset, FineliViewMode } from '../../types';
 import SearchInput from '../Common/SearchInput';
+import { fineliPresets } from '../../util/variables';
 
 const Search = () => {
   const { state, dispatch } = useContext(FineliContext);
@@ -45,13 +46,39 @@ const Search = () => {
         <div />
       </div>
 
-      <ModeSelect<FineliFilterMode>
-        options={['Search', 'Limit']}
-        selectedOption={state.filterMode}
-        toggleFn={() => dispatch({ type: 'TOGGLE_FILTER_MODE' })}
+      <ModeSelect<FineliViewMode>
+        options={['search', 'limit']}
+        selectedOption={state.viewMode}
+        toggleFn={() => dispatch({ type: 'TOGGLE_VIEW_MODE' })}
       />
 
-      {state.filterMode === 'Search' ? (
+      {state.viewMode === 'limit' ? (
+        <>
+          <div className={styles.presets}>
+            <span>Presets:</span>
+            <select
+              id='fineliPreset'
+              value={state.preset}
+              onChange={(e) =>
+                dispatch({
+                  type: 'SET_PRESET',
+                  payload: { preset: e.target.value as FineliPreset },
+                })
+              }
+            >
+              {fineliPresets.map((preset) => (
+                <option key={preset} value={preset}>
+                  {preset}
+                </option>
+              ))}
+            </select>
+            <button onClick={() => dispatch({ type: 'RESET_LIMITS' })}>
+              reset
+            </button>
+          </div>
+          <Limits />
+        </>
+      ) : (
         <>
           <select
             id='fineliCategory'
@@ -64,7 +91,7 @@ const Search = () => {
             }
             tabIndex={0}
           >
-            <option key='undefined' value={undefined} />
+            <option key='undefined' value={''} />
             {Object.keys(categories).map((key) => (
               <option key={key} value={key}>
                 {categories[key][state.language]}
@@ -81,10 +108,8 @@ const Search = () => {
                 payload: { searchString },
               })
             }
-          />
+          />{' '}
         </>
-      ) : (
-        <Limits />
       )}
     </div>
   );

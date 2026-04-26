@@ -22,7 +22,6 @@ const Categories = () => {
   }
 
   const categoryFiltered: { [key: string]: number } = {};
-  console.log(state.results.length);
   for (const food of state.results) {
     if (!categoryFiltered[food.category]) {
       categoryFiltered[food.category] = 1;
@@ -60,6 +59,7 @@ const Categories = () => {
             key={name}
             percentage={percentage}
             text={name}
+            disabled={totalFoods === 0}
             span={`(${filteredFoods}/${totalFoods})`}
           />
         );

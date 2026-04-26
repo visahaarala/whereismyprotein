@@ -6,9 +6,9 @@ import { UsdaContext } from '../../context/UsdaContext';
 import { categories } from '../../data/usda/categories';
 import RangeSlider from '../Common/RangeSlider';
 import ModeSelect from '../Common/ModeSelect';
-import type { ViewMode } from '../../types';
-import Categories from './Categories';
+import type { UsdaViewMode } from '../../types';
 import SearchInput from '../Common/SearchInput';
+import Categories from './Categories';
 
 const Search = () => {
   const { state, dispatch } = useContext(UsdaContext);
@@ -27,8 +27,9 @@ const Search = () => {
       <h6>energy density</h6>
 
       <RangeSlider
-        displayRange={{ min: 0, max: 900 }}
-        unit='kcal/100g'
+        // displayRange={{ min: 0, max: 900 }}
+        // unit='kcal/100g'
+        endText='of 900kcal/100g'
         value={state.energyDensity}
         setValue={(energyDensity) =>
           dispatch({ type: 'SET_LIMITS', payload: { energyDensity } })
@@ -73,7 +74,7 @@ const Search = () => {
       />
 
       <div className={styles.modeAndRaw}>
-        <ModeSelect<ViewMode>
+        <ModeSelect<UsdaViewMode>
           options={['search', 'view categories']}
           selectedOption={state.viewMode}
           toggleFn={() => dispatch({ type: 'TOGGLE_VIEW_MODE' })}

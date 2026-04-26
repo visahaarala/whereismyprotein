@@ -22,9 +22,7 @@ const USDA = ({ show }: { show: boolean }) => {
       <Pages
         numResults={state.results.length}
         pageIndex={state.pageIndex}
-        isFoodSelected={
-          state.selectedFood !== null || state.viewMode === 'view categories'
-        }
+        show={state.viewMode === 'search' && state.selectedFood === null}
         setPage={setPage}
       />
     </div>
