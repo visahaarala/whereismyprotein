@@ -1,14 +1,8 @@
 # TODO list
 
-- Energy density back to percentage "of 900kcal/100g"
-
 - SLIDER MAX down to ZERO
 
 - FIX TAB NAVIGATION
-
-- Make Energy density slider stop at each 1 step (901 steps in total) ... maybe make .01% steps and round to pctg or 1/900, depending on situation
-
-- Energy density limit filter not accurate
 
 ### Maybe later
 
