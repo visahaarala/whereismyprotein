@@ -1,10 +1,12 @@
 import { createContext, type Dispatch } from 'react';
 import type { FineliState, FineliReducerAction } from '../types';
 import getFoods from '../data/fineli/getFoods';
+import getGramsPer2000kcal from '../util/getGramsPer2000kcal';
 
 const initialLanguage = navigator.language.includes('fi') ? 'fi' : 'en';
 
 export const initialState: FineliState = {
+  // toggles
   isRaw: false,
   hasScientific: false,
   language: initialLanguage,
@@ -26,10 +28,7 @@ const getStateWithFilteredFoods = (state: FineliState) => {
   const results = getFoods()
     .filter((food) => !state.isRaw || food.raw)
     .filter((food) => !state.hasScientific || food.scientific)
-    .filter((food) => {
-      const kcal = food.energy / 4.184;
-      return food.fiber * (2000 / kcal) >= state.fiberGrams;
-    })
+    .filter((food) => getGramsPer2000kcal(food) >= state.fiberGrams)
     .filter((food) => !state.category || food.category === state.category)
     .filter((food) => {
       const words = state.searchString.split(' ').map((w) => w.toLowerCase());
@@ -53,26 +52,6 @@ const getStateWithFilteredFoods = (state: FineliState) => {
       }
       return true;
     })
-    // .filter((food) => {
-    //   if (state.filterMode !== 'Limit') return true;
-    //   return (
-    //     getEnergyDensity(food.energy) >= state.energyDensity.min &&
-    //     getEnergyDensity(food.energy) <= state.energyDensity.max
-    //   );
-    // })
-    // .filter((food) => {
-    //   if (state.filterMode !== 'Limit') return true;
-    //   const pctgs = getEnergyDistribution(food);
-    //   for (const key of distributionKeys) {
-    //     if (pctgs[key] < state[key].min) {
-    //       return false;
-    //     }
-    //     if (pctgs[key] > state[key].max) {
-    //       return false;
-    //     }
-    //   }
-    //   return true;
-    // })
     .sort((a, b) => a[state.language].localeCompare(b[state.language]));
   return { ...state, results };
 };
@@ -96,13 +75,6 @@ export const reducer = (
         pageIndex: 0,
       });
     }
-    // case 'TOGGLE_FILTER_MODE': {
-    //   return getStateWithFilteredFoods({
-    //     ...state,
-    //     filterMode: state.filterMode === 'Limit' ? 'Search' : 'Limit',
-    //     pageIndex: 0,
-    //   });
-    // }
     case 'TOGGLE_LANGUAGE': {
       return getStateWithFilteredFoods({
         ...state,
@@ -139,15 +111,6 @@ export const reducer = (
         pageIndex: 0,
       });
     }
-
-    // LIMITS
-    // case 'SET_LIMITS': {
-    //   return getStateWithFilteredFoods({
-    //     ...state,
-    //     pageIndex: 0,
-    //     ...action.payload!,
-    //   });
-    // }
   }
   return state;
 };

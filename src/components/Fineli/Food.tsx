@@ -2,12 +2,11 @@ import styles from './Food.module.scss';
 
 import capitalize from '../../util/capitalize';
 import Bar from '../Common/Bar';
-// import CloseIcon from '../../svg/CloseIcon';
 import { useContext } from 'react';
 import { FineliContext } from '../../context/FineliContext';
 import getEnergyDistribution from '../../util/getEnergyDistribution';
 import Toggle from '../Common/Toggle';
-// import isMobile from '../../util/isMobile';
+import getGramsPer2000kcal from '../../util/getGramsPer2000kcal';
 
 const Food = () => {
   const { state, dispatch } = useContext(FineliContext);
@@ -33,7 +32,6 @@ const Food = () => {
     <div
       className={styles.food}
       onClick={() =>
-        // isMobile() &&
         dispatch({
           type: 'SET_SELECTED_FOOD',
           payload: { ...state, selectedFood: null },
@@ -61,21 +59,6 @@ const Food = () => {
                 <></>
               )}
             </h2>
-            {/* {!isMobile() ? (
-              <div
-                className={styles.closeIcon}
-                onClick={() =>
-                  dispatch({
-                    type: 'SET_SELECTED_FOOD',
-                    payload: { ...state, selectedFood: null },
-                  })
-                }
-              >
-                <CloseIcon />
-              </div>
-            ) : (
-              <></>
-            )} */}
           </div>
           <h5>Energy density</h5>
           <small>
@@ -84,7 +67,10 @@ const Food = () => {
           </small>
           <Bar percentage={energy / 37} />
           <h3>Energy distribution</h3>
-          <h5>Fiber: {pctgs.fiber}%</h5>
+          <h5>
+            Fiber: {pctgs.fiber}%{' '}
+            <span>{`(${getGramsPer2000kcal(selectedFood)}g/2000kcal)`}</span>
+          </h5>
           <Bar percentage={pctgs.fiber} />
           <h5>Fat: {pctgs.fat}%</h5>
           <Bar percentage={pctgs.fat} />
