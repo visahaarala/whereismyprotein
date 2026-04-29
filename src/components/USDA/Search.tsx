@@ -72,39 +72,40 @@ const Search = () => {
         type='min'
       />
 
-      <div className={styles.modeAndRaw}>
-        <ModeSelect<ViewMode>
-          options={['search', 'view categories']}
-          selectedOption={state.viewMode}
-          toggleFn={() => dispatch({ type: 'TOGGLE_VIEW_MODE' })}
-        />
-        <Toggle
-          name='raw'
-          isOn={state.searchRaw}
-          toggleIsOn={() => dispatch({ type: 'TOGGLE_RAW' })}
-        />
-      </div>
+      <ModeSelect<ViewMode>
+        options={['search', 'view categories']}
+        selectedOption={state.viewMode}
+        toggleFn={() => dispatch({ type: 'TOGGLE_VIEW_MODE' })}
+      />
 
       {state.viewMode === 'search' ? (
         <>
-          <select
-            id='usdaCategory'
-            value={state.category}
-            onChange={(e) =>
-              dispatch({
-                type: 'SET_CATEGORY',
-                payload: { category: e.target.value },
-              })
-            }
-            tabIndex={0}
-          >
-            <option key='undefined' value={undefined} />
-            {Object.keys(categories).map((key) => (
-              <option key={key} value={categories[key]}>
-                {categories[key]}
-              </option>
-            ))}
-          </select>
+          <div className={styles.selectAndRaw}>
+            <select
+              id='usdaCategory'
+              value={state.category}
+              onChange={(e) =>
+                dispatch({
+                  type: 'SET_CATEGORY',
+                  payload: { category: e.target.value },
+                })
+              }
+              tabIndex={0}
+            >
+              <option key='undefined' value={undefined} />
+              {Object.keys(categories).map((key) => (
+                <option key={key} value={categories[key]}>
+                  {categories[key]}
+                </option>
+              ))}
+            </select>
+            <Toggle
+              name='raw'
+              isOn={state.searchRaw}
+              toggleIsOn={() => dispatch({ type: 'TOGGLE_RAW' })}
+            />
+          </div>
+
           <SearchInput
             id='usdaSearch'
             placeholder='Search'
