@@ -150,8 +150,9 @@ const RangeSlider = ({
         )}
         {type == 'min' && (
           <>
+            {name ? <>{name + ' '}&nbsp;</> : ''}
             {'> ' + textMin}
-            {unit === '%' ? `% of ${name}` : ` ${unit}`}
+            {unit === '%' ? `% of ${name}` : `${unit}`}
           </>
         )}
         {/* IMPLEMENT type === 'max' */}

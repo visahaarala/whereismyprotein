@@ -66,7 +66,7 @@ const Search = () => {
       </div>
 
       <RangeSlider
-        name='RDI'
+        unit='% of RDI'
         value={state.rdi}
         setValue={(rdi) => dispatch({ type: 'SET_LIMITS', payload: { rdi } })}
         type='min'
@@ -119,7 +119,14 @@ const Search = () => {
           />
         </>
       ) : (
-        <Categories />
+        <>
+          <Toggle
+            name='raw'
+            isOn={state.searchRaw}
+            toggleIsOn={() => dispatch({ type: 'TOGGLE_RAW' })}
+          />
+          <Categories />
+        </>
       )}
     </div>
   );

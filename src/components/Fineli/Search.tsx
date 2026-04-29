@@ -4,13 +4,13 @@ import styles from './Search.module.scss';
 import Toggle from '../Common/Toggle';
 import { FineliContext } from '../../context/FineliContext';
 import { categories } from '../../data/fineli/categories';
-import Limits from './Limits';
-import ModeSelect from '../Common/ModeSelect';
-import type { FineliFilterMode } from '../../types';
 import SearchInput from '../Common/SearchInput';
+import RangeSlider from '../Common/RangeSlider';
 
 const Search = () => {
   const { state, dispatch } = useContext(FineliContext);
+
+  console.log('fibergrams', state.fiberGrams);
 
   return (
     <div
@@ -45,47 +45,48 @@ const Search = () => {
         <div />
       </div>
 
-      <ModeSelect<FineliFilterMode>
-        options={['Search', 'Limit']}
-        selectedOption={state.filterMode}
-        toggleFn={() => dispatch({ type: 'TOGGLE_FILTER_MODE' })}
+      <RangeSlider
+        name='Fiber'
+        type='min'
+        unit='g / 2000kcal'
+        value={{ min: state.fiberGrams, max: 100 }}
+        setValue={(range) =>
+          dispatch({
+            type: 'SET_FIBER_GRAMS',
+            payload: { fiberGrams: range.min },
+          })
+        }
       />
 
-      {state.filterMode === 'Search' ? (
-        <>
-          <select
-            id='fineliCategory'
-            value={state.category}
-            onChange={(e) =>
-              dispatch({
-                type: 'SET_CATEGORY',
-                payload: { category: e.target.value },
-              })
-            }
-            tabIndex={0}
-          >
-            <option key='undefined' value={undefined} />
-            {Object.keys(categories).map((key) => (
-              <option key={key} value={key}>
-                {categories[key][state.language]}
-              </option>
-            ))}
-          </select>
-          <SearchInput
-            id='fineliSearch'
-            placeholder={state.language === 'fi' ? 'Hae' : 'Search'}
-            value={state.searchString}
-            setValue={(searchString: string) =>
-              dispatch({
-                type: 'SET_SEARCH',
-                payload: { searchString },
-              })
-            }
-          />
-        </>
-      ) : (
-        <Limits />
-      )}
+      <select
+        id='fineliCategory'
+        value={state.category}
+        onChange={(e) =>
+          dispatch({
+            type: 'SET_CATEGORY',
+            payload: { category: e.target.value },
+          })
+        }
+        tabIndex={0}
+      >
+        <option key='undefined' value={undefined} />
+        {Object.keys(categories).map((key) => (
+          <option key={key} value={key}>
+            {categories[key][state.language]}
+          </option>
+        ))}
+      </select>
+      <SearchInput
+        id='fineliSearch'
+        placeholder={state.language === 'fi' ? 'Hae' : 'Search'}
+        value={state.searchString}
+        setValue={(searchString: string) =>
+          dispatch({
+            type: 'SET_SEARCH',
+            payload: { searchString },
+          })
+        }
+      />
     </div>
   );
 };

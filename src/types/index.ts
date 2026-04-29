@@ -12,23 +12,24 @@ export type FineliState = {
   // SEARCH
   isRaw: boolean;
   hasScientific: boolean;
-  filterMode: FineliFilterMode;
+  // filterMode: FineliFilterMode;
   language: 'fi' | 'en';
 
   // search
+  fiberGrams: number; // per 2000kcal
   category: string | undefined;
   searchString: string;
 
   // limits
-  energyDensity: Range;
-  fat: Range;
-  protein: Range;
-  sugar: Range;
-  starch: Range;
-  fiber: Range;
-  sugarAlcohol: Range;
-  organicAcid: Range;
-  alcohol: Range;
+  // energyDensity: Range;
+  // fat: Range;
+  // protein: Range;
+  // sugar: Range;
+  // starch: Range;
+  // fiber: Range;
+  // sugarAlcohol: Range;
+  // organicAcid: Range;
+  // alcohol: Range;
 
   // RESULTS
   results: FineliFood[];
@@ -36,7 +37,7 @@ export type FineliState = {
   pageIndex: number;
 };
 
-export type FineliFilterMode = 'Search' | 'Limit';
+// export type FineliFilterMode = 'Search' | 'Limit';
 
 export type FineliReducerAction = {
   type: FineliReducerActionType;
@@ -46,13 +47,14 @@ export type FineliReducerAction = {
 export type FineliReducerActionType =
   | 'TOGGLE_IS_RAW'
   | 'TOGGLE_HAS_SCIENTIFIC'
-  | 'TOGGLE_FILTER_MODE'
+  // | 'TOGGLE_FILTER_MODE'
   | 'TOGGLE_LANGUAGE'
   | 'SET_SELECTED_FOOD'
   | 'SET_PAGE_INDEX'
+  | 'SET_FIBER_GRAMS'
   | 'SET_CATEGORY'
-  | 'SET_SEARCH'
-  | 'SET_LIMITS';
+  | 'SET_SEARCH';
+// | 'SET_LIMITS';
 
 export type FineliFood = {
   id: number;
